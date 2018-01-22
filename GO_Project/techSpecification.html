@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Product Description</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body>
+<div class="container mainContainer" ng-app="descModule" ng-controller="descController">
+            <div class="row descContainer">
+                <div class="col-lg-5" style="text-align: center;"><img src={{activeItem.imgUrl}}></div>
+                <div class="col-lg-5">
+                    <h2>{{activeItem.itemName}}</h2>
+                    <p>{{activeItem.desc}}</p>
+                    <button class="btn-md" ng-click="ProductspecFunction();">Product Spec</button>
+                </div>
+            </div><br><br>
+            <div class="row" ng-if="validator">
+                <div class="jumbotron">
+                    <table>
+                        <tr>
+                            <td>Item Name : </td>
+                            <td><input type="text" ng-model="nameOfSelectedItem" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>material : </td>
+                            <td><input type="text" ng-model="TypeofProduct"></td>
+                        </tr>
+                        <tr>
+                            <td>warnty : </td>
+                            <td><input type="text" ng-model="warentyOfSelectedItem"></td>
+                        </tr>
+                        <tr style="text-align: center;">
+                           <td><button class='btn btn-Desc' ng-click="Description();">Description</button></td>
+                          
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
