@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="myapp" ng-controller="myCtrl">
+	<table>
+		<tr ng-repeat="data in techSpecs">
+			<td><input type=text ng-model="data.techAttr" ></td>
+			<td><input type=text ng-model="data.techValue" ></td>
+		</tr>	
+	</table>
+	<span ng-click="addTextBox()">+</span>
+	<br>
+	<button ng-click="showLog()">Console log</button>
+</div>
+
+
+</body>
+<script>
+ 	var app = angular.module("myapp",[]);
+ 	app.controller("myCtrl",function($scope){
+ 		//var abc = {};
+ 		$scope.techSpecs = [{techAttr:"",techValue:""}];
+ 		//$scope.arr = new Array();
+ 		//abc.specs = $scope.arr;
+ 		
+ 		/*$scope.addItem = function(){
+ 			abc.pid = 1234;
+ 			var spec = "Dimension";
+ 			var xyz = {};
+ 			xyz[spec] = $scope.txtBox;
+ 			abc.specs.push(xyz); 		
+ 			console.log(abc);
+ 		}*/
+ 		
+ 		$scope.addTextBox = function(){
+ 			$scope.techSpecs.push({techAttr:"",techValue:""});
+ 			//console.log($scope.techSpecs);
+ 		}
+ 		
+ 		$scope.showLog = function(){
+ 			console.log($scope.techSpecs);
+ 		}
+ 		
+ 	});
+
+</script>
+</html>
