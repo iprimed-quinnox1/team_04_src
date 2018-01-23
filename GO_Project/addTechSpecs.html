@@ -43,6 +43,7 @@
  		$scope.addTextBox = function(){
  			$scope.techSpecs.push({techAttr:"",techValue:""});
  			//console.log($scope.techSpecs);
+            
  		}
  		
  		$scope.showLog = function(){
@@ -50,7 +51,10 @@
  			$scope.product.pid = $scope.pid;
  			$scope.product.techSpecs = $scope.techSpec;
  			console.log($scope.product);
- 		}
+            $http.post("http://localhost:3000/insertData",$scope.product).then(function(response){
+                    alert("received");
+            });
+            }
  		
  	});
 
