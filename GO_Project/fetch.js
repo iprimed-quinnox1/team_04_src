@@ -1,4 +1,6 @@
+//vaishnavi
 var express = require("express");
+
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
@@ -35,7 +37,11 @@ app.get("/readData", function (req, res) {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true
     }); //to set the header .
-    MongoClient.connect(url, function (err, database) { //connecting to mongo server
+    MongoClient.conn//Vaishnavi
+
+
+
+ect(url, function (err, database) { //connecting to mongo server
         if (err) throw err;
         var dbase = database.db("Product_Details");
 	var myobj = req.body;
