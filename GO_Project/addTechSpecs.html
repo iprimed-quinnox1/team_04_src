@@ -25,6 +25,8 @@
  	var app = angular.module("myapp",[]);
  	app.controller("myCtrl",function($scope){
  		$scope.product = {};
+ 		$scope.product.pid = null;
+ 		$scope.product.techSpecs = new Array();
  		$scope.techSpecs = [{techAttr:"",techValue:""}];
  		//$scope.arr = new Array();
  		//abc.specs = $scope.arr;
