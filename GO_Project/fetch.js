@@ -31,26 +31,24 @@ app.post("/insertData", function (req, res) {
     });
 });
 
-app.get("/readData", function (req, res) {
+app.post("/readData", function (req, res) {
     res.set({
         'Content-Type': 'application/json',
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true
     }); //to set the header .
-    MongoClient.conn//Vaishnavi
-
-
-
-ect(url, function (err, database) { //connecting to mongo server
+    MongoClient.connect(url, function (err, database) { //connecting to mongo server
         if (err) throw err;
         var dbase = database.db("Product_Details");
-	var myobj = req.body;
-	console.log(myobj);
+		var myobj = req.body;
+		console.log("Servermyobj");
+		console.log(myobj);
         var res1 = dbase.collection("Tech_specification");
-        res1.find({ id : myobj.pid } ).toArray(function (err, result) {
+        res1.find({ pid : myobj.pid } ).toArray(function (err, result) {
             if (err) throw err;
             res.send(result);
-            console.log("sent");
+            console.log("Server result");
+            console.log(result);
             res.end();
         });
         database.close();

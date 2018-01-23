@@ -29,25 +29,6 @@ app.post("/insertData", function (req, res) {
     });
 });
 
-app.get("/insert", function (req, res) {
-    res.set({
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Credentials": true
-    }); //to set the header .
-    MongoClient.connect(url, function (err, database) { //connecting to mongo server
-        if (err) throw err;
-        var dbase = database.db("chatData");
-        var res1 = dbase.collection("messages");
-        res1.find().toArray(function (err, result) {
-            if (err) throw err;
-            res.send(result);
-            console.log("sent");
-            res.end();
-        });
-        database.close();
-    });
-});
 
 app.listen(3000, function () {
     console.log("Server started at 3000")

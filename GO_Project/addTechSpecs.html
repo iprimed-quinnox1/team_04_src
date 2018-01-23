@@ -52,7 +52,7 @@
 			</table>
 			<span style="cursor:pointer" class="glyphicon glyphicon-plus" ng-click="addTextBox()"></span>
 			<br>
-			<button class="btn btn-primary" ng-click="showLog()">Console log</button>
+			<button class="btn btn-primary" ng-click="save()">Save</button>
 		</div>
 	</div>
 </p>
@@ -60,7 +60,7 @@
 </body>
 <script>
  	var app = angular.module("myapp",[]);
- 	app.controller("myCtrl",function($scope){
+ 	app.controller("myCtrl",function($scope,$http){
  		$scope.product = {};
  		$scope.product.pid = null;
  		$scope.product.techSpecs = new Array();
@@ -71,7 +71,7 @@
  			$scope.techSpecs.push({techAttr:"",techValue:""});
  		}
  		
- 		$scope.showLog = function(){
+ 		$scope.save = function(){
  			console.log($scope.techSpecs);
  			$scope.product.pid = $scope.pid;
  			$scope.product.techSpecs = $scope.techSpecs;
