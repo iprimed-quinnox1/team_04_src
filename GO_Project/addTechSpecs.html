@@ -4,21 +4,58 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
-<body>
-<div ng-app="myapp" ng-controller="myCtrl">
-	<input type="Text" ng-model="pid" placeholder="Enter pid" >
-	<table>
-		<tr ng-repeat="data in techSpecs">
-			<td><input type=text ng-model="data.techAttr" ></td>
-			<td><input type=text ng-model="data.techValue" ></td>
-		</tr>	
-	</table>
-	<span ng-click="addTextBox()">+</span>
-	<br>
-	<button ng-click="save()">Store To database</button>
-</div>
+<style>
+	div{
+		background-color: sand;
+		margin-top: 70px;
+		
+	}
+	
+	body{
+		background-color: rgb(210, 234, 252);
+	}
+	.td-input-box{
+		text-align : center;
+		margin:100px;
+	}
+	.data-table{
+		text-align : center;
+		margin:10px;
+	}
+	.intro{
 
+	background-color:#C9FFE5;
+	}
+	.padding{
+		padding: 50px;
+	}
+</style>
+
+<body>
+ <!--  <header class=intro>
+    <h1 class="w3-xxxlarge"><b>Great Outdoors</b></h1>
+  </header>-->
+	
+	<div class="container" ng-app="myapp" ng-controller="myCtrl">
+		<div class=" col-md-4 form-group">
+			<input class="form-control" type="text" ng-model="pid" placeholder="Enter pid" >
+		</div>
+		<div class="col-md-8"></div>
+		<div class="col-md-12">
+			<table class="table data-table " class="form-group">
+				<tr ng-repeat="data in techSpecs">
+					<td ><input class="form-control" type=text ng-model="data.techAttr" placeholder="Enter Desccription Title..."></td>
+					<td ><input class="form-control" type=text ng-model="data.techValue" placeholder="Enter Desccription"></td>
+				</tr>	
+			</table>
+			<span style="cursor:pointer" class="glyphicon glyphicon-plus" ng-click="addTextBox()"></span>
+			<br>
+			<button class="btn btn-primary" ng-click="showLog()">Console log</button>
+		</div>
+	</div>
+</p>
 
 </body>
 <script>
@@ -41,20 +78,17 @@
  		}*/
  		
  		$scope.addTextBox = function(){
+ 			alert("clicked");
  			$scope.techSpecs.push({techAttr:"",techValue:""});
  			//console.log($scope.techSpecs);
-            
  		}
  		
- 		$scope.save = function(){
+ 		$scope.showLog = function(){
  			console.log($scope.techSpecs);
  			$scope.product.pid = $scope.pid;
  			$scope.product.techSpecs = $scope.techSpecs;
  			console.log($scope.product);
-            $http.post("http://localhost:3000/insertData",$scope.product).then(function(response){
-                    alert("received");
-            });
-            }
+ 		}
  		
  	});
 
