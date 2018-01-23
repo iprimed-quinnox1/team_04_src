@@ -16,7 +16,7 @@
 	</table>
 	<span ng-click="addTextBox()">+</span>
 	<br>
-	<button ng-click="showLog()">Console log</button>
+	<button ng-click="save()">Store To database</button>
 </div>
 
 
@@ -46,7 +46,7 @@
             
  		}
  		
- 		$scope.showLog = function(){
+ 		$scope.save = function(){
  			console.log($scope.techSpecs);
  			$scope.product.pid = $scope.pid;
  			$scope.product.techSpecs = $scope.techSpec;
