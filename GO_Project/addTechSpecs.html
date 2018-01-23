@@ -7,6 +7,7 @@
 </head>
 <body>
 <div ng-app="myapp" ng-controller="myCtrl">
+	<input type="Text" ng-model="pid" placeholder="Enter pid" >
 	<table>
 		<tr ng-repeat="data in techSpecs">
 			<td><input type=text ng-model="data.techAttr" ></td>
@@ -23,7 +24,7 @@
 <script>
  	var app = angular.module("myapp",[]);
  	app.controller("myCtrl",function($scope){
- 		//var abc = {};
+ 		$scope.product = {};
  		$scope.techSpecs = [{techAttr:"",techValue:""}];
  		//$scope.arr = new Array();
  		//abc.specs = $scope.arr;
@@ -44,6 +45,9 @@
  		
  		$scope.showLog = function(){
  			console.log($scope.techSpecs);
+ 			$scope.product.pid = $scope.pid;
+ 			$scope.product.techSpecs = $scope.techSpec;
+ 			console.log($scope.product);
  		}
  		
  	});
