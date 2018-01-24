@@ -22,12 +22,51 @@ app.post("/insertData", function (req, res) {
         if (err) throw err;
         var db = dbase.db("Product_Details");
         var myobj = req.body;
-        //console.log(myobj);
         db.collection("Tech_specification").insertOne(myobj, function (err, res) {
             if (err) throw err;
             console.log(myobj.pid + " Inserted");
         });
         dbase.close();
+    });
+});
+
+app.post("/updateData", function (req, res) {
+    res.set({
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true
+    }); 
+    MongoClient.connect(url, function (err, database) { 
+        if (err) throw err;
+        var dbase = database.db("Product_Details");
+		var res1 = dbase.collection("Tech_specification");
+		var myobj = req.body;
+        res1.update({'pid':myobj.pid},{$set:{techSpecs:myobj.techSpecs}}, function (err, result) {
+            if (err) throw err;
+           console.log("Updated");
+        });
+        database.close();
+    });
+});
+
+app.post("/initializeData", function (req, res) {
+    res.set({
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true
+    }); 
+    MongoClient.connect(url, function (err, database) { 
+        if (err) throw err;
+        var dbase = database.db("Product_Details");
+		var res1 = dbase.collection("Tech_specification");
+        res1.find({},{'pid':1,'_id':0,'techSpecs':0} ).toArray(function (err, result) {
+            if (err) throw err;
+            res.send(result);
+            console.log("Server result");
+            console.log(result);
+            res.end();
+        });
+        database.close();
     });
 });
 
