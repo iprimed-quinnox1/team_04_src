@@ -34,11 +34,7 @@
 </style>
 
 <body>
- <!--  <header class=intro>
-    <h1 class="w3-xxxlarge"><b>Great Outdoorssfdsf</b></h1>
-  </header>-->
-	
-	<div class="container" ng-app="myapp" ng-controller="myCtrl">
+ 	<div class="container" ng-app="myapp" ng-controller="myCtrl">
 		<div class="marginT70 col-md-4 form-group">
 			<input class="form-control" type="text" ng-model="pid" ng-change="searchBox()" placeholder="Enter pid">
 			<div ng-repeat="x in techSpecs1| filter : pid" ng-show="searchList">
