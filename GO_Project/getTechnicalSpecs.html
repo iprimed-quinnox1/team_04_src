@@ -6,18 +6,51 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <style>
+div {
+    text-align: center;
+}
+td, th {
+  
+    border: LightGrey ;
+    text-align: center;
+    padding: 8px;
+}
+table {
+   border: LightGrey;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 10%;
+}
+  
+tr:nth-child(even) {
+    background-color: LightGrey;
+}
+
+    </style>     
 </head>
-<body >
+<body style="background-color:LightCyan;" >
 	<div class=" container" ng-app="MyApp" ng-controller="MyController">
-	<input type= "number" ng-model= "pid" placeholder="pid">
-	<button class="btn btn-primary" ng-click="getData()">Submit</button>
-	<table>
-		<tr ng-repeat="x in techSpecs[0].techSpecs">
-			<th>{{x.techAttr}}</th>
-			<th>{{x.techValue}}</th>
-		</tr>
-	</table>
+	
+		<table class="table ">
+			<thead>
+				<th>Title</th>
+				<th>Description</th>
+			
+			</thead>
+			<tbody>
+				<tr ng-repeat="x in techSpecs[0].techSpecs">
+					<td>{{x.techAttr}}</td>
+					<td>{{x.techValue}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<input text-align ="center" type= "text" ng-model= "pid" placeholder="pid">
+		<br>
+		<button class="btn btn-primary" ng-click="getData()">Submit</button>
 	</div>
+
+</body>
 <script>
 var app=angular.module("MyApp",[])
 app.controller("MyController",function($scope,$http){
@@ -29,4 +62,3 @@ app.controller("MyController",function($scope,$http){
 	}
 });
 </script>
-</body>
