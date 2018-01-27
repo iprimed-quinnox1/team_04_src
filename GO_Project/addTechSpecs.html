@@ -112,44 +112,55 @@ body {
  				
  			}
  		}
- 		
- 		$scope.fetchData = function (x){
- 			$scope.pid=x.pid;
- 			$scope.techSpecs = x.techSpecs;
- 			update = true;
- 			
- 		}
- 		//
- 		//Pushing data in DB
- 		//
- 		$scope.addTextBox = function(){ 			
- 			$scope.techSpecs.push({techAttr:"",techValue:""});
- 		}
- 		
- 		$scope.save = function(){
- 			console.log($scope.techSpecs);
- 			for(var i = 0; i< $scope.techSpecs1.length;i++){
- 				if($scope.pid == $scope.techSpecs1[i].pid){
- 					update = true;
- 					alert("This item already exists");
- 				}
- 			}
- 			$scope.product.pid = $scope.pid;
- 			$scope.product.techSpecs = $scope.techSpecs;
- 			console.log($scope.product);
- 			if(update){
- 				$http.post("http://localhost:3000/updateData",$scope.product).then(function(response){
-	                alert("received");
-	        	});
- 			}
- 			else{
-	 			$http.post("http://localhost:3000/insertData",$scope.product).then(function(response){
-	                alert("received");
-	        	});
- 			}
- 		}
- 		
- 	});
+
+                $scope.fetchData = function(x) {
+                    $scope.pid = $scope.techSpecs1[x].pid;
+                    $scope.techSpecs = $scope.techSpecs1[x].techSpecs;
+                    update = true;
+
+                }
+                //
+                //Pushing data in DB
+                //
+                $scope.addTextBox = function() {
+                    $scope.techSpecs.push({
+                        techAttr: "",
+                        techValue: ""
+                    });
+                }
+
+                $scope.save = function() {
+                    console.log($scope.techSpecs);
+                    $scope.product.pid = $scope.pid;
+                    $scope.product.techSpecs = $scope.techSpecs;
+                    console.log($scope.product);
+                    if (update) {
+                        $http.post("http://localhost:3000/updateData", $scope.product).then(function(response) {
+                            alert("received");
+                        });
+                    }
+                    else {
+                        $http.post("http://localhost:3000/insertData", $scope.product).then(function(response) {
+                            alert("received");
+                        });
+                    }
+                }
+                //Delete
+                $scope.delete = function() {
+                   // $scope.product.pid = $scope.pid;
+                    //$scope.product.techSpecs = $scope.techSpecs;
+                 //   console.log($scope.product);
+                    var del = {
+                    		pid: $scope.pid.toString()
+                    };
+                   
+                    $http.post("http://localhost:3000/DeleteData", del).then(function(response) {
+                        alert("received");
+                    });
+                
+
+                }
+    });
 
 </script>
 
