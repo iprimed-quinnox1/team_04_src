@@ -53,22 +53,36 @@ body {
 				ng-change="searchBox()" placeholder="Enter pid">
 			
 		</div>
+		
 		<div class="marginT70 col-md-8" style="overflow-y:true">
 			<div class="searchList" ng-repeat="x in techSpecs1| filter : pid" ng-show="searchList">
 				<span ng-click="fetchData(x)">{{x.pid}}</span>
 			</div>
 		</div>
+		
 		<div class="col-md-12 ">
 			<table class="table data-table " class="form-group">
+					
 				<tr ng-repeat="data in techSpecs">
-					<td><input class="form-control" type=text
-						ng-model="data.techAttr" placeholder="Enter Desccription Title..."></td>
-					<td><input class="form-control" type=text
-						ng-model="data.techValue" placeholder="Enter Desccription"></td>
-				</tr>
+						
+					<td><div class="well">
+						<input class="form-control" type=text
+						ng-model="data.techAttr" placeholder="Enter Desccription Title..."></div>
+						
+					<td><div class="well"><input class="form-control" type=text
+						ng-model="data.techValue" placeholder="Enter Desccription"></div></td>
+
+						<td>
+								<button ng-click="DeleteTextBox($index)">Remove</button>
+							</td>
+
+
+					</tr>
+				<button ng-click="addTextBox()">Add</button>	
 			</table>
-			<span style="cursor: pointer" class="glyphicon glyphicon-plus"
-				ng-click="addTextBox()"></span> <br>
+			</div>
+			<!--span style="cursor: pointer" class="glyphicon glyphicon-plus"
+				ng-click="addTextBox()"></span> <br-->
 			<button class="btn btn-primary" ng-click="save()">Save</button>
 			<button class="btn btn-primary" ng-click="delete()">Delete</button>
 		</div>
@@ -105,7 +119,7 @@ body {
  		$scope.searchBox = function(){
  			
  			if($scope.pid.length>=2){
- 				$scope.searchList = true;
+ 				$scope.searchList = true;	
  			}
  			else{
  				$scope.searchList = false;
@@ -119,7 +133,7 @@ body {
                     update = true;
 
                 }
-                //
+                //techSpecs 
                 //Pushing data in DB
                 //
                 $scope.addTextBox = function() {
@@ -127,6 +141,10 @@ body {
                         techAttr: "",
                         techValue: ""
                     });
+					$scope.DeleteTextBox=function(data){
+						$scope.techSpecs.splice(data,1);
+					}
+					
                 }
 
                 $scope.save = function() {

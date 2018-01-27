@@ -12,37 +12,42 @@ div {
 }
 td, th {
   
-    border: LightGrey ;
+    border: black ;
     text-align: center;
     padding: 8px;
 }
 table {
-   border: LightGrey;
+   border:black;
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 10%;
 }
   
+
 tr:nth-child(even) {
-    background-color: LightGrey;
+    background-color: #f2f2f2
 }
 
     </style>     
 </head>
-<body style="background-color:LightCyan;" >
+<body style="background-color:rgba(108, 170, 26, 0.171);" >
 	<div class="container" ng-app="MyApp" ng-controller="MyController" ng-init="prod=true">
 	
-		<table class="table " ng-hide="prod">
+		<table class="table table-striped " ng-hide="prod">
 			<thead>
 				<th>Title</th>
 				<th>Description</th>
 			
 			</thead>
 			<tbody>
+				
 				<tr ng-repeat="x in techSpecs[0].techSpecs">
-					<td>{{x.techAttr}}</td>
-					<td>{{x.techValue}}</td>
+						
+					<td class="well">{{x.techAttr}}</td>
+					<td class="well">{{x.techValue}}</td>
+				    
 				</tr>
+				
 			</tbody>
 		</table>
 		<input text-align ="center" type= "text" ng-model= "pid" placeholder="pid">
