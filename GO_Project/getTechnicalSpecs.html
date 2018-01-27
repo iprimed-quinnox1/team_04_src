@@ -30,9 +30,9 @@ tr:nth-child(even) {
     </style>     
 </head>
 <body style="background-color:LightCyan;" >
-	<div class=" container" ng-app="MyApp" ng-controller="MyController">
+	<div class="container" ng-app="MyApp" ng-controller="MyController" ng-init="prod=true">
 	
-		<table class="table ">
+		<table class="table " ng-hide="prod">
 			<thead>
 				<th>Title</th>
 				<th>Description</th>
@@ -47,9 +47,7 @@ tr:nth-child(even) {
 		</table>
 		<input text-align ="center" type= "text" ng-model= "pid" placeholder="pid">
 		<br>
-		<button class="btn btn-primary" ng-click="getData()">Submit</button>
-		<br>
-		<button class="btn btn-primary" ng-click="getData()">Delete</button>
+		<button  ng-show="prod" class="btn btn-primary" ng-click="getData()" >Submit</button>
 	</div>
 
 </body>
@@ -57,6 +55,7 @@ tr:nth-child(even) {
 var app=angular.module("MyApp",[])
 app.controller("MyController",function($scope,$http){
 	$scope.getData = function (){
+		$scope.prod=false;
 		var itemPid = {pid : $scope.pid.toString()};
 		$http.post("http://localhost:3000/readData",itemPid).then(function(response){
 	        $scope.techSpecs = response.data;
