@@ -1,36 +1,42 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <style>
-	.marginT70{
-		background-color: sand;
-		margin-top: 70px;
-		
-	}
-	
-	body{
-		background-color: rgb(210, 234, 252);
-	}
-	.td-input-box{
-		text-align : center;
-		margin:100px;
-	}
-	.data-table{
-		text-align : center;
-		margin:10px;
-	}
-	.intro{
+.marginT70 {
+	background-color: sand;
+	margin-top: 70px;
+}
 
-	background-color:#C9FFE5;
-	}
-	.padding{
-		padding: 50px;
-	}
+body {
+	background-color: rgb(210, 234, 252);
+}
+
+.td-input-box {
+	text-align: center;
+	margin: 100px;
+}
+
+.data-table {
+	text-align: center;
+	margin: 10px;
+}
+
+.intro {
+	background-color: #C9FFE5;
+}
+
+.padding {
+	padding: 50px;
+}
 	.searchList{
 		cursor:pointer;
 		margin:2px;
@@ -41,9 +47,10 @@
 </style>
 
 <body>
- 	<div class="container" ng-app="myapp" ng-controller="myCtrl">
+	<div class="container" ng-app="myapp" ng-controller="myCtrl">
 		<div class="marginT70 col-md-4 form-group">
-			<input class="form-control" type="text" ng-model="pid" ng-change="searchBox()" placeholder="Enter pid">
+			<input class="form-control" type="text" ng-model="pid"
+				ng-change="searchBox()" placeholder="Enter pid">
 			
 		</div>
 		<div class="marginT70 col-md-8" style="overflow-y:true">
@@ -51,17 +58,22 @@
 				 <span  ng-click="fetchData(x)">{{x.pid}}</span>
 			 </div>
 		</div>
-		<div class="col-md-12">
+		<div class="col-md-12 ">
 			<table class="table data-table " class="form-group">
 				<tr ng-repeat="data in techSpecs">
-					<td ><input class="form-control" type=text ng-model="data.techAttr" placeholder="Enter Desccription Title..."></td>
-					<td ><input class="form-control" type=text ng-model="data.techValue" placeholder="Enter Desccription"></td>
-				</tr>	
+					<td><input class="form-control" type=text
+						ng-model="data.techAttr" placeholder="Enter Desccription Title..."></td>
+					<td><input class="form-control" type=text
+						ng-model="data.techValue" placeholder="Enter Desccription"></td>
+				</tr>
 			</table>
-			<span style="cursor:pointer" class="glyphicon glyphicon-plus" ng-click="addTextBox()"></span>
-			<br>
+			<span style="cursor: pointer" class="glyphicon glyphicon-plus"
+				ng-click="addTextBox()"></span> <br>
 			<button class="btn btn-primary" ng-click="save()">Save</button>
+			<button class="btn btn-primary" ng-click="delete()">Delete</button>
 		</div>
+
+
 	</div>
 
 
@@ -140,4 +152,5 @@
  	});
 
 </script>
+
 </html>
