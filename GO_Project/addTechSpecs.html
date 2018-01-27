@@ -54,7 +54,7 @@ body {
 	<div class="container" ng-app="myapp" ng-controller="myCtrl">
 		<div class="marginT70 col-md-4 form-group">
 			<input class="form-control" type="text" ng-model="pid"
-				ng-change="searchBox()" placeholder="Enter pid">
+				ng-change="searchBox()" placeholder="Enter pid" required>
 			
 		</div>
 		<div class="marginT70 col-md-8" style="overflow-y:true">
@@ -66,9 +66,10 @@ body {
 			<table class="table data-table " class="form-group">
 				<tr ng-repeat="data in techSpecs">
 					<td><input class="form-control" type=text
-						ng-model="data.techAttr" placeholder="Enter Desccription Title..."></td>
+						ng-model="data.techAttr" placeholder="Enter Description Title..."></td>
 					<td><input class="form-control" type=text
-						ng-model="data.techValue" placeholder="Enter Desccription"></td>
+						ng-model="data.techValue" placeholder="Enter Description"></td>
+					<td><span class="glyphicon glyphicon-minus" ng-click="remove($index)"></span></td>
 				</tr>
 			</table>
 			<span style="cursor: pointer" class="glyphicon glyphicon-plus"
@@ -102,7 +103,15 @@ body {
 		        $scope.techSpecs1 = response.data;
 		        console.log(response.data);
 			});
- 		
+ 		//
+		// Removing a Row
+		//
+		$scope.remove = function(index)
+		{
+			$scope.techSpecs.splice(index,1);
+		}
+
+
  		//
  		//search list
  		//
