@@ -71,6 +71,7 @@ body {
 				ng-click="addTextBox()"></span> <br>
 			<button class="btn btn-primary" ng-click="save()">Save</button>
 			<button class="btn btn-primary" ng-click="delete()">Delete</button>
+			<p id="demo"></p>
 		</div>
 
 
@@ -119,7 +120,7 @@ body {
                     update = true;
 
                 }
-                //
+             	//
                 //Pushing data in DB
                 //
                 $scope.addTextBox = function() {
@@ -130,16 +131,45 @@ body {
                 }
 
                 $scope.save = function() {
+                	
+                	var txt;
+                	update = false;
+           			
+           			for(var i=0; i<$scope.techSpecs1.length;i++){
+           				if($scope.pid == $scope.techSpecs1[i].pid)
+           				{
+           					update = true;
+           				}
+           			}
+                	
                     console.log($scope.techSpecs);
                     $scope.product.pid = $scope.pid;
                     $scope.product.techSpecs = $scope.techSpecs;
                     console.log($scope.product);
                     if (update) {
+                    	var r = confirm("P.Id Already exists. Do you want to overwrite it?");
+    	       			if (r == true) {
+    	          			  txt = "Saved!";
+    	        		}	 
+           				else {
+                   			txt = "Not Saved!";
+                   			return ;
+              			 }
+               			document.getElementById("demo").innerHTML = txt;
                         $http.post("http://localhost:3000/updateData", $scope.product).then(function(response) {
                             alert("received");
                         });
                     }
                     else {
+                    	var r = confirm("Do you want to save it?");
+    	       			if (r == true) {
+    	          			  txt = "Updated!";
+    	        		}	 
+           				else {
+                   			txt = "Not Updated!";
+                   			return ;
+              			 }
+               			document.getElementById("demo").innerHTML = txt;
                         $http.post("http://localhost:3000/insertData", $scope.product).then(function(response) {
                             alert("received");
                         });
@@ -147,9 +177,7 @@ body {
                 }
                 //Delete
                 $scope.delete = function() {
-                   // $scope.product.pid = $scope.pid;
-                    //$scope.product.techSpecs = $scope.techSpecs;
-                 //   console.log($scope.product);
+                   
                     var del = {
                     		pid: $scope.pid.toString()
                     };
