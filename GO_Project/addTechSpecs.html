@@ -1,124 +1,157 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <style>
-	.marginT70{
-		background-color: sand;
-		margin-top: 70px;
-		
-	}
-	
-	body{
-		background-color: rgb(210, 234, 252);
-	}
-	.td-input-box{
-		text-align : center;
-		margin:100px;
-	}
-	.data-table{
-		text-align : center;
-		margin:10px;
-	}
-	.intro{
+.marginT70 {
+	background-color: sand;
+	margin-top: 70px;
+}
 
-	background-color:#C9FFE5;
-	}
-	.padding{
-		padding: 50px;
-	}
+body {
+	background-color: rgb(210, 234, 252);
+}
+
+.td-input-box {
+	text-align: center;
+	margin: 100px;
+}
+
+.data-table {
+	text-align: center;
+	margin: 10px;
+}
+
+.intro {
+	background-color: #C9FFE5;
+}
+
+.padding {
+	padding: 50px;
+}
 </style>
 
 <body>
- 	<div class="container" ng-app="myapp" ng-controller="myCtrl">
+	<div class="container" ng-app="myapp" ng-controller="myCtrl">
 		<div class="marginT70 col-md-4 form-group">
-			<input class="form-control" type="text" ng-model="pid" ng-change="searchBox()" placeholder="Enter pid">
+			<input class="form-control" type="text" ng-model="pid"
+				ng-change="searchBox()" placeholder="Enter pid">
 			<div ng-repeat="x in techSpecs1| filter : pid" ng-show="searchList">
-			 <span style="cursor:pointer" ng-click="fetchData($index)">{{x.pid}}</span>
-			 </div>
+				<span style="cursor: pointer" ng-click="fetchData($index)">{{x.pid}}</span>
+			</div>
 		</div>
 		<div class="col-md-8"></div>
-		<div class="col-md-12">
+		<div class="col-md-12 ">
 			<table class="table data-table " class="form-group">
 				<tr ng-repeat="data in techSpecs">
-					<td ><input class="form-control" type=text ng-model="data.techAttr" placeholder="Enter Desccription Title..."></td>
-					<td ><input class="form-control" type=text ng-model="data.techValue" placeholder="Enter Desccription"></td>
-				</tr>	
+					<td><input class="form-control" type=text
+						ng-model="data.techAttr" placeholder="Enter Desccription Title..."></td>
+					<td><input class="form-control" type=text
+						ng-model="data.techValue" placeholder="Enter Desccription"></td>
+				</tr>
 			</table>
-			<span style="cursor:pointer" class="glyphicon glyphicon-plus" ng-click="addTextBox()"></span>
-			<br>
+			<span style="cursor: pointer" class="glyphicon glyphicon-plus"
+				ng-click="addTextBox()"></span> <br>
 			<button class="btn btn-primary" ng-click="save()">Save</button>
+			<button class="btn btn-primary" ng-click="delete()">Delete</button>
 		</div>
+
+
 	</div>
 
 
 </body>
 <script>
- 	var app = angular.module("myapp",[]);
- 	app.controller("myCtrl",function($scope,$http){
- 		$scope.product = {};
- 		$scope.pid = null;
- 		var update=false;
- 		$scope.searchList = false;
- 		$scope.product.pid = null;
- 		$scope.product.techSpecs = new Array();
- 		$scope.techSpecs = [{techAttr:"",techValue:""}];
- 		
- 		
- 		//
- 		//Initialising data from DB
- 		//
- 		$http.post("http://localhost:3000/initializeData").then(function(response){
-		        $scope.techSpecs1 = response.data;
-		        console.log(response.data);
-			});
- 		
- 		//
- 		//search list
- 		//
- 		
- 		$scope.searchBox = function(){
- 			
- 			if($scope.pid.length>=2){
- 				$scope.searchList = true;
- 			} 			
- 		}
- 		
- 		$scope.fetchData = function (x){
- 			$scope.pid=$scope.techSpecs1[x].pid;
- 			$scope.techSpecs = $scope.techSpecs1[x].techSpecs;
- 			update = true;
- 			
- 		}
- 		//
- 		//Pushing data in DB
- 		//
- 		$scope.addTextBox = function(){ 			
- 			$scope.techSpecs.push({techAttr:"",techValue:""});
- 		}
- 		
- 		$scope.save = function(){
- 			console.log($scope.techSpecs);
- 			$scope.product.pid = $scope.pid;
- 			$scope.product.techSpecs = $scope.techSpecs;
- 			console.log($scope.product);
- 			if(update){
- 				$http.post("http://localhost:3000/updateData",$scope.product).then(function(response){
-	                alert("received");
-	        	});
- 			}
- 			else{
-	 			$http.post("http://localhost:3000/insertData",$scope.product).then(function(response){
-	                alert("received");
-	        	});
- 			}
- 		}
- 		
- 	});
+    var app = angular.module("myapp", []);
+    app.controller("myCtrl", function($scope, $http) {
+                $scope.product = {};
+                $scope.pid = null;
+                var update = false;
+                $scope.searchList = false;
+                $scope.product.pid = null;
+                $scope.product.techSpecs = new Array();
+                $scope.techSpecs = [{
+                    techAttr: "",
+                    techValue: ""
+                }];
+
+
+                //
+                //Initialising data from DB
+                //
+                $http.post("http://localhost:3000/initializeData").then(function(response) {
+                    $scope.techSpecs1 = response.data;
+                    console.log(response.data);
+                });
+
+                //
+                //search list
+                //
+
+                $scope.searchBox = function() {
+
+                    if ($scope.pid.length >= 2) {
+                        $scope.searchList = true;
+                    }
+                }
+
+                $scope.fetchData = function(x) {
+                    $scope.pid = $scope.techSpecs1[x].pid;
+                    $scope.techSpecs = $scope.techSpecs1[x].techSpecs;
+                    update = true;
+
+                }
+                //
+                //Pushing data in DB
+                //
+                $scope.addTextBox = function() {
+                    $scope.techSpecs.push({
+                        techAttr: "",
+                        techValue: ""
+                    });
+                }
+
+                $scope.save = function() {
+                    console.log($scope.techSpecs);
+                    $scope.product.pid = $scope.pid;
+                    $scope.product.techSpecs = $scope.techSpecs;
+                    console.log($scope.product);
+                    if (update) {
+                        $http.post("http://localhost:3000/updateData", $scope.product).then(function(response) {
+                            alert("received");
+                        });
+                    }
+                    else {
+                        $http.post("http://localhost:3000/insertData", $scope.product).then(function(response) {
+                            alert("received");
+                        });
+                    }
+                }
+                //Delete
+                $scope.delete = function() {
+                   // $scope.product.pid = $scope.pid;
+                    //$scope.product.techSpecs = $scope.techSpecs;
+                 //   console.log($scope.product);
+                    var del = {
+                    		pid: $scope.pid.toString()
+                    };
+                   
+                    $http.post("http://localhost:3000/DeleteData", del).then(function(response) {
+                        alert("received");
+                    });
+                
+
+                }
+    });
 
 </script>
+
 </html>
