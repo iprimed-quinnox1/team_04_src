@@ -55,8 +55,8 @@ body {
 		</div>
 		<div class="marginT70 col-md-8" style="overflow-y:true">
 			<div class="searchList" ng-repeat="x in techSpecs1| filter : pid" ng-show="searchList">
-				 <span  ng-click="fetchData(x)">{{x.pid}}</span>
-			 </div>
+				<span ng-click="fetchData(x)">{{x.pid}}</span>
+			</div>
 		</div>
 		<div class="col-md-12 ">
 			<table class="table data-table " class="form-group">
@@ -114,8 +114,8 @@ body {
  		}
 
                 $scope.fetchData = function(x) {
-                    $scope.pid = $scope.techSpecs1[x].pid;
-                    $scope.techSpecs = $scope.techSpecs1[x].techSpecs;
+                    $scope.pid = x.pid;
+                    $scope.techSpecs = x.techSpecs;
                     update = true;
 
                 }
