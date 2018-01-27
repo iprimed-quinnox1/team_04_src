@@ -71,6 +71,7 @@ body {
 				ng-click="addTextBox()"></span> <br>
 			<button class="btn btn-primary" ng-click="save()">Save</button>
 			<button class="btn btn-primary" ng-click="delete()">Delete</button>
+			<p id="demo"></p>
 		</div>
 
 
@@ -119,7 +120,15 @@ body {
                     update = true;
 
                 }
-                //
+                //var txt;
+   			 var r = confirm("Do you want to save it!");
+   			 if (r == true) {
+      			  txt = "Saved!";
+    			}	 
+			else {
+        			txt = "Not Saved!";
+   			 }
+    			document.getElementById("demo").innerHTML = txt;
                 //Pushing data in DB
                 //
                 $scope.addTextBox = function() {
@@ -130,6 +139,19 @@ body {
                 }
 
                 $scope.save = function() {
+                	
+                	/*var txt;
+          			 var r = confirm("Do you want to save it!");
+          			 if (r == true) {
+             			  txt = "Saved!";
+           			}	 
+       			else {
+               			txt = "Not Saved!";
+          			 }
+           			document.getElementById("demo").innerHTML = txt;*/
+           			
+           			
+                	
                     console.log($scope.techSpecs);
                     $scope.product.pid = $scope.pid;
                     $scope.product.techSpecs = $scope.techSpecs;
