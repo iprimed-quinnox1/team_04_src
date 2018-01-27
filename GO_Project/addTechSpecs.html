@@ -44,6 +44,10 @@ body {
 		background-color: yellow;
 	
 	}
+	#demo{
+		color: blue;
+    	text-align: center;
+	}
 </style>
 
 <body>
@@ -71,7 +75,7 @@ body {
 				ng-click="addTextBox()"></span> <br>
 			<button class="btn btn-primary" ng-click="save()">Save</button>
 			<button class="btn btn-primary" ng-click="delete()">Delete</button>
-			<p id="demo"></p>
+			<div id="demo"></div>
 		</div>
 
 
@@ -131,7 +135,12 @@ body {
                 }
 
                 $scope.save = function() {
-
+                	
+                	if(!$scope.pid){
+                		alert("enter a product Id");
+                		return;
+                	}
+                	
                 	var txt;
                 	update = false;
            			
@@ -141,7 +150,6 @@ body {
            					update = true;
            				}
            			}
-
                            	
                     console.log($scope.techSpecs);
                     $scope.product.pid = $scope.pid;
@@ -181,7 +189,20 @@ body {
                 
                 //Delete
                 $scope.delete = function() {
-                   
+                	var txt;
+                	if(!$scope.pid){
+                		alert("enter a product Id");
+                		return;
+                	}
+                	var r = confirm("Are you sure to delete?");
+	       			if (r == true) {
+	          			  txt = "Deleted!";
+	        		}	 
+       				else {
+               			txt = "";
+               			return ;
+          			 }
+           			document.getElementById("demo").innerHTML = txt;
                     var del = {
                     		pid: $scope.pid.toString()
                     };
@@ -189,6 +210,7 @@ body {
                     $http.post("http://localhost:3000/DeleteData", del).then(function(response) {
                         alert("received");
                     });
+                    $scope.techSpecs = [];
                 
 
                 }
