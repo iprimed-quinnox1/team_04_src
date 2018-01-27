@@ -31,17 +31,26 @@
 	.padding{
 		padding: 50px;
 	}
+	.searchList{
+		cursor:pointer;
+		margin:2px;
+		padding:2px;
+		background-color: yellow;
+	
+	}
 </style>
 
 <body>
  	<div class="container" ng-app="myapp" ng-controller="myCtrl">
 		<div class="marginT70 col-md-4 form-group">
 			<input class="form-control" type="text" ng-model="pid" ng-change="searchBox()" placeholder="Enter pid">
-			<div ng-repeat="x in techSpecs1| filter : pid" ng-show="searchList">
-			 <span style="cursor:pointer" ng-click="fetchData($index)">{{x.pid}}</span>
+			
+		</div>
+		<div class="marginT70 col-md-8" style="overflow-y:true">
+			<div class="searchList" ng-repeat="x in techSpecs1| filter : pid" ng-show="searchList">
+				 <span  ng-click="fetchData(x)">{{x.pid}}</span>
 			 </div>
 		</div>
-		<div class="col-md-8"></div>
 		<div class="col-md-12">
 			<table class="table data-table " class="form-group">
 				<tr ng-repeat="data in techSpecs">
@@ -85,12 +94,16 @@
  			
  			if($scope.pid.length>=2){
  				$scope.searchList = true;
- 			} 			
+ 			}
+ 			else{
+ 				$scope.searchList = false;
+ 				
+ 			}
  		}
  		
  		$scope.fetchData = function (x){
- 			$scope.pid=$scope.techSpecs1[x].pid;
- 			$scope.techSpecs = $scope.techSpecs1[x].techSpecs;
+ 			$scope.pid=x.pid;
+ 			$scope.techSpecs = x.techSpecs;
  			update = true;
  			
  		}
@@ -103,6 +116,12 @@
  		
  		$scope.save = function(){
  			console.log($scope.techSpecs);
+ 			for(var i = 0; i< $scope.techSpecs1.length;i++){
+ 				if($scope.pid == $scope.techSpecs1[i].pid){
+ 					update = true;
+ 					alert("This item already exists");
+ 				}
+ 			}
  			$scope.product.pid = $scope.pid;
  			$scope.product.techSpecs = $scope.techSpecs;
  			console.log($scope.product);
