@@ -54,24 +54,30 @@ body {
 <body>
 	<div class="container" ng-app="myapp" ng-controller="myCtrl">
 		<div class="marginT70 col-md-4 form-group">
+			Enter Product Id:
+			
 			<input class="form-control" type="text" ng-model="pid"
 				ng-change="searchBox()" placeholder="Enter pid" required>
 
 		</div>
 		<div class="marginT70 col-md-8" style="overflow-y: true">
-			<div class="searchList" ng-repeat="x in techSpecs1| filter : pid"
+			<div class="searchList"  ng-click="fetchData(x)" ng-repeat="x in techSpecs1| filter : pid"
 				ng-show="searchList">
-				<span ng-click="fetchData(x)">{{x.pid}}</span>
+				<span >{{x.pid}}</span>
 			</div>
 		</div>
 		<div class="col-md-12 ">
 			<table class="table data-table " class="form-group">
+				<tr>
+					<td>Description Title</td>
+					<td>Description</td>
+				</tr>
 				<tr ng-repeat="data in techSpecs">
 					<td><input class="form-control" type=text
 						ng-model="data.techAttr" placeholder="Enter Description Title..."></td>
 					<td><input class="form-control" type=text
 						ng-model="data.techValue" placeholder="Enter Description"></td>
-					<td><span class="glyphicon glyphicon-minus"
+					<td><span  style="cursor: pointer" class="glyphicon glyphicon-minus"
 						ng-click="remove($index)"></span></td>
 				</tr>
 			</table>
