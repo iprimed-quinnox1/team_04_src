@@ -18,6 +18,7 @@
 
 body {
 	background-color: rgb(210, 234, 252);
+	background-image : url("3.jpeg");
 }
 
 .td-input-box {
@@ -42,7 +43,7 @@ body {
 	cursor: pointer;
 	margin: 2px;
 	padding: 2px;
-	background-color: yellow;
+	background-color: #00CEFF;
 }
 
 #demo {
@@ -51,27 +52,35 @@ body {
 }
 </style>
 
-<body>
+<body >
 	<div class="container" ng-app="myapp" ng-controller="myCtrl">
 		<div class="marginT70 col-md-4 form-group">
+			<h3>Enter Product I.D.</h3>
 			<input class="form-control" type="text" ng-model="pid"
 				ng-change="searchBox()" placeholder="Enter pid" required>
 
 		</div>
 		<div class="marginT70 col-md-8" style="overflow-y: true">
-			<div class="searchList" ng-repeat="x in techSpecs1| filter : pid"
-				ng-show="searchList">
-				<span ng-click="fetchData(x)">{{x.pid}}</span>
+			<div ng-show="searchList">
+			Search results:
+				<div class="searchList" ng-repeat="x in techSpecs1| filter : pid"
+					>
+					<span ng-click="fetchData(x)">{{x.pid}}</span>
+				</div>
 			</div>
 		</div>
 		<div class="col-md-12 ">
 			<table class="table data-table " class="form-group">
+				<thead>
+					<th>Description Title</th>
+					<th>Description</th>
+				</thead>
 				<tr ng-repeat="data in techSpecs">
 					<td><input class="form-control" type=text
 						ng-model="data.techAttr" placeholder="Enter Description Title..."></td>
 					<td><input class="form-control" type=text
 						ng-model="data.techValue" placeholder="Enter Description"></td>
-					<td><span class="glyphicon glyphicon-minus"
+					<td><span class="glyphicon glyphicon-remove"
 						ng-click="remove($index)"></span></td>
 				</tr>
 			</table>
