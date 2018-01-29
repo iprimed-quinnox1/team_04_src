@@ -86,8 +86,10 @@ body {
 			</table>
 			<span style="cursor: pointer" class="glyphicon glyphicon-plus"
 				ng-click="addTextBox()"></span> <br>
+			<input type="file" file-input="files" accept=".jpg,.jpeg,.png" multiple>
+			<br>
 			<button class="btn btn-primary" ng-click="save()">Save</button>
-			<button class="btn btn-primary" ng-click="delete()">Delete</button>
+			<button class="btn btn-danger" ng-click="delete()">Delete</button>
 			<div id="demo"></div>
 		</div>
 
@@ -111,7 +113,7 @@ body {
  		//
  		//Initialising data from DB
  		//
- 		$http.post("http://192.168.10.41:3000/initializeData").then(function(response){
+ 		$http.post("http://localhost:3000/initializeData").then(function(response){
 		        $scope.techSpecs1 = response.data;
 		        console.log(response.data);
 			});
@@ -157,7 +159,12 @@ body {
 
                 $scope.save = function() {
                 	
-                	if(!$scope.pid){
+					var image = null;
+					var fd = new FormData();
+					if ($scope.files) {
+						image=$scope.files.name;
+					}
+					if(!$scope.pid){
                 		alert("enter a product Id");
                 		return;
                 	}
@@ -180,35 +187,41 @@ body {
            				}
            			}
                            	
-                    console.log($scope.techSpecs);
-                    $scope.product.pid = $scope.pid;
-                    $scope.product.techSpecs = $scope.techSpecs;
+					console.log($scope.techSpecs);
+					fd.append('file',$scope.files);
+					fd.append('pid',$scope.pid);
+					fd.append('techSpecs',JSON.stringify( $scope.techSpecs));
+                   // $scope.product.pid = $scope.pid;
+                   // $scope.product.techSpecs = $scope.techSpecs;
                     console.log($scope.product);
                     if (update) {
                     	var r = confirm("Product Id Already exists. Do you want to overwrite it?");
     	       			if (r == true) {
-    	          			  txt = "Saved!";
+    	          			  txt = "Updated!";
     	        		}	 
            				else {
-                   			txt = "Not Saved!";
+                   			txt = "";
                    			return ;
               			 }
                			document.getElementById("demo").innerHTML = txt;
-                        $http.post("http://192.168.10.41:3000/updateData", $scope.product).then(function(response) {
+                        $http.post("http://localhost:3000/updateData", fd).then(function(response) {
                             alert("received");
                         });
                     }
                     else {
                     	var r = confirm("Do you want to save it?");
     	       			if (r == true) {
-    	          			  txt = "Updated!";
+    	          			  txt = "Saved!";
     	        		}	 
            				else {
-                   			txt = "Not Updated!";
+                   			txt = "";
                    			return ;
               			 }
                			document.getElementById("demo").innerHTML = txt;
-                        $http.post("http://192.168.10.41:3000/insertData", $scope.product).then(function(response) {
+                        $http.post("http://localhost:3000/insertData", fd,{
+							transformRequest: angular.identity,
+							headers: { 'Content-Type': undefined }
+						}).then(function(response) {
                             alert("received");
                         });
                     }
@@ -239,7 +252,7 @@ body {
                     		pid: $scope.pid.toString()
                     };
                    
-                    $http.post("http://192.168.10.41:3000/DeleteData", del).then(function(response) {
+                    $http.post("http://localhost:3000/DeleteData", del).then(function(response) {
                         alert("received");
                     });
                     $scope.techSpecs = [{techAttr:"",techValue:""}];
@@ -248,6 +261,18 @@ body {
 
                 }
     });
+
+	app.directive("fileInput", ['$parse', function ($parse) {
+            return {
+                restrict: 'A',
+                link: function (scope, elm, attrs) {
+                    elm.bind('change', function (parse) {
+                        $parse(attrs.fileInput).assign(scope, elm[0].files[0]);
+                        scope.$apply();
+                    })
+                }
+            }
+        }]);
 
 </script>
 
