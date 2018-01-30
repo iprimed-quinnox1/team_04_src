@@ -55,6 +55,44 @@ body {
         border-radius: 5px;
        /* margin-left: 10%;*/
     }
+    
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        opacity: 1 !important;
+    }
+    
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 65px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        left: 20px;        
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    
+    .tooltip .tooltiptext::after {
+        
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+    }
+    
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
 
 </style>
 
@@ -90,12 +128,16 @@ body {
 						ng-model="data.techAttr" placeholder="Enter Description Title..."></td>
 					<td><input class="form-control" type=text
 						ng-model="data.techValue" placeholder="Enter Description"></td>
-					<td><span class="glyphicon glyphicon-remove"
-						ng-click="remove($index)"></span></td>
+					<td> <div class="tooltip">
+                        <span class="glyphicon glyphicon-minus" ng-click="remove($index)"></span>
+                        <span class="tooltiptext">Remove</span>
+                    </div>
 				</tr>
 			</table>
-			<span style="cursor: pointer" class="glyphicon glyphicon-plus"
-				ng-click="addTextBox()"></span> <br>
+			 <div class="tooltip">
+                    <span style="cursor: pointer" class="glyphicon glyphicon-plus" ng-click="addTextBox()"></span>
+                    <span class="tooltiptext">Add New</span>
+                </div> <br>
 			<input type="file" file-input="files" accept=".jpg,.jpeg,.png" multiple>
 			<br>
 			<button class="btn btn-primary" ng-click="save()">Save</button>
