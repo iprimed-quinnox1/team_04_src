@@ -17,8 +17,8 @@
 }
 
 body {
-	/*background-color: rgb(210, 234, 252);*/
-	background-image : url("3.jpeg");
+	background-color: seagreen
+	/*background-image : url("003+background+pattern+designs.jpg");*/
 }
 
 .td-input-box {
@@ -93,13 +93,22 @@ body {
         visibility: visible;
         opacity: 1;
     }
+    
+    .logo{
+	  	background-color:white;
+	  	text-align: right;
+	  	
+  	}
+	.logo>img{
+	 	max-width:250px;
+	}
 
 </style>
 
 <body >
-<img src="god.jpg" width="1500" height="150">
-<div ng-init="myVar = 'gd.png'">
-<img ng-src="{{myVar}}">
+	<div class="logo">
+		<img  src="god.jpg" >
+	</div>
 </div>
 	<div class="container" ng-app="myapp" ng-controller="myCtrl">
 		<div class="marginT70 col-md-4 form-group">
@@ -132,6 +141,7 @@ body {
                         <span class="glyphicon glyphicon-minus" ng-click="remove($index)"></span>
                         <span class="tooltiptext">Remove</span>
                     </div>
+					
 				</tr>
 			</table>
 			 <div class="tooltip">
@@ -139,7 +149,8 @@ body {
                     <span class="tooltiptext">Add New</span>
                 </div> <br>
 			<input type="file" file-input="files" accept=".jpg,.jpeg,.png" multiple>
-			<br>
+			
+			
 			<button class="btn btn-primary" ng-click="save()">Save</button>
 			<button class="btn btn-danger" ng-click="delete()">Delete</button>
 			<div id="demo"></div>
@@ -279,6 +290,8 @@ body {
                     }
                     $scope.techSpecs = [{techAttr:"",techValue:""}];
                     $scope.pid = "";
+                    document.getElementById("fileUpload").value = null;
+                    $scope.files = null;
                     
                 }
                 
@@ -309,6 +322,8 @@ body {
                     });
                     $scope.techSpecs = [{techAttr:"",techValue:""}];
                     $scope.pid = "";
+                    document.getElementById("fileUpload").value = null;
+                    $scope.files = null;
                 
 
                 }

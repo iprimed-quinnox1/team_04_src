@@ -6,44 +6,48 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-        <style>
-div {
-    text-align: center;
-}
-td, th {
-  
-    border: LightGrey ;
-    text-align: center;
-    padding: 8px;
-}
-table {
-   border: LightGrey;
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 10%;
-}
-img{
-	max-width: 100%;
-}  
-tr:nth-child(even) {
-    background-color: LightGrey;
-}
-
-
- img{
-        border-radius: 5px;
-       /* margin-left: 10%;*/
-    }
-
-    </style>     
+<style>
+		div {
+		    text-align: center;
+		}
+		td, th {
+		  
+		    border: LightGrey ;
+		    text-align: center;
+		    padding: 8px;
+		}
+		table {
+		   border: LightGrey;
+		    font-family: arial, sans-serif;
+		    border-collapse: collapse;
+		    width: 10%;
+		}
+		img{
+			max-width: 100%;
+			border-radius: 5px;
+		}  
+		tr:nth-child(even) {
+		    background-color: LightGrey;
+		}    
+		  	.logo{
+	  	background-color:white;
+	  	text-align: right;
+	  	
+  	}
+	.logo>img{
+	 	max-width:250px;
+	}
+</style>     
 </head>
 <body style="background-color:#008B8B" >
-<img src="god.jpg" width="1500" height="150">
+	<div class="logo">
+		<img  src="god.jpg" >
+	</div>
 	<div class="container" ng-app="MyApp" ng-controller="MyController" ng-init="prod=true">
 	<br><br>
 		<div class="col-md-4" ng-if="techSpecs[0].img">
 			<img src="{{imag}}">
-		</div><br><br>
+		</div>
 		<div class="col-md-8">
 			<table class="table " ng-hide="prod">
 				<thead>
@@ -58,8 +62,9 @@ tr:nth-child(even) {
 					</tr>
 				</tbody>
 			</table>
-			
-			<input text-align ="center" type= "text" ng-model= "pid" placeholder="pid">
+			<div>Enter Product I.D.
+				<input text-align ="center" type= "text" ng-model= "pid" placeholder="pid">
+			</div>
 			<br><br>
 			<button class="btn btn-primary" ng-click="getData()" >Submit</button>
 		</div>
