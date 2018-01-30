@@ -40,9 +40,10 @@ tr:nth-child(even) {
 <body style="background-color:#008B8B" >
 <img src="god.jpg" width="1500" height="150">
 	<div class="container" ng-app="MyApp" ng-controller="MyController" ng-init="prod=true">
+	<br><br>
 		<div class="col-md-4" ng-if="techSpecs[0].img">
 			<img src="{{imag}}">
-		</div>
+		</div><br><br>
 		<div class="col-md-8">
 			<table class="table " ng-hide="prod">
 				<thead>
@@ -57,8 +58,9 @@ tr:nth-child(even) {
 					</tr>
 				</tbody>
 			</table>
+			
 			<input text-align ="center" type= "text" ng-model= "pid" placeholder="pid">
-			<br>
+			<br><br>
 			<button class="btn btn-primary" ng-click="getData()" >Submit</button>
 		</div>
 	</div>
