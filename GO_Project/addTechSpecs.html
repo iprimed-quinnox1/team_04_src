@@ -50,9 +50,14 @@ body {
 	color: blue;
 	text-align: center;
 }
+
 </style>
 
 <body >
+	
+<div ng-init="myVar = 'gd.png'">
+<img ng-src="{{myVar}}">
+</div>
 	<div class="container" ng-app="myapp" ng-controller="myCtrl">
 		<div class="marginT70 col-md-4 form-group">
 			<h3>Enter Product I.D.</h3>
