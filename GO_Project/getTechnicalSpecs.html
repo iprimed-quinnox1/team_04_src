@@ -29,9 +29,16 @@ tr:nth-child(even) {
     background-color: LightGrey;
 }
 
+
+ img{
+        border-radius: 5px;
+       /* margin-left: 10%;*/
+    }
+
     </style>     
 </head>
 <body style="background-color:#008B8B" >
+<img src="god.jpg" width="1500" height="150">
 	<div class="container" ng-app="MyApp" ng-controller="MyController" ng-init="prod=true">
 			<div class="col-md-4" ng-if="techSpecs[0].img">
 			<img src="{{imag}}">
