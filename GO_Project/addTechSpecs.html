@@ -50,9 +50,19 @@ body {
 	color: blue;
 	text-align: center;
 }
+
+ img{
+        border-radius: 5px;
+       /* margin-left: 10%;*/
+    }
+
 </style>
 
 <body >
+<img src="god.jpg" width="1500" height="150">
+<div ng-init="myVar = 'gd.png'">
+<img ng-src="{{myVar}}">
+</div>
 	<div class="container" ng-app="myapp" ng-controller="myCtrl">
 		<div class="marginT70 col-md-4 form-group">
 			<h3>Enter Product I.D.</h3>
@@ -72,7 +82,7 @@ body {
 		<div class="col-md-12 ">
 			<table class="table data-table " class="form-group">
 				<thead>
-					<th>Description Title</th>
+					<th>Specification</th>
 					<th>Description</th>
 				</thead>
 				<tr ng-repeat="data in techSpecs">
