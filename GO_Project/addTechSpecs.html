@@ -17,8 +17,8 @@
 }
 
 body {
-	/*background-color: rgb(210, 234, 252);*/
-	background-image : url("3.jpeg");
+	background-color: seagreen;
+	/*background-image : url("003+background+pattern+designs.jpg");*/
 }
 
 .td-input-box {
@@ -55,13 +55,21 @@ body {
         border-radius: 5px;
        /* margin-left: 10%;*/
     }
+    .logo{
+	  	background-color:white;
+	  	text-align: right;
+	  	
+  	}
+	.logo>img{
+	 	max-width:250px;
+	}
 
 </style>
 
 <body >
-<img src="god.jpg" width="1500" height="150">
-<div ng-init="myVar = 'gd.png'">
-<img ng-src="{{myVar}}">
+	<div class="logo">
+		<img  src="god.jpg" >
+	</div>
 </div>
 	<div class="container" ng-app="myapp" ng-controller="myCtrl">
 		<div class="marginT70 col-md-4 form-group">
