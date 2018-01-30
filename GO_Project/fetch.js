@@ -1,9 +1,12 @@
 var express = require("express");
-
-var MongoClient = require('mongodb').MongoClient;
+var formidable = require("formidable");
+var fs = require("fs");
+var MongoClient = require("mongodb").MongoClient;
 var url = "mongodb://localhost:27017/";
 
+
 var app = express();
+
 var bodyParser = require('body-parser');
 var multer = require('multer');
 var upload = multer();
@@ -13,19 +16,40 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+app.use("/",express.static(__dirname+"/resources"));
+app.use("/",express.static(__dirname+"/resources/images"));
+
 
 app.use("/master", express.static(__dirname));
 
 app.post("/insertData", function (req, res) {
-    MongoClient.connect(url, function (err, dbase) {
-        if (err) throw err;
-        var db = dbase.db("Product_Details");
-        var myobj = req.body;
-        db.collection("Tech_specification").insertOne(myobj, function (err, res) {
-            if (err) throw err;
-            console.log(myobj.pid + " Inserted");
+    res.set({
+        'Content-Type' :'application/json',
+        "Access-Control-Allow-Origin":"*",
+        "Access-Control-Allow-Credentials":true
+    });
+    var form = new formidable.IncomingForm();
+    form.parse(req,function(err,fields,files){
+        console.log("Ye Rha Fields");
+        console.log(fields);
+        //console.log(files);
+        if(files)
+        var oldPath = files.file.path;
+        var newPath = __dirname+"/resources/images/"+files.file.name;
+        fs.rename(oldPath,newPath,function(err){
+            if(err) throw err;
         });
-        dbase.close();
+        var obj = {pid:fields.pid, techSpecs:JSON.parse(fields.techSpecs), img:files.file.name};
+        MongoClient.connect(url, function (err, dbase) {
+            if (err) throw err;
+            var db = dbase.db("Product_Details");
+            //var myobj = req.body;
+            db.collection("Tech_specification").insertOne(obj, function (err, res) {
+                if (err) throw err;
+                console.log(obj.pid + " Inserted");
+            });
+            dbase.close();
+        });
     });
 });
 
