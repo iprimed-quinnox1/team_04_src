@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var cartData = require("../DataBase/cartData.js");
 
-router.get("/initializeData", function (req, res) {
+router.post("/initializeData", function (req, res) {
     res.set({
         'Content-Type': 'application/json',
         "Access-Control-Allow-Origin": "*",
