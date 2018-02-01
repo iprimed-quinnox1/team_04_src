@@ -120,8 +120,7 @@ body {
 		<div class="marginT70 col-md-8" style="overflow-y: true">
 			<div ng-show="searchList">
 			Search results:
-				<div class="searchList" ng-repeat="x in techSpecs1| filter : pid"
-					>
+				<div class="searchList" ng-repeat="x in techSpecs1| filter : pid">
 					<span ng-click="fetchData(x)">{{x.pid}}</span>
 				</div>
 			</div>
