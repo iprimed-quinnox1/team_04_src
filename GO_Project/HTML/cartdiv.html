@@ -1,0 +1,33 @@
+<div > 
+ 
+    <table  border="1">
+        <tr>
+            <th>Product Image</th>
+            <th>Customer ID</th>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Gift_Wrapper</th>
+            <th>Default Address</th>
+            <th> Address</th>
+        </tr>
+        <tr ng-repeat="x in Cart.Product_List">
+            <td><img src="a.jpeg"  width="100" height="100"></td>
+            <td>{{Cart.customerId}}</td>
+            <td>{{x.pid}}</td>
+            <td>{{x.pname}}</td>
+            <td> <input type="number" ></td>
+            <td><input type="checkbox">Yes<br></td>
+            <td>Banglore</td>   
+            </td>
+    
+            <td>
+                <a  href="#!suggest" class="btn btn-default" data-dismiss="modal">Change
+                </a>
+    
+        
+            </td>
+    
+        </tr>
+    </table>
+</div>    

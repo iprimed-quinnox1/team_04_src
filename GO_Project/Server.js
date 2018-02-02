@@ -20,14 +20,14 @@ app.use("/master", express.static(__dirname));
 
 
 var cartServer = require("./Server/cartServer.js");
-app.use("/cart",cartServer);
+app.use("/cartData",cartServer);
 
 var addressServer = require("./Server/adrs.server.js");
 app.use("/address",addressServer);
 
 
 app.listen(3000, function () {
-    console.log("Server started dafhahsaat 3000")
+    console.log("Server started 3000")
 });
 
 //

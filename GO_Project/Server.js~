@@ -15,3 +15,19 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+app.use("/master", express.static(__dirname));
+
+
+var cartServer = require("./Server/cartServer.js");
+app.use("/cart",cartServer);
+
+var addressServer = require("./Server/adrs.server.js");
+app.use("/address",addressServer);
+
+
+app.listen(3000, function () {
+    console.log("Server started 3000")
+});
+
+//

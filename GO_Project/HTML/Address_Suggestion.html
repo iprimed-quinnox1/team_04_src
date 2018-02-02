@@ -1,0 +1,51 @@
+
+<div class="container well" >
+  <h2>Address Change</h2>
+    <div class="modal-body">
+        <ul></ul>
+            <li>{{addressList.name}}</li>
+            <li>{{addressList.city}}</li>
+            <li>{{addressList.state}}</li>
+            <li>{{addressList.pin}}</li>
+            <li>{{addressList.mob}}</li><br>
+    </div>
+    
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Change</button>
+  <a href="#"><button type="button" class="btn btn-info btn-lg" >Go Back</button> </a>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Change of Address</h4>
+        </div>
+          <div class="address">
+        <div class="modal-body" ng-repeat="x in address" >
+            <ul></ul>
+            <li>{{x.custname}}</li>
+            <li>{{x.city}}</li>
+            <li>{{x.state}}</li>
+            <li>{{x.pinCode}}</li>
+            <li>{{x.mobileNo}}</li><br>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="Data($index)">
+            <a>Deliver to this Address</a></button>
+        </div>
+             
+        <div class="address">
+            <ul>Add New Address</ul>
+          <a href="#!newAddress" class="btn btn-info btn-lg">
+          <button class="glyphicon glyphicon-plus" onclick="$('.modal').modal('hide')"></button>  
+            </a>
+          </div>
+      </div>
+        </div>
+    </div>
+  </div>
+  
+</div>
+
