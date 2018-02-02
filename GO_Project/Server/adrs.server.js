@@ -2,6 +2,8 @@ var express = require("express");
 var router = express.Router();
 var addSearch = require("../DataBase/addressSearch.js");
 
+var addInsert = require("../DataBase/addressInsert.js");
+
 
 
 router.post("/search", function (req, res) {
@@ -16,6 +18,19 @@ router.post("/search", function (req, res) {
 		 res.end();
     });
        
+});
+
+router.post("/insert", function (req, res){
+	res.set({
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true
+    });
+	addInsert.insertNewAddress(req.body,function callback(result){
+		res.send(result);
+		console.log("New address inserted");
+		res.end();
+	});
 });
 
 module.exports = router;
