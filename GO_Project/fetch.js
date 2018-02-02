@@ -48,7 +48,15 @@ app.post("/insertData", function (req, res) {
                 if (err) throw err;
                 console.log(obj.pid + " Inserted");
             });
-            dbase.close();
+            dba MongoClient.connect(url, function (err, database) {
+                if (err) throw err;
+                var dbase = database.db("Product_Details");
+                var res1 = dbase.collection("Tech_specification");
+                var myobj = req.body;
+                res1.update({'pid': myobj.pid}, {$set: {techSpecs: myobj.techSpecs}}, function (err, result) {
+                    if (err) throw err;
+                    console.log(myobj.pid+"Updated");
+                });se.close();
         });
     });
 });
@@ -142,7 +150,7 @@ app.post("/readData", function (req, res) {
             res.end();
         });
         database.close();
-    });
+    }); 
 });
 
 app.listen(3000, function () {

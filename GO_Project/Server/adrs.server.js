@@ -33,5 +33,20 @@ router.post("/insert", function (req, res){
 	});
 });
 
+//delete
+router.post("/delete", function (req, res) {
+    res.set({
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true
+    }); // to set the header .
+    addSearch.deleteAddress(req.body,function callback(result){
+		 res.send(result);
+		 console.log("Address is deleted");
+		 res.end();
+    });
+       
+});
+
 module.exports = router;
 
