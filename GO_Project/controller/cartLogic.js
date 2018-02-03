@@ -46,28 +46,31 @@ app.controller("cart", function ($scope, $rootScope, $http) {
         "Product_List": [
             {
                 "pid": "121",
-                "pname": "you",
-                "gift_Wrapper": true
+                "pname": "Shoe",
+                "gift_Wrapper": true,
+                "quantity" : 1,
             },
             {
                 "pid": "101",
-                "pname": "know",
-                "gift_Wrapper": false
+                "pname": "Tent",
+                "gift_Wrapper": false,
+                "quantity" : 1
             },
             {
                 "pid": "111",
-                "pname": "nothing",
-                "gift_Wrapper": true
+                "pname": "Gloves",
+                "gift_Wrapper": true,
+                "quantity" : 1,
             }
 
 
 
 			]
     }
-    //$http.post("http://localhost:3000/initializeData").then(function (response) {
-    //$scope.techSpecs1 = response.data;
-    //console.log(response.data);
-    //});
+    $scope.checkout = function(){
+    	alert("Proceed to checkout");
+    }
+    
 
 });
 
