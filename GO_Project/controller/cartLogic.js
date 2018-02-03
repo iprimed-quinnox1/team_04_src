@@ -74,7 +74,7 @@ app.controller("cart", function ($scope, $rootScope, $http) {
 //controller of Address Suggestion
 app.controller("addressSuggestion", function ($scope, $rootScope, $http) {
 
-
+	console.log($rootScope.a);
     $scope.CustomerDetails = $rootScope.abc;
     console.log("This is addressSuggestion controller");
     console.log($scope.abc);
@@ -141,16 +141,19 @@ app.controller("newAddress", function ($scope, $rootScope, $http,$location) {
         }
         console.log($scope.address);
         var address = $scope.address;     
+        $rootScope.address = address;
         console.log(address);
        $http.post("http://localhost:3000/address/insert", address).then(function (response) {
             //$scope.addressList = response.data;
-    	   
-            console.log(response.data);
+    	   console.log(response.data);
             alert("received");
-            $location.path("#!/");
+            $rootScope.a = "hello from address form";
+            $location.path("/suggest");
+            
         }, function (error) {
             alert("Something Went Wrong!.");
         });
+       //$location.path("/suggest");
     }
 
     //Cancel
