@@ -16,30 +16,30 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use("/",express.static(__dirname+"/resources"));
-app.use("/",express.static(__dirname+"/resources/images"));
+app.use("/", express.static(__dirname + "/resources"));
+app.use("/", express.static(__dirname + "/resources/images"));
 
 
 app.use("/master", express.static(__dirname));
 
 app.post("/insertData", function (req, res) {
     res.set({
-        'Content-Type' :'application/json',
-        "Access-Control-Allow-Origin":"*",
-        "Access-Control-Allow-Credentials":true
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true
     });
     var form = new formidable.IncomingForm();
-    form.parse(req,function(err,fields,files){
+    form.parse(req, function (err, fields, files) {
         console.log("Ye Rha Fields");
         console.log(fields);
         //console.log(files);
-        if(files)
-        var oldPath = files.file.path;
-        var newPath = __dirname+"/resources/images/"+files.file.name;
-        fs.rename(oldPath,newPath,function(err){
-            if(err) throw err;
+        if (files)
+            var oldPath = files.file.path;
+        var newPath = __dirname + "/resources/images/" + files.file.name;
+        fs.rename(oldPath, newPath, function (err) {
+            if (err) throw err;
         });
-        var obj = {pid:fields.pid, techSpecs:JSON.parse(fields.techSpecs), img:files.file.name};
+        var obj = { pid: fields.pid, techSpecs: JSON.parse(fields.techSpecs), img: files.file.name };
         MongoClient.connect(url, function (err, dbase) {
             if (err) throw err;
             var db = dbase.db("Product_Details");
@@ -48,19 +48,19 @@ app.post("/insertData", function (req, res) {
                 if (err) throw err;
                 console.log(obj.pid + " Inserted");
             });
-            dba MongoClient.connect(url, function (err, database) {
+            db.MongoClient.connect(url, function (err, database) {
                 if (err) throw err;
                 var dbase = database.db("Product_Details");
                 var res1 = dbase.collection("Tech_specification");
                 var myobj = req.body;
-                res1.update({'pid': myobj.pid}, {$set: {techSpecs: myobj.techSpecs}}, function (err, result) {
+                res1.update({ 'pid': myobj.pid }, { $set: { techSpecs: myobj.techSpecs } }, function (err, result) {
                     if (err) throw err;
-                    console.log(myobj.pid+"Updated");
-                });se.close();
+                    console.log(myobj.pid + "Updated");
+                }); dbase.close();
+            });
         });
     });
 });
-
 
 // delete
 
@@ -70,8 +70,8 @@ app.post("/DeleteData", function (req, res) {
         if (err) throw err;
         var db = dbase.db("Product_Details");
         var myobj = req.body;
-       var dbas = db.collection("Tech_specification");
-        dbas.deleteOne({"pid":myobj.pid}, function (err, res) {
+        var dbas = db.collection("Tech_specification");
+        dbas.deleteOne({ "pid": myobj.pid }, function (err, res) {
             if (err) throw err;
             //console.log(res);
             console.log(myobj.pid + " Deleted");
@@ -93,9 +93,9 @@ app.post("/updateData", function (req, res) {
         var dbase = database.db("Product_Details");
         var res1 = dbase.collection("Tech_specification");
         var myobj = req.body;
-        res1.update({'pid': myobj.pid}, {$set: {techSpecs: myobj.techSpecs}}, function (err, result) {
+        res1.update({ 'pid': myobj.pid }, { $set: { techSpecs: myobj.techSpecs } }, function (err, result) {
             if (err) throw err;
-            console.log(myobj.pid+"Updated");
+            console.log(myobj.pid + "Updated");
         });
         database.close();
     });
@@ -135,14 +135,14 @@ app.post("/readData", function (req, res) {
         "Access-Control-Allow-Credentials": true
     }); // to set the header .
     MongoClient.connect(url, function (err, database) { // connecting to mongo
-														// server
+        // server
         if (err) throw err;
         var dbase = database.db("Product_Details");
         var myobj = req.body;
         //console.log("Servermyobj");
         //console.log(myobj);
         var res1 = dbase.collection("Tech_specification");
-        res1.find({pid: myobj.pid}).toArray(function (err, result) {
+        res1.find({ pid: myobj.pid }).toArray(function (err, result) {
             if (err) throw err;
             res.send(result);
             console.log("1 result sent");
@@ -150,9 +150,8 @@ app.post("/readData", function (req, res) {
             res.end();
         });
         database.close();
-    }); 
+    });
 });
-
 app.listen(3000, function () {
-    console.log("Server started at 3000")
+    console.log("Server started dafhahsaat 3000")
 });

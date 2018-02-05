@@ -10,6 +10,7 @@ exports.insertNewAddress = function (myobj,callback){
 	        res1.insertOne(myobj, function (err, res) {
 	            if (err) throw err;
 	            console.log(myobj.cid + "address Inserted");
+	            callback(res);
 	        });
 	        database.close();
 	 });

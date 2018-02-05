@@ -27,9 +27,10 @@ router.post("/insert", function (req, res){
         "Access-Control-Allow-Credentials": true
     });
 	addInsert.insertNewAddress(req.body,function callback(result){
-		res.send(true);
+		
 		console.log("New address inserted");
-		res.end();
+		res.send(true);
+		//res.end();
 	});
 });
 
