@@ -1,29 +1,36 @@
-<div > 
+<div class="container"> 
  
-    <table border="1">
-        <tr>
-            <th>Product Image</th>
-            <th>Product Name</th>
-            <th>Quantity</th>
-            <th>Gift_Wrapper</th>
-            <th>Default Address</th>
-            <th> Address</th>
-        </tr>
-        <tr ng-repeat="x in Cart">
-            <td><img src="{{x.img}}"></td>
-            <td>{{x.pname}}</td>
-            <td><span class="glyphicon glyphicon-plus" ng-click="x.quantity=x.quantity+1"></span>{{x.quantity}}<span class="glyphicon glyphicon-minus" ng-click="x.quantity=x.quantity-1"></span>       </td>
-            <td><input type="checkbox">Yes<br></td>
-            <td></td>   
-    
-            <td>
-                <a  href="#!suggest/?index={{$index}}" class="btn btn-default" data-dismiss="modal">Change
-                </a>
-    
-        
-            </td>
-    
-        </tr>
+    <table class="table alignCenter">
+        <thead>
+            <tr>
+                <th>Product Image</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Gift Wrapper</th>
+                <th>Selected Address</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in Cart">
+                <td><img src="{{x.img}}"></td>
+                <td>{{x.pname}}</td>
+                <td><span class="glyphicon glyphicon-plus" ng-click="x.quantity=x.quantity+1"></span>{{x.quantity}}<span class="glyphicon glyphicon-minus" ng-click="x.quantity=x.quantity-1"></span>       </td>
+                <td>
+                    <span class="glyphicon glyphicon-gift font24" ng-class="{ 'text-success': x.gift_Wrapper, 'opacity3': !x.gift_Wrapper, 'text-mute': !x.gift_Wrapper }" ng-click="x.gift_Wrapper=!x.gift_Wrapper">
+
+                    </span>
+                </td>
+                <td>{{x.address.city}}</td>       
+                <td>
+                    <a  href="#!suggest/?index={{$index}}" class="btn btn-success">Change Address</a>
+                </td>
+                <td>
+                    <span class="text-danger glyphicon glyphicon-trash font24" ng-click="deleteCartItem($index)"></span>
+                </td>        
+            </tr>
+        </tbody>
     </table>
     <button ng-click="checkout()">Checkout</button>
 </div>    

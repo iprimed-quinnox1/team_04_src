@@ -12,9 +12,11 @@ router.post("/search", function (req, res) {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true
     }); // to set the header .
-    addSearch.seachDb(req.body,function callback(result){
+    console.log("aa gya search me");
+    var ob = req.body;
+    addSearch.seachDb(ob,function callback(result){
 		 res.send(result);
-		 console.log("Server initial result");
+		 //console.log("Server initial result");
 		 res.end();
     });
        

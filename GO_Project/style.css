@@ -1,134 +1,68 @@
-//suggestion//
-body{
+.opacity3{
+    opacity:0.3;
+}
+.logo{
+    background-color:white;
+    text-align: right;
     
-        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-        font-size: 23px;
-        line-height: 1.42857143;
-        color: grey;
-        background-color: #fff;
+}
+.logo>img{
+   max-width:250px;
 }
 
-table {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
+.addressList{
+    overflow-y: scroll;    
+    height : 75vh;
+}
+.addressBox{
+    margin: 2px;
+    background-color:#89ffc3;
+    list-style: none;
+    padding-left: 10%;
+    width: 100%;
+    display: flex;
+}
+.newAddressBox{
+    text-align: center;
+    margin: 2px;
+    padding:10px;
+    background-color: #89ffc3;
+}
+.deliverBtn{
+    padding-top: 10%;
+}
+
+.listStyleNone{
+    list-style: none;
+    padding-left: 0;
+    max-width: 100%;
     width: 100%;
 }
+
+
 .head{
     background-color:lightblue;
     
 }
-.modal-body{
-    background-color:lightcyan;
-    width: 800px;
-    height: 300px;
-}
 
-.modal-body1 {
-    display: none;
-    float:left;
- 
-}
+
 .modal-header{
     margin: 0;
     line-height: 1.42857143;
     background-color:lightblue;
 }
-h2{
-    font-size:32px;
-    border-block-end-width: 5px;
-    width: 800px;
-}
-th{
-    border: 1px solid #ddd;
-    padding: 8px;
-    background-color: #4CAF50;
-}
 
-td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    background-color:whitesmoke;
+
+.alignCenter{
+    text-align: center;
+}
+.font24{
+    font-size: 24px;
 }
 
 
 
-.address{
-    text-align:left;
-}
-
-glyphicon {
-    position: left;
-    top: 1px;
-    margin-left:5px;
-    display: inline-block;
-    font-family: 'Glyphicons Halflings';
-    font-style: normal;
-    line-height: 1;
-    }
-    
-btn-info:hover {
-    color: #fff;
-    background-color: #31b0d5;
-    border-color: #269abc;
-}
-btn-group-lg>.btn, .btn-lg {
-    padding: 14px 18px;
-    font-size: 18px;
-    line-height: 1.3333333;
-    border-radius: 6px;
-}
-.btn{
-    display: inline-block;
-    text-align:right;
-    background-color:lightseagreen;
-}
-.address1{
-    margin-top: 6px;
-    margin-right:6px;
-}
-ul{
-    margin-top: 6px;
-    margin-block-end:50px;
-    background-color:lightcyan;
-}
-li{
-    list-style-type:left;
-}
-body {
-    background-color:white;
-}
 
 
-.col-md-12,
-td,
-th,
-table {
-    text-align:center;
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 30%;
-    padding: 10px;
-}
-
-.table {
-    border: 1px solid grey; background-color: #4CAF50;match
-
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    width: 100%;
-    margin-left: 25%;
-    margin-right: 25%;li{
-		list-style-type: none;
-	}
-
-
-table tr:nth-child(odd) {
-    background-color:greenyellow;
-    padding: 5px;
-}
-
-table tr:nth-child(even) {
-    background-color: gainsboro;
-    padding: 5px;
-}
 
 	

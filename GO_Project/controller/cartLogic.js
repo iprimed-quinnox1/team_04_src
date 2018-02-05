@@ -62,51 +62,49 @@ app.controller("cart", function($scope, $rootScope, $http) {
 	console.log($scope.Cart);
 	
 	$rootScope.Cart = $scope.Cart;
+
+	$scope.deleteCartItem = function(index){
+		$scope.Cart.splice(index,1);
+		$rootScope.Cart = $scope.Cart;
+	}
 	
 	$scope.checkout = function() {
 		alert("Proceed to checkout");
 	}
 
 });
-
+//-----------------------------------------------------------------------------------------------------------------
 // controller of Address Suggestion
 app.controller("addressSuggestion", function($scope, $rootScope,$location, $http) {
 
-	//console.log($rootScope.a);
+
 	$scope.index = $location.search().index;
-	console.log($scope.index);
-	$scope.CustomerDetails = $rootScope.abc;
-	console.log("This is addressSuggestion controller");
-	console.log($scope.abc);
-	$scope.addressList = $rootScope.address;
-	$scope.address = [ {
-		"customerId" : "C101",
-		custname : "lalli",
-		city : "chennai",
-		state : "tamilnadu",
-		pinCode : "560060",
-		mobileNo : "9445781234"
-	}, {
-		"customerId" : "C101",
-		custname : "Anka",
-		city : "Bangalore",
-		state : "Karnataka",
-		pinCode : "560060",
-		mobileNo : "9445781234"
-	} ];
-	$rootScope.Cart[$scope.index].address = $scope.addressList;
-	$scope.Data = function(index) {
-		$scope.addressList = {
-			name : $scope.address[index].custname,
-			city : $scope.address[index].city,
-			state : $scope.address[index].state,
-			pin : $scope.address[index].pinCode,
-			mob : $scope.address[index].mobileNo
+	$scope.CustomerDetails = $rootScope.CustomerDetails;
+	$scope.address = $rootScope.address;
+	var ob = {cid:$scope.CustomerDetails.customerId};
+	$http.post("http://localhost:3000/address/search",ob).then(function(response){
+		$scope.addressList = response.data;
+        console.log(response.data);
+        if($scope.addressList.length == 0){
+			alert("No saved addresses found, please add");
+			$location.path("/newAddress");
 		}
-		$rootScope.Cart[$scope.index].address = $scope.addressList;
+	},function(error){
+		if(!$scope.addressList){
+			alert("No addresses found, please add");
+			$location.path("/newAddress");
+		}
+		
+	});
+	
+	$rootScope.Cart[$scope.index].address = $scope.address;
+	$scope.Data = function(index) {
+		$scope.address = $scope.addressList[index];
+		$rootScope.Cart[$scope.index].address = $scope.address;
 	}
 });
 
+//--------------------------------------------------------------------------------------------------------------
 // controller of Address Form
 app.controller("newAddress", function($scope, $rootScope, $http, $location) {
 	// initial data;
@@ -125,7 +123,7 @@ app.controller("newAddress", function($scope, $rootScope, $http, $location) {
 		}
 		console.log($scope.address);
 		var address = $scope.address;
-		address.cid = $rootScope.CustomerDetails.cid;
+		address.customerId = $rootScope.CustomerDetails.customerId;
 		$rootScope.address = address;
 		console.log(address);
 		$http.post("http://localhost:3000/address/insert", address).then(

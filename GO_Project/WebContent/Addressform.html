@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<style>
+    body {
+        background-color: #996633;
+    }
+
+    .col-md-12,
+    td,
+    th,
+    table {
+        text-align: left;
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 30%;
+        padding: 10px;
+    }
+
+    .table {
+        border: 1px solid grey;
+        width: 100%;
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+
+    table tr:nth-child(odd) {
+        background-color: #f1f1f1;
+        padding: 5px;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #ffffff;
+        padding: 5px;
+    }
+
+</style>
+
+<body>
+    <div class="container" ng-app="myapp" ng-controller="myCtrl">
+        <div class="marginT70 col-md-4 form-group">
+
+            <h3>Enter Customer I.D.</h3>
+            <input class="form-control" type="text" size="20" ng-model="cid" ng-change="searchBox()" placeholder="Enter cid" required>
+
+        </div>
+
+    </div>
+    <div class="col-md-12" ng-controller="myCtrl">
+        <form class=form-horizontal name="addressForm">
+            <table class="table data-table " class="form-group">
+                <thead>
+                    <th>Address</th>
+                </thead>
+
+                <tr width="20%">
+                    <td width="20%"><label>Enter Customer name</label><input type="text" size="20" class="form-control" class="padding" text-align="center" ng-model="address.customerName" placeholder="Enter customer name...">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Mobile NO</label><input class="form-control" type=number ng-model="address.mobileNo" placeholder="Enter Mobile number"></td>
+
+                </tr>
+                <tr>
+                    <td><label>City</label><input class="form-control" type=text ng-model="address.city" placeholder="Enter city"></td>
+
+                </tr>
+                <tr>
+                    <td><label>State</label><input class="form-control" type=text ng-model="address.state" placeholder="Enter state"></td>
+                </tr>
+                <tr>
+                    <td><label>Pincode</label><input class="form-control" type=number ng-model="address.pincode" placeholder="Enter Pincode"></td>
+
+                </tr>
+                <tr>
+                    <td><label>ADDRESS</label><input class="form-control" type=text ng-model="address.Address" placeholder="Enter Address"></td>
+
+                </tr>
+            </table>
+        </form>
+
+        <button class="btn btn-primary" ng-click="saveAddress()">Save</button>
+        <button class="btn btn-danger" ng-click="delete()">Delete</button>
+    </div>
+
+</body>
+<script>
+
+    
+    var ctrl = app.controller("ctrl", function($scope, $http) {
+                // initial data;
+                function Address(cid,mobNo,city,state,pinCode,Address){
+                    this.cid = cid;
+                    this.mobileNo = mobNo;
+                    this.city = city;
+                    this.state = state;
+                    this.pincode = pinCode;
+                    this.Address = Address;
+                    
+                }
+        
+        
+              /*  $scope.addressList = new Array();
+                $scope.customer.cid = null;
+                $scope.address.customerName = null;
+                $scope.address.mobileNo = null;
+                $scope.address.city = null;
+                $scope.address.state = null;
+                $scope.address.pincode = null;
+                $scope.address.Address = null;*/
+
+    
+                $scope.saveAddress = function() {
+                    var r = confirm("Do you want to save it!");
+                         if (r == true) {
+                              txt = "Thank you!";
+                        }	 
+                    else {
+                            txt = "";
+                            }
+                    console.log($scope.address);
+                     var address = new Address();               
+                    console.log(address);
+                    $http.post("http://localhost:3000/addressForm",address).then(function(response) {
+                        //$scope.addressList = response.data;
+		                console.log(response.data);
+                        alert("received");
+                    },function(error){
+                        alert("Something Went Wrong!.");
+                    });
+                }
+                
+                //Delete
+                $scope.delete = function() {
+                	var txt;
+                	if(!$scope.cid){
+                		alert("enter a CId");
+                		return;
+                	}
+                	var r = confirm("Are you sure to delete?");
+	       			if (r == true) {
+	          			  txt = "Deleted!";
+	        		}	 
+       				else {
+               			txt = "";
+               			return ;
+          			 }
+           			document.getElementById("demo").innerHTML = txt;
+                    var del = {
+                    		cid: $scope.cid.toString()
+                    };
+                   
+                    $http.post("http://localhost:3000/DeleteAddressForm", del).then(function(response) {
+                        alert("received");
+                    });
+                    $scope. = [{customerName:"",mobileNo:"",city:"",state:"",pincode:"",address:""}];
+                    $scope.pid = "";
+                    document.getElementById("fileUpload").value = null;
+                    $scope.files = null;
+                
+                }
+    });
+
+
+
+
+
+
+
+ // functions. $scope.addNewAddress = function() { $scope.address = new Student(); $scope.currentIndex = -1; $scope.add = true; }; $scope.saveAddress = function() { if ($scope.currentIndex == -1) { $scope.addressList.push($scope.address); } else { $scope.addressList.splice($scope.currentIndex, 1, $scope.address); } // perform delete. $scope.delete(); }
+
+</script>
+
+</html>

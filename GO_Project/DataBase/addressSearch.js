@@ -7,8 +7,10 @@ exports.seachDb = function (myobj,callback){
 	        if (err) throw err;
 	        var dbase = database.db("Addresses");
 	        var res1 = dbase.collection("Address");
+	        console.log("Mongo server me aaya");
 	        res1.find({ customerId: myobj.cid }).toArray(function (err, result) {
 	            if (err) throw err;
+	            console.log(result);
 	            callback(result);
 	            console.log("1 result sent");
 	            //console.log(result);
