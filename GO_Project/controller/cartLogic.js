@@ -10,6 +10,9 @@ app.config(function($routeProvider) {
 	}).when("/newAddress", {
 		templateUrl : "./HTML/address_form.html",
 		controller : "newAddress"
+	}).when("/logistics", {
+		templateUrl : "./HTML/logisticsMain.html",
+		controller : "logisticsMain"
 	})
 
 });
@@ -30,10 +33,9 @@ app.controller("cart", function($scope, $rootScope, $http) {
 		}
 	}
 	$rootScope.CustomerDetails = $scope.CustomerDetails;
-	
-	
+
 	console.log("This is cart controller");
-	
+
 	$scope.Cart = [ {
 		"customerId" : "C101",
 		"pid" : "121",
@@ -53,50 +55,54 @@ app.controller("cart", function($scope, $rootScope, $http) {
 		"gift_Wrapper" : true,
 		"quantity" : 1,
 	} ];
-	if($rootScope.Cart){
-		for(var i=0; i<$scope.Cart.length; i++){
+	if ($rootScope.Cart) {
+		for (var i = 0; i < $scope.Cart.length; i++) {
 			$scope.Cart[i].address = $rootScope.Cart[i].address;
 		}
 	}
-	
+
 	console.log($scope.Cart);
-	
+
 	$rootScope.Cart = $scope.Cart;
 
-	$scope.deleteCartItem = function(index){
-		$scope.Cart.splice(index,1);
+	$scope.deleteCartItem = function(index) {
+		$scope.Cart.splice(index, 1);
 		$rootScope.Cart = $scope.Cart;
 	}
-	
+
 	$scope.checkout = function() {
 		alert("Proceed to checkout");
 	}
 
 });
-//-----------------------------------------------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------------------------------------------
 // controller of Address Suggestion
-app.controller("addressSuggestion", function($scope, $rootScope,$location, $http) {
-
+app.controller("addressSuggestion", function($scope, $rootScope, $location,
+		$http) {
 
 	$scope.index = $location.search().index;
 	$scope.CustomerDetails = $rootScope.CustomerDetails;
 	$scope.address = $rootScope.address;
-	var ob = {cid:$scope.CustomerDetails.customerId};
-	$http.post("http://localhost:3000/address/search",ob).then(function(response){
-		$scope.addressList = response.data;
-        console.log(response.data);
-        if($scope.addressList.length == 0){
-			alert("No saved addresses found, please add");
-			$location.path("/newAddress");
-		}
-	},function(error){
-		if(!$scope.addressList){
-			alert("No addresses found, please add");
-			$location.path("/newAddress");
-		}
-		
-	});
-	
+	var ob = {
+		cid : $scope.CustomerDetails.customerId
+	};
+	$http.post("http://localhost:3000/address/search", ob).then(
+			function(response) {
+				$scope.addressList = response.data;
+				console.log(response.data);
+				if ($scope.addressList.length == 0) {
+					alert("No saved addresses found, please add");
+					$location.path("/newAddress");
+				}
+			}, function(error) {
+				if (!$scope.addressList) {
+					alert("No addresses found, please add");
+					$location.path("/newAddress");
+				}
+
+			});
+
 	$rootScope.Cart[$scope.index].address = $scope.address;
 	$scope.Data = function(index) {
 		$scope.address = $scope.addressList[index];
@@ -104,15 +110,13 @@ app.controller("addressSuggestion", function($scope, $rootScope,$location, $http
 	}
 });
 
-//--------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------
 // controller of Address Form
 app.controller("newAddress", function($scope, $rootScope, $http, $location) {
 	// initial data;
 
-	$scope.CustomerDetails = $rootScope.abc;
+	$scope.CustomerDetails = $rootScope.CustomerDetails;
 	console.log("This is newAddress controller");
-
-	console.log($scope.abc);
 
 	$scope.saveAddress = function() {
 		var r = confirm("Do you want to save it!");
@@ -128,7 +132,7 @@ app.controller("newAddress", function($scope, $rootScope, $http, $location) {
 		console.log(address);
 		$http.post("http://localhost:3000/address/insert", address).then(
 				function(response) {
-					// $scope.addressList = response.data;
+
 					console.log(response.data);
 					alert("received");
 					$rootScope.a = "hello from address form";
@@ -137,7 +141,6 @@ app.controller("newAddress", function($scope, $rootScope, $http, $location) {
 				}, function(error) {
 					alert("Something Went Wrong!.");
 				});
-		// $location.path("/suggest");
 	}
 
 	// Cancel
@@ -145,3 +148,68 @@ app.controller("newAddress", function($scope, $rootScope, $http, $location) {
 		window.history.back();
 	}
 });
+
+app.controller("logisticsMain", function($scope, $http) {
+
+	$scope.Order = [ {
+		"customerId" : "C101",
+		"pid" : "121",
+		"pname" : "Shoe",
+		"gift_Wrapper" : true,
+		"quantity" : 1,
+		"status" : 2,
+		logisticsId :"L101",
+		"address" : {
+			Address : "HAriom Nagar",
+			_id : "5a759efcacf4680a3735f8ef",
+			city : "Patna",
+			customerId : "C101",
+			customerName : "Nitish",
+			mobileNo : 8967474127,
+			pincode : 801503,
+			state : "Bihar"
+		},
+		
+	}, {
+		"customerId" : "C101",
+		"pid" : "101",
+		"pname" : "Tent",
+		"gift_Wrapper" : false,
+		"quantity" : 1,
+		status :0,
+		logisticsId :"L101",
+		"address" : {
+			Address : "HAriom Nagar",
+			_id : "5a759efcacf4680a3735f8ef",
+			city : "Patna",
+			customerId : "C101",
+			customerName : "Nitish",
+			mobileNo : 8967474127,
+			pincode : 801503,
+			state : "Bihar"
+		}
+	}, {
+		"customerId" : "C101",
+		"pid" : "111",
+		"pname" : "Gloves",
+		"gift_Wrapper" : true,
+		"quantity" : 1,
+		status :1,
+		logisticsId :"L101",
+		"address" : {
+			Address : "HAriom Nagar",
+			_id : "5a759efcacf4680a3735f8ef",
+			city : "Patna",
+			customerId : "C101",
+			customerName : "Nitish",
+			mobileNo : 8967474127,
+			pincode : 801503,
+			state : "Bihar"
+		}
+	} ];
+	$scope.status = ["order placed","processing","order dispatched","on the way","out for delivery","delivered"];
+	//console.log($scope.Order);
+	$scope.store = function(ob){
+		console.log(ob);
+	}
+})
