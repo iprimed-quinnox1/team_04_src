@@ -1,23 +1,38 @@
 var express = require("express");
 var router = express.Router();
 var orderDelete = require("../DataBase/orderStatusDelete.js");
-var orderUpdate = require("../DataBase/orderStatusUpdate.js");
+var orderUpdateStatus = require("../DataBase/orderStatusUpdate.js");
+var updateOrderAddress = require("../DataBase/orderAddressUpdate.js");
 
-router.post("/update", function (req, res){
+router.post("/updatestatus", function (req, res){
 	res.set({
         'Content-Type': 'application/json',
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true
     });
-	orderUpdate.updateOrder(req.body,function callback(result){
+	orderUpdateStatus.updateOrder(req.body,function callback(result){
 		
 		console.log("New order updated");
 		res.send(true);
-		//res.end();
+		res.end();
+	});
+});
+router.post("/updateAddress", function (req, res){
+	res.set({
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true
+    });
+	updateOrderAddress.update(req.body,function callback(result){
+		
+		console.log("Address updated");
+		res.send(true);
+		res.end();
 	});
 });
 
 //delete
+/*
 router.post("/delete", function (req, res) {
     res.set({
         'Content-Type': 'application/json',
@@ -30,6 +45,6 @@ router.post("/delete", function (req, res) {
 		 res.end();
     });
        
-});
+});*/
 
 module.exports = router;

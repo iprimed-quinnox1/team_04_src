@@ -9,9 +9,10 @@ exports.update = function (myobj,callback){
         var dbase = database.db("orders");
         var res1 = dbase.collection("order");
         var myobj = req.body;
-        res1.update({ 'orderId': myobj.oid }, { $set: { address: myobj.address } }, function (err, result) {
+        res1.update({ 'orderId': myobj.orderId }, { $set: { address: myobj.address } }, function (err, result) {
             if (err) throw err;
             console.log(myobj.oid + "Updated");
+            callback(result);
         });
         database.close();
             
