@@ -26,7 +26,7 @@ var addressServer = require("./Server/adrs.server.js");
 app.use("/address",addressServer);
 
 var orderServer = require("./Server/orderServer.js");
-app.use("/order");
+app.use("/order",orderServer);
 
 
 app.listen(3000, function () {

@@ -1,7 +1,7 @@
 var MongoClient = require("mongodb").MongoClient;
 var url = "mongodb://localhost:27017/";
 
-exports.deleteOrder = function (myobj,callback)
+exports.deleteOrder = function (myobj,callback){
 
 	  MongoClient.connect(url, function (err, dbase) {
         if (err) throw err;

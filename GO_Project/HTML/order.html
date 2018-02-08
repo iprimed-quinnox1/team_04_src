@@ -1,0 +1,37 @@
+<div class="container">
+
+    <table class="table alignCenter">
+        <thead>
+            <tr>
+                <th>Product Image</th>
+                <th>customerId</th>
+                <th>price</th>
+                <th>supplierId</th>
+                <th>logisticId</th>
+                <th>status</th>
+                <th>address</th>
+                <th>timeDate</th>
+           </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in product">
+                <td>
+                    
+                </td>
+                <td>{{x.customerId}}</td>
+                <td>{{x.price}}</td>
+                <td>{{x.supplierId}}</td>
+                <td>{{x.logisticId}}</td>
+                <td>{{x.status}}</td>
+                <td>{{x.address.city}}</td>
+                <td>{{x.timeDate}}</td>
+                 <td>
+                    <a href=""  class="btn btn-success">Change Product</a>
+                    <a href="#!suggest/?index={{$index}}" class="btn btn-success">Change Address</a>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+</div>
