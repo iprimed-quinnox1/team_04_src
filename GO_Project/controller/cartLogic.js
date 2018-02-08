@@ -78,7 +78,7 @@ app.controller("cart", function($scope, $rootScope, $http) {
 app.controller("addressSuggestion", function($scope, $rootScope,$location, $http) {
 
 
-	$scope.index = $location.search().index;
+	$scope.index = .search().index;
 	$scope.CustomerDetails = $rootScope.CustomerDetails;
 	$scope.address = $rootScope.address;
 	var ob = {cid:$scope.CustomerDetails.customerId};
