@@ -7,6 +7,7 @@ app.controller("order", function ($scope,$rootScope) {
         price: 5000,
         supplierId: "C102",
         logisticId: "C103",
+        orderId:1,
         status: "processed",
         timeDate: new Date(),
     },
@@ -18,6 +19,7 @@ app.controller("order", function ($scope,$rootScope) {
         itemId: 2,
         supplierId: "C102",
         logisticId: "C103",
+        orderId:2,
         status: "processed",
         timeDate: new Date(),
 	}];
