@@ -39,7 +39,13 @@ app.post("/insertData", function (req, res) {
         fs.rename(oldPath, newPath, function (err) {
             if (err) throw err;
         });
-        var obj = { pid: fields.pid, techSpecs: JSON.parse(fields.techSpecs), img: files.file.name };
+        var obj = {
+            pid: fields.pid,
+            itemName: fields.itemName,
+            itemPrice: fields.itemPrice,
+            techSpecs: JSON.parse(fields.techSpecs),
+            img: files.file.name
+        };
         MongoClient.connect(url, function (err, dbase) {
             if (err) throw err;
             var db = dbase.db("Product_Details");
@@ -48,16 +54,7 @@ app.post("/insertData", function (req, res) {
                 if (err) throw err;
                 console.log(obj.pid + " Inserted");
             });
-            db.MongoClient.connect(url, function (err, database) {
-                if (err) throw err;
-                var dbase = database.db("Product_Details");
-                var res1 = dbase.collection("Tech_specification");
-                var myobj = req.body;
-                res1.update({ 'pid': myobj.pid }, { $set: { techSpecs: myobj.techSpecs } }, function (err, result) {
-                    if (err) throw err;
-                    console.log(myobj.pid + "Updated");
-                }); dbase.close();
-            });
+
         });
     });
 });
@@ -71,7 +68,9 @@ app.post("/DeleteData", function (req, res) {
         var db = dbase.db("Product_Details");
         var myobj = req.body;
         var dbas = db.collection("Tech_specification");
-        dbas.deleteOne({ "pid": myobj.pid }, function (err, res) {
+        dbas.deleteOne({
+            "pid": myobj.pid
+        }, function (err, res) {
             if (err) throw err;
             //console.log(res);
             console.log(myobj.pid + " Deleted");
@@ -93,7 +92,13 @@ app.post("/updateData", function (req, res) {
         var dbase = database.db("Product_Details");
         var res1 = dbase.collection("Tech_specification");
         var myobj = req.body;
-        res1.update({ 'pid': myobj.pid }, { $set: { techSpecs: myobj.techSpecs } }, function (err, result) {
+        res1.update({
+            'pid': myobj.pid
+        }, {
+            $set: {
+                techSpecs: myobj.techSpecs
+            }
+        }, function (err, result) {
             if (err) throw err;
             console.log(myobj.pid + "Updated");
         });
@@ -129,29 +134,34 @@ app.post("/initializeData", function (req, res) {
 });
 
 app.post("/readData", function (req, res) {
-    res.set({
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Credentials": true
-    }); // to set the header .
-    MongoClient.connect(url, function (err, database) { // connecting to mongo
-        // server
+res.set({
+    'Content-Type': 'application/json',
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Credentials": true
+}); // to set the header .
+MongoClient.connect(url, function (err, database) { // connecting to mongo
+    // server
+    if (err) throw err;
+    var dbase = database.db("Product_Details");
+    var myobj = req.body;
+    //console.log("Servermyobj");
+    //console.log(myobj);
+    var res1 = dbase.collection("Tech_specification");
+    res1.find({
+        pid: myobj.pid
+    }).toArray(function (err, result) {
         if (err) throw err;
-        var dbase = database.db("Product_Details");
-        var myobj = req.body;
-        //console.log("Servermyobj");
-        //console.log(myobj);
-        var res1 = dbase.collection("Tech_specification");
-        res1.find({ pid: myobj.pid }).toArray(function (err, result) {
-            if (err) throw err;
-            res.send(result);
-            console.log("1 result sent");
-            //console.log(result);
-            res.end();
-        });
-        database.close();
+        res.send(result);
+        res.end();
     });
+    console.log("1 result sent");
+    //console.log(result);
+    database.close();
+    
 });
+
+});
+
 app.listen(3000, function () {
     console.log("Server started dafhahsaat 3000")
 });
