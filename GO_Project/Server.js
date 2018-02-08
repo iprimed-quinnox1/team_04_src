@@ -25,6 +25,9 @@ app.use("/cartData",cartServer);
 var addressServer = require("./Server/adrs.server.js");
 app.use("/address",addressServer);
 
+var orderServer = require("./Server/orderServer.js");
+app.use("/order");
+
 
 app.listen(3000, function () {
     console.log("Server started 3000")

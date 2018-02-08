@@ -1,0 +1,15 @@
+<div ng-repeat="y in Order">
+	{{y.customerId}}<br>
+	{{y.pid}}<br>
+	{{y.pname}}<br>
+	status:{{status[y.status]}}<br>
+	gift_Wrapper:{{y.gift_Wrapper}}<br>
+	{{y.address.customerName}},{{y.address.Address}},{{y.address.city}},{{y.address.mobileNo}},{{y.address.pincode}},{{y.address.state}}
+<select ng-model="y.status">
+	<option ng-repeat="x in status" ng-hide="y.status>$index " value="{{$index}}">
+		<span>{{x}}</span>
+	</option>
+</select>
+<button ng-click="store(y)">Update</button>
+<br><br><br>
+</div>

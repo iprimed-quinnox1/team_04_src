@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/controller/order_management.js"</script>
+
+
+<div ng-app="app" ng-controller="product">
+<div class="container">
+
+    <table class="table alignCenter">
+        <thead>
+            <tr>
+                <th>Product Image</th>
+                <th>_id</th>
+                <th>customerId</th>
+                <th>price</th>
+                <th>supplierId</th>
+                <th>logisticId</th>
+                <th>status</th>
+                <th>timeDate</th>
+           </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in product">
+                <td>
+                    
+                </td>
+                <td>{{x._id}}</td>
+                <td>{{x.customerId}}</td>
+                <td>{{x.price}}</td>
+                <td>{{x.supplierId}}</td>
+                <td>{{x.logisticId}}</td>
+                <td>{{x.status}}</td>
+                <td>{{x.timeDate}}</td>
+                 <td>
+                    <a href="#"  class="btn btn-success">Change Product</a>
+                    <a href="Address_Suggestion.html" class="btn btn-success">Change Address</a>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+</html>
