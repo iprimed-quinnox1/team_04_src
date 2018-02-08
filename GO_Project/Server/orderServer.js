@@ -3,6 +3,25 @@ var router = express.Router();
 var orderDelete = require("../DataBase/orderStatusDelete.js");
 var orderUpdateStatus = require("../DataBase/orderStatusUpdate.js");
 var updateOrderAddress = require("../DataBase/orderAddressUpdate.js");
+var inserOrder=("../DataBase/orderInsert.js")
+
+router.post("/insert", function (req, res){
+	res.set({
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true
+    });
+	addInsert.inserOrder(req.body,function callback(result){
+		
+		console.log("New order inserted");
+		res.send(true);
+		//res.end();
+	});
+});
+
+
+
+
 
 router.post("/updatestatus", function (req, res){
 	res.set({
