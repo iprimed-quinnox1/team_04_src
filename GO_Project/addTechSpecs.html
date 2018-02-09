@@ -109,7 +109,6 @@ body {
 	<div class="logo">
 		<img  src="god.jpg" >
 	</div>
-</div>
 	<div class="container" ng-app="myapp" ng-controller="myCtrl">
 		<div class="marginT70 col-md-4 form-group">
 			<h3>Enter Product I.D.</h3>
@@ -131,6 +130,18 @@ body {
 					<th>Specification</th>
 					<th>Description</th>
 				</thead>
+                 <tr>
+                    <td><b>Name : </b></td>
+                    <td>
+                        <input type="text" ng-model="newItemName">
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Price : </b></td>
+                    <td>
+                        <input type="text" ng-model="newItemPrice">
+                    </td>
+                </tr>
 				<tr ng-repeat="data in techSpecs">
 					<td><input class="form-control" type=text
 						ng-model="data.techAttr" placeholder="Enter Description Title..."></td>
@@ -167,6 +178,8 @@ body {
  		var update=false;
  		$scope.searchList = false;
  		$scope.product.pid = null;
+        $scope.itemName = null;
+        $scope.itemPrice = null;
  		$scope.product.techSpecs = new Array();
  		$scope.techSpecs = [{techAttr:"",techValue:""}];
  		
@@ -205,6 +218,8 @@ body {
                 $scope.fetchData = function(x) {
                     $scope.pid = x.pid;
                     $scope.techSpecs = x.techSpecs;
+                    $scope.newItemName = x.itemName;
+                    $scope.newItemPrice = x.itemPrice;
                     update = true;
 
                 }
@@ -252,6 +267,8 @@ body {
 					console.log($scope.techSpecs);
 					fd.append('file',$scope.files);
 					fd.append('pid',$scope.pid);
+                    fd.append('itemName',$scope.newItemName);
+                    fd.append('itemPrice',$scope.newItemPrice);
 					fd.append('techSpecs',JSON.stringify( $scope.techSpecs));
                    // $scope.product.pid = $scope.pid;
                    // $scope.product.techSpecs = $scope.techSpecs;
