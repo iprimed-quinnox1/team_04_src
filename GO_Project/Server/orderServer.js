@@ -11,13 +11,25 @@ router.post("/insert", function (req, res){
         'Content-Type': 'application/json',
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true
-    });
-	insertOrder.insertNewOrder(req.body,function callback(result){
-		
-		console.log("New order inserted");
-		res.send(result);
-		res.end();
 	});
+	console.log("insert me aaya");
+	var obj = req.body.ob;
+	console.log(obj);
+	console.log("length: " +obj.length)
+	var count =0;
+	for(var i=0;i<obj.length;i++){
+		insertOrder.insertNewOrder(obj[i],function callback(result){
+			
+			console.log("New order inserted");
+			count++;
+			console.log(count);
+			if(count == req.body){
+				res.send(result);
+				res.end();
+			}		
+		});
+	}
+	
 });
 
 router.post("/fetch",function(request,response){

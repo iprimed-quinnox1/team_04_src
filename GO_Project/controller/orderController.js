@@ -32,6 +32,11 @@ app.controller("order", function ($scope,$rootScope,$http,$location) {
 	}
 	$scope.cancelOrder = function(x){
 		x.status = 6;
+		$http.post("http://localhost:3000/order/updatestatus",x).then(function(response){
+			alert("Status changed of "+x.pname);
+		},function(error){
+			alert("Something went wrong.Please try after some time.");
+		});
 	}
 	//console.log($rootScope.object);
 });

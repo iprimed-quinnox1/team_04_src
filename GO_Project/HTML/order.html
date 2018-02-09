@@ -13,12 +13,12 @@
                 <button ng-disabled="x.status> 1&& x.status<6" ng-click="cancelOrder(x)" class="btn btn-lg btn-danger">Cancel Order</button>
             </div>
             <ol class="progtrckr" data-progtrckr-steps="6">
-                <li ng-class="{progtrckrDone : x.status>=0&&x.status<6, progtrckrTodo :x.status <0,progtrckrTodo :x.status==6 }">Order Placed</li>
-                <li ng-class="{progtrckrDone : x.status>=1&&x.status<6, progtrckrTodo :x.status <1,progtrckrTodo :x.status==6  }">Processing</li>
-                <li ng-class="{progtrckrDone : x.status>=2&&x.status<6,progtrckrTodo :x.status <2 ,progtrckrTodo :x.status==6 }">Order Dispatched</li>
-                <li ng-class="{progtrckrDone : x.status>=3&&x.status<6,progtrckrTodo :x.status <3 ,progtrckrTodo :x.status==6 }">On The Way</li>
-                <li ng-class="{progtrckrDone : x.status>=4&&x.status<6,progtrckrTodo :x.status <4 ,progtrckrTodo :x.status==6 }">Out for Delivery</li>
-                <li ng-class="{progtrckrDone : x.status>=5&&x.status<6,progtrckrTodo :x.status <5 ,progtrckrTodo :x.status==6 }">Delivered</li>
+                <li ng-class="{progtrckrDone : x.status>=0&&x.status<6, progtrckrTodo :x.status <0,progtrckrCancel :x.status==6 }">Order Placed</li>
+                <li ng-class="{progtrckrDone : x.status>=1&&x.status<6, progtrckrTodo :x.status <1,progtrckrCancel :x.status==6  }">Processing</li>
+                <li ng-class="{progtrckrDone : x.status>=2&&x.status<6,progtrckrTodo :x.status <2 ,progtrckrCancel :x.status==6 }">Order Dispatched</li>
+                <li ng-class="{progtrckrDone : x.status>=3&&x.status<6,progtrckrTodo :x.status <3 ,progtrckrCancel :x.status==6 }">On The Way</li>
+                <li ng-class="{progtrckrDone : x.status>=4&&x.status<6,progtrckrTodo :x.status <4 ,progtrckrCancel :x.status==6 }">Out for Delivery</li>
+                <li ng-class="{progtrckrDone : x.status>=5&&x.status<6,progtrckrTodo :x.status <5 ,progtrckrCancel :x.status==6 }">Delivered</li>
             </ol>
 
             <div>{{x.date|date: "mediumDate" }}</div>

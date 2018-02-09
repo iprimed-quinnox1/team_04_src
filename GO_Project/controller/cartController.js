@@ -52,11 +52,13 @@ app.controller("cart", function($scope, $rootScope, $http) {
 	}
 
 	$scope.checkout = function() {
-		var obj = $scope.Cart[0];
-		obj.logisticsId = "L101";
-		obj.date = new Date();
-		obj.status = "0";
-		obj.orderId = obj.date + obj.pid + obj.pname;
+		var obj = {ob:$scope.Cart};
+		for(var i=0;i<obj.ob.length;i++){
+			obj.ob[i].logisticsId = "L101";
+			obj.ob[i].date = new Date();
+			obj.ob[i].status = "0";
+			obj.ob[i].orderId = obj.ob[i].date + obj.ob[i].pid + obj.ob[i].pname;
+		}
 		console.log(obj);
 		$http.post("http://localhost:3000/order/insert",obj).then(function(response) {
             alert("received");
