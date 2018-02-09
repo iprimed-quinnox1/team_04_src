@@ -179,8 +179,9 @@ ol.progtrckr li.progtrckrTodo:before {
     bottom: -1.6em;
 }
 
-
-
-
+.paddingLR10{
+	padding-left:10%;
+	padding-right:10%;
+}
 
 	
