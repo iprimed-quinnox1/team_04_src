@@ -23,7 +23,7 @@ router.post("/insert", function (req, res){
 			console.log("New order inserted");
 			count++;
 			console.log(count);
-			if(count == req.body){
+			if(count == req.body.ob.length){
 				res.send(result);
 				res.end();
 			}		

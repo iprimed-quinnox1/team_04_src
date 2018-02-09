@@ -61,7 +61,8 @@ app.controller("cart", function($scope, $rootScope, $http) {
 		}
 		console.log(obj);
 		$http.post("http://localhost:3000/order/insert",obj).then(function(response) {
-            alert("received");
+			alert("Order placed successfully");
+			$scope.Cart = null;
         });
 	}
 

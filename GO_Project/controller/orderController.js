@@ -37,5 +37,8 @@ app.controller("order", function ($scope,$rootScope,$http,$location) {
 			alert("Something went wrong.Please try after some time.");
 		});
 	}
+	$scope.addressChange = function(index){
+		$location.path("/suggest").search("index",index);
+	}
 	//console.log($rootScope.object);
 });
