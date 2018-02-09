@@ -163,5 +163,5 @@ MongoClient.connect(url, function (err, database) { // connecting to mongo
 });
 
 app.listen(3000, function () {
-    console.log("Server started dafhahsaat 3000")
+    console.log("Server started 3000")
 });

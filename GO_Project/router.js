@@ -5,10 +5,10 @@ app.config(function($routeProvider) {
 		templateUrl : "./HTML/cart.html",
 		controller : "cart"
 	}).when("/suggest", {
-		templateUrl : "./HTML/Address_Suggestion.html",
+		templateUrl : "./HTML/addressSuggestion.html",
 		controller : "addressSuggestion"
 	}).when("/newAddress", {
-		templateUrl : "./HTML/address_form.html",
+		templateUrl : "./HTML/addressForm.html",
 		controller : "newAddress"
 	}).when("/logistics", {
 		templateUrl : "./HTML/logisticsMain.html",
