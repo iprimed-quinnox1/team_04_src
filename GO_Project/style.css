@@ -31,7 +31,7 @@
     padding:10px;
     background-color: #89ffc3;
 }
-.deliverBtn{
+.paddingT10{
     padding-top: 10%;
 }
 
@@ -93,7 +93,7 @@ padding: 0px 20px 0px 20px;
     vertical-align: middle;
     max-width:100%;
     height:150px;
-}
+}listImage
 .orderViewer div{
     display: inline-block;
     width: 300px;
@@ -159,7 +159,7 @@ ol.progtrckr li.progtrckrDone:before {
     width: 1.2em;
     line-height: 1.2em;
     border: none;
-    border-radius: 1.2em;
+    border-radilistImageus: 1.2em;
 }
 ol.progtrckr li.progtrckrCancel:before {
     content: "\2715";
@@ -178,10 +178,16 @@ ol.progtrckr li.progtrckrTodo:before {
     font-size: 1.5em;
     bottom: -1.6em;
 }
-
+.listImage{
+    max-width: 100%;
+    height : 150px;
+}
 .paddingLR10{
 	padding-left:10%;
 	padding-right:10%;
 }
 
+.marginT10{
+    margin-top: 10%;
+}
 	
