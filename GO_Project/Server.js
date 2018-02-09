@@ -25,7 +25,7 @@ app.use("/master", express.static(__dirname));
 var cartServer = require("./Server/cartServer.js");
 app.use("/cartData",cartServer);
 
-var addressServer = require("./Server/adrs.server.js");
+var addressServer = require("./Server/addressServer.js");
 app.use("/address",addressServer);
 
 var orderServer = require("./Server/orderServer.js");
