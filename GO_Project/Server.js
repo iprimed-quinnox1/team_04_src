@@ -16,6 +16,9 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+app.use("/", express.static(__dirname + "/resources"));
+app.use("/", express.static(__dirname + "/resources/images"));
+
 app.use("/master", express.static(__dirname));
 
 

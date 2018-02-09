@@ -15,7 +15,7 @@ app.controller("cart", function($scope, $rootScope, $http) {
 	}
 	$rootScope.CustomerDetails = $scope.CustomerDetails;
 
-	console.log("This is cart controller");
+	//console.log("This is cart controller");
 
 	$scope.Cart = [ {
 		"customerId" : "C101",
@@ -42,7 +42,7 @@ app.controller("cart", function($scope, $rootScope, $http) {
 		}
 	}
 
-	console.log($scope.Cart);
+	//console.log($scope.Cart);
 
 	$rootScope.object = $scope.Cart;
 
@@ -52,7 +52,15 @@ app.controller("cart", function($scope, $rootScope, $http) {
 	}
 
 	$scope.checkout = function() {
-		alert("Proceed to checkout");
+		var obj = $scope.Cart[0];
+		obj.logisticsId = "L101";
+		obj.date = new Date();
+		obj.status = "0";
+		obj.orderId = obj.date + obj.pid + obj.pname;
+		console.log(obj);
+		$http.post("http://localhost:3000/order/insert",obj).then(function(response) {
+            alert("received");
+        });
 	}
 
 });

@@ -15,6 +15,7 @@ app.controller("newAddress", function($scope, $rootScope, $http, $location) {
 		console.log($scope.address);
 		var address = $scope.address;
 		address.customerId = $rootScope.CustomerDetails.customerId;
+		address.type = "T";
 		$rootScope.address = address;
 		console.log(address);
 		$http.post("http://localhost:3000/address/insert", address).then(

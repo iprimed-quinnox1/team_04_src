@@ -10,7 +10,7 @@ app.controller("logisticsMain", function($scope, $http,$rootScope) {
 		"status" : 2,
 		logisticsId :"L101",
 		"address" : {
-			Address : "HAriom Nagar",
+			Address : "Hariom Nagar",
 			_id : "5a759efcacf4680a3735f8ef",
 			city : "Patna",
 			customerId : "C101",
@@ -29,7 +29,7 @@ app.controller("logisticsMain", function($scope, $http,$rootScope) {
 		status :0,
 		logisticsId :"L101",
 		"address" : {
-			Address : "HAriom Nagar",
+			Address : "Hariom Nagar",
 			_id : "5a759efcacf4680a3735f8ef",
 			city : "Patna",
 			customerId : "C101",
@@ -47,7 +47,7 @@ app.controller("logisticsMain", function($scope, $http,$rootScope) {
 		status :1,
 		logisticsId :"L101",
 		"address" : {
-			Address : "HAriom Nagar",
+			Address : "Hariom Nagar",
 			_id : "5a759efcacf4680a3735f8ef",
 			city : "Patna",
 			customerId : "C101",

@@ -3,7 +3,8 @@ var router = express.Router();
 var orderDelete = require("../DataBase/orderStatusDelete.js");
 var orderUpdateStatus = require("../DataBase/orderStatusUpdate.js");
 var updateOrderAddress = require("../DataBase/orderAddressUpdate.js");
-var inserOrder=("../DataBase/orderInsert.js")
+var insertOrder = require("../DataBase/orderInsert.js");
+var fetchOrders = require("../DataBase/orderFetch.js")
 
 router.post("/insert", function (req, res){
 	res.set({
@@ -11,15 +12,25 @@ router.post("/insert", function (req, res){
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true
     });
-	addInsert.inserOrder(req.body,function callback(result){
+	insertOrder.insertNewOrder(req.body,function callback(result){
 		
 		console.log("New order inserted");
-		res.send(true);
-		//res.end();
+		res.send(result);
+		res.end();
 	});
 });
 
-
+router.post("/fetch",function(request,response){
+	response.set({
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true
+	});
+	fetchOrders.fetch(request.body, function callback(result){
+		response.send(result);
+		response.end();
+	});
+})
 
 
 
@@ -50,7 +61,7 @@ router.post("/updateAddress", function (req, res){
 	});
 });
 
-//delete
+
 /*
 router.post("/delete", function (req, res) {
     res.set({
