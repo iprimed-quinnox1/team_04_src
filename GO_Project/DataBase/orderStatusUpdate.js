@@ -11,6 +11,7 @@ exports.updateOrder = function (myobj,callback){
             if (err) throw err;
             //console.log(res);
             console.log(myobj.orderId + " satusUpdated");
+            callback(res);
         });
         dbase.close();
     });
