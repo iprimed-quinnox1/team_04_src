@@ -138,8 +138,8 @@ ol.progtrckr li.progtrckrTodo {
     border-bottom: 4px solid silver;
 }
 ol.progtrckr li.progtrckrCancel {
-    color: rgb(228, 67, 67); 
-    border-bottom: 4px solid rgb(228, 67, 67);
+    color: rgb(247, 180, 180); 
+    border-bottom: 4px solid rgb(247, 180, 180);
 }
 ol.progtrckr li:after {
     content: "\00a0\00a0";
@@ -164,7 +164,7 @@ ol.progtrckr li.progtrckrDone:before {
 ol.progtrckr li.progtrckrCancel:before {
     content: "\2715";
     color: white;
-    background-color: rgb(228, 67, 67);
+    background-color: rgb(247, 180, 180);
     height: 1.2em;
     width: 1.2em;
     line-height: 1.2em;

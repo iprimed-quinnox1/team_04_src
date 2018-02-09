@@ -19,17 +19,16 @@ app.controller("order", function ($scope,$rootScope,$http,$location) {
 	
 	$http.post("http://localhost:3000/order/fetch", ob).then(function(response) {
 		$scope.product = response.data;
-		//console.log($scope.product);
+		if(!$rootScope.object){
+			$rootScope.object = $scope.product;
+		}
+		else{
+			$scope.product = $rootScope.object ;
+		}
 	},function(error){
 		$location.path("#!/cart");
 	});
 	
-	if(!$rootScope.object){
-		$rootScope.object = $scope.product;
-	}
-	else{
-		$scope.product = $rootScope.object ;
-	}
 	$scope.cancelOrder = function(x){
 		x.status = 6;
 		$http.post("http://localhost:3000/order/updatestatus",x).then(function(response){

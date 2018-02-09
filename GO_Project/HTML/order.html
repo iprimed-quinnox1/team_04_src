@@ -10,7 +10,8 @@
         <div>
             <img src="./resources/images/climbers.jpg" height="150px">
             <div class = "col-md-2 floatRight displayInlineBlock">
-                <button ng-disabled="x.status> 1&& x.status<6" ng-click="cancelOrder(x)" class="btn btn-lg btn-danger">Cancel Order</button>
+                <button ng-disabled="{{x.status> 1}}" ng-click="cancelOrder(x)" class="btn btn-danger">Cancel Order</button>
+                <a ng-disabled="{{x.status> 1}}" href="#!suggest/?index={{$index}}" class="btn btn-success">Change Address</a>
             </div>
             <ol class="progtrckr" data-progtrckr-steps="6">
                 <li ng-class="{progtrckrDone : x.status>=0&&x.status<6, progtrckrTodo :x.status <0,progtrckrCancel :x.status==6 }">Order Placed</li>
