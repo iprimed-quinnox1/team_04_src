@@ -18,7 +18,7 @@ app.controller("newAddress", function($scope, $rootScope, $http, $location) {
 		address.type = "T";
 		$rootScope.address = address;
 		console.log(address);
-		$http.post("http://localhost:3000/address/insert", address).then(
+		$http.post("http://192.168.10.41:3000/address/insert", address).then(
 				function(response) {
 
 					console.log(response.data);

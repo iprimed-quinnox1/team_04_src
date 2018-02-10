@@ -7,7 +7,7 @@ exports.fetch = function(data,callback){
         if (err) throw err;
         var dbase = database.db("orders");
         var res1 = dbase.collection("order");
-        res1.find({customerId:data.customerId}, {}).toArray(function (err, result) {
+        res1.find(data).toArray(function (err, result) {
             if (err) throw err;
             console.log(result);
             callback(result);

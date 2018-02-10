@@ -17,21 +17,28 @@ app.controller("order", function ($scope,$rootScope,$http,$location) {
 	$rootScope.CustomerDetails = $scope.CustomerDetails;
 	var ob = {customerId : $scope.CustomerDetails.customerId};
 	
-	$http.post("http://localhost:3000/order/fetch", ob).then(function(response) {
+	$http.post("http://192.168.10.41:3000/order/fetch", ob).then(function(response) {
 		$scope.product = response.data;
-		//console.log($scope.product);
+		if(!$rootScope.object){
+			$rootScope.object = $scope.product;
+		}
+		else{
+			$scope.product = $rootScope.object ;
+		}
 	},function(error){
 		$location.path("#!/cart");
 	});
 	
-	if(!$rootScope.object){
-		$rootScope.object = $scope.product;
-	}
-	else{
-		$scope.product = $rootScope.object ;
-	}
 	$scope.cancelOrder = function(x){
 		x.status = 6;
+		$http.post("http://192.168.10.41:3000/order/updatestatus",x).then(function(response){
+			alert("Status changed of "+x.pname);
+		},function(error){
+			alert("Something went wrong.Please try after some time.");
+		});
+	}
+	$scope.addressChange = function(index){
+		$location.path("/suggest").search("index",index);
 	}
 	//console.log($rootScope.object);
 });

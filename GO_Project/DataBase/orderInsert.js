@@ -9,7 +9,7 @@ exports.insertNewOrder = function (myobj, callback) {
         var res1 = dbase.collection("order");
         res1.insertOne(myobj, function (err, res) {
             if (err) throw err;
-            console.log(myobj.oid + "order Inserted");
+            console.log(myobj.orderId + "order Inserted");
             callback(res);
         });
         database.close();
