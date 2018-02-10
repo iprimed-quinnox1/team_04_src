@@ -1,4 +1,4 @@
-app.controller("cart", function($scope, $rootScope, $http) {
+app.controller("cart", function($scope, $rootScope, $http, $location) {
 
 	$scope.CustomerDetails = {
 		"_id" : "1",
@@ -60,9 +60,10 @@ app.controller("cart", function($scope, $rootScope, $http) {
 			obj.ob[i].orderId = obj.ob[i].date + obj.ob[i].pid + obj.ob[i].pname;
 		}
 		console.log(obj);
-		$http.post("http://localhost:3000/order/insert",obj).then(function(response) {
+		$http.post("http://192.168.10.41:3000/order/insert",obj).then(function(response) {
 			alert("Order placed successfully");
 			$scope.Cart = null;
+			$location.path("/order");
         });
 	}
 

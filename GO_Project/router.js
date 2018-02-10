@@ -16,6 +16,9 @@ app.config(function($routeProvider) {
 	}).when("/order", {
 		templateUrl : "./HTML/order.html",
 		controller : "order"
+	}).when("/productList", {
+		templateUrl : "./HTML/productList.html",
+		controller : "productList"
 	})
 
 });

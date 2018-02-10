@@ -17,7 +17,7 @@ app.controller("order", function ($scope,$rootScope,$http,$location) {
 	$rootScope.CustomerDetails = $scope.CustomerDetails;
 	var ob = {customerId : $scope.CustomerDetails.customerId};
 	
-	$http.post("http://localhost:3000/order/fetch", ob).then(function(response) {
+	$http.post("http://192.168.10.41:3000/order/fetch", ob).then(function(response) {
 		$scope.product = response.data;
 		if(!$rootScope.object){
 			$rootScope.object = $scope.product;
@@ -31,7 +31,7 @@ app.controller("order", function ($scope,$rootScope,$http,$location) {
 	
 	$scope.cancelOrder = function(x){
 		x.status = 6;
-		$http.post("http://localhost:3000/order/updatestatus",x).then(function(response){
+		$http.post("http://192.168.10.41:3000/order/updatestatus",x).then(function(response){
 			alert("Status changed of "+x.pname);
 		},function(error){
 			alert("Something went wrong.Please try after some time.");

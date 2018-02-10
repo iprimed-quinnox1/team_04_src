@@ -1,0 +1,9 @@
+<div class="col-md-12">
+        
+    <div class="col-md-3 listItemCell well"  ng-repeat="y in products" ng-click="selectedItem(y)">
+          <img src="{{'./resources/images/'+y.img}}" class="img-thumbnail proImage" style="max-height: 200px" alt="{{x.pName}}">
+        <br>
+        {{y.pid}}  {{y.itemName}}        {{y.itemPrice}}
+    </div>
+    
+</div>

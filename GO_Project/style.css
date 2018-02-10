@@ -190,4 +190,27 @@ ol.progtrckr li.progtrckrTodo:before {
 .marginT10{
     margin-top: 10%;
 }
+.listItemCell{
+    background-color:#D3D3D3;
+    margin :15px;
+    height: 250px;
+    border: 1px solid #BFB3B3;
+    border-radius: 5px;
+    padding: 15px;
+    cursor: pointer;
+}  
+.listItemCell :hover{
+    max-height: 250px;
+    box-shadow: 2px 4px 10px black;
+    transform: scale(1.15);
+}
+.proImage {
+    max-height: 200px;
+    transition: transform .2s;
+   
+}
+.proImage :hover{
+   
+    transform: scale(1.25);
+}
 	

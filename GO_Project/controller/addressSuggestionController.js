@@ -8,7 +8,7 @@ app.controller("addressSuggestion", function($scope, $rootScope, $location,
 	var ob = {
 		cid : $scope.CustomerDetails.customerId
 	};
-	$http.post("http://localhost:3000/address/search", ob).then(
+	$http.post("http://192.168.10.41:3000/address/search", ob).then(
 			function(response) {
 				$scope.addressList = response.data;
 				console.log(response.data);
