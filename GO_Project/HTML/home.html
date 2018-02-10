@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HOME</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!--link rel="stylesheet" type="text/css"
+	href="/home/user/eclipse-workspace/GreatOutdoors/Return.css">-->
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+<style>
+    .listItemCell
+            {
+             margin :15px;
+             height: 250px;
+             border: 1px solid #BFB3B3; 
+             border-radius: 5px; 
+             padding: 15px; }  
+    
+    .listItemCell :hover{ 
+        max-height: 250px; box-shadow: 2px 4px 10px black;   
+    }
+
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+        <div class="container">
+            <div clas="head">
+                <div class="col-md-3">
+                    <img class="marginT15"
+                        src="https://www.greatoutdoors.ie/shop/skin/frontend/greatoutdoors/default/images/logo.png"
+                        alt="Great Outdoors">
+                </div>
+                <div class="col-md-6">
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="#">SastaShop</a>
+                                
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div class="col-md-3">
+                    <p id="Return.welcomeName">Welcome {{Customer.uname}}</p>
+                </div>
+                 <button type="button" class="btn btn-info">
+          <span class="glyphicon glyphicon-search"></span> Search
+        </button>
+            </div>
+        </div>
+    
+ <div class = "jumbotron">
+  <a href="login.html"><button class="btn btn-default btn-lg" >LOGIN</button></a>
+  <a href="address_form.html"><button class="btn btn-default btn-lg" >REGISTER</button></a>
+  
+   <button type="button" onclick="window.location.assign('cart.html')" style="float: right" class="btn btn-danger">
+     <span class="glyphicon glyphicon-shopping-cart"></span>
+    </button> 
+    </div>
+</div>
+</div>
+</div>
+<div class="container borderTop marginT15">
+        
+        <div class="col-md-12">
+            <div class="col-md-3 listItemCell"  ng-repeat="x in products" ng-click="selectedItem(x)">
+                  <img src="{{x.pImg}}" class="img-thumbnail" style="max-height: 200px" alt="x.pName">
+                <br>
+     </div>
+    </div>
+ </div>
+</body>
+</html>

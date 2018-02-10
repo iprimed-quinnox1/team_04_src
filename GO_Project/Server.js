@@ -31,6 +31,9 @@ app.use("/address",addressServer);
 var orderServer = require("./Server/orderServer.js");
 app.use("/order",orderServer);
 
+var addTechSpecsServer = require("./Server/addTechSpecsServer.js");
+app.use("/addTechSpecs",addTechSpecsServer);
+
 
 app.listen(3000, function () {
     console.log("Server started 3000")

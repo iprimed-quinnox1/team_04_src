@@ -17,5 +17,9 @@ app.config(function($routeProvider) {
 		templateUrl : "./HTML/order.html",
 		controller : "order"
 	})
+	.when("/addTechSpecs", {
+		templateUrl : "./HTML/addTechSpecs.html",
+		controller : "myCtrl"
+	})
 
 });
