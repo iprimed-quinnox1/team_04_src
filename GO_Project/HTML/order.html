@@ -1,68 +1,110 @@
 <div class="container">
+	<div>
+		<h1>Your Orders</h1>
+	</div>
+	<div class="well" ng-repeat="x in product">
+		<div class="well well1">
+			<span>ORDER ID:-{{x.orderId}}</span> <span class="floatRight">Deliver
+				To:-
+				{{x.address.customerName}},{{x.address.Address}},{{x.address.city}},{{x.address.mobileNo}},{{x.address.pincode}},{{x.address.state}}
 
-    <div class="well" ng-repeat="x in product">
-        <div>
-            <span>ORDER ID:-{{x.orderId}}</span>
-            <span class="floatRight">Deliver To:- {{x.address.customerName}},{{x.address.Address}},{{x.address.city}},{{x.address.mobileNo}},{{x.address.pincode}},{{x.address.state}}
+			</span>
+		</div>
+		<div class="col-md-12">
+			<div class="col-sm-4">
+				<img class="listImage" src="./resources/images/climbers.jpg">
+			
+			</div>
+			<div class="col-sm-2">
+				<div><b>Product Name</b></div>
+				<div> {{x.pname}} </div>
+			</div>
+			<div class="col-sm-2">
+				<div><b>Price</b></div>
+				<div> {{x.itemPrice}} 2500 </div>
+			</div>
+			<div class="col-sm-2">
+				<div><b>Quantity</b></div>
+				<div> {{x.quantity}} </div>
+			</div>
+			<!--  div class="col-sm-4">
+				
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+			<div class="col-sm-4">
+				
+			</div-->
 
-            </span>
-        </div>
-        <div>
-            <img class="listImage" src="./resources/images/climbers.jpg">
-            <span>
-                {{x.pname}}
-            </span>
-            <span>
-                {{x.itemPrice}}
-            </span>
-            <span>
-                {{x.quantity}}
-            </span>
-            <div class="col-md-2 floatRight displayInlineBlock">
-                <button ng-disabled="{{x.status> 1}}" ng-click="cancelOrder(x)" class="btn btn-danger marginT10">Cancel Order</button>
-                <button ng-disabled="{{x.status> 2}}" data-toggle="modal" data-target="#myModal2" ng-click="addressChange(x)" class="btn btn-success marginT10">Change Address</button>
-            </div>
-            <ol class="progtrckr" data-progtrckr-steps="6">
-                <li ng-class="{progtrckrDone : x.status>=0&&x.status<6, progtrckrTodo :x.status <0,progtrckrCancel :x.status==6 }">Order Placed</li>
-                <li ng-class="{progtrckrDone : x.status>=1&&x.status<6, progtrckrTodo :x.status <1,progtrckrCancel :x.status==6  }">Processing</li>
-                <li ng-class="{progtrckrDone : x.status>=2&&x.status<6,progtrckrTodo :x.status <2 ,progtrckrCancel :x.status==6 }">Order Dispatched</li>
-                <li ng-class="{progtrckrDone : x.status>=3&&x.status<6,progtrckrTodo :x.status <3 ,progtrckrCancel :x.status==6 }">On The Way</li>
-                <li ng-class="{progtrckrDone : x.status>=4&&x.status<6,progtrckrTodo :x.status <4 ,progtrckrCancel :x.status==6 }">Out for Delivery</li>
-                <li ng-class="{progtrckrDone : x.status>=5&&x.status<6,progtrckrTodo :x.status <5 ,progtrckrCancel :x.status==6 }">Delivered</li>
-            </ol>
 
-            <div>{{x.date|date: "mediumDate" }}</div>
-        </div>
-        <div class="modal fade" id="myModal2" role="dialog" ng-init="init()">
-            <div class="modal-dialog addressPopUp" >
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Change of Address</h4>
-                </div>
-                <div class="modal-body addressList" >
-                        <h2>Address Change</h2>
-                        <div>
-                            <ul>
-                                <li>{{address.customerName}}</li>
-                                <li>{{address.city}}</li>
-                                <li>{{address.state}}</li>
-                                <li>{{address.pincode}}</li>
-                                <li>{{address.mobileNo}}</li>
-                            </ul>
-                            <br>
-                        </div>
-                        <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Change</button>
-                        <button type="button" class="btn btn-warning btn-lg" ng-click="updateAddress()">Update Address</button>
-		                <button type="button" class="btn btn-info btn-lg" data-dismiss="modal">Close</button>
-                    <!--div ng-include="'./HTML/addressSuggestion.html'">
+			<div class="col-md-2 floatRight displayInlineBlock">
+				<button ng-disabled="{{x.status> 1}}" ng-click="cancelOrder(x)"
+					class="btn btn-danger marginT10">Cancel Order</button>
+				<button ng-disabled="{{x.status> 2}}" data-toggle="modal"
+					data-target="#myModal2" ng-click="addressChange(x)"
+					class="btn btn-success marginT10">Change Address</button>
+			</div>
+		</div>
+		<div>
+
+			<ol class="progtrckr" data-progtrckr-steps="6">
+				<li
+					ng-class="{progtrckrDone : x.status>=0&&x.status<6, progtrckrTodo :x.status <0,progtrckrCancel :x.status==6 }">Order
+					Placed</li>
+				<li
+					ng-class="{progtrckrDone : x.status>=1&&x.status<6, progtrckrTodo :x.status <1,progtrckrCancel :x.status==6  }">Processing</li>
+				<li
+					ng-class="{progtrckrDone : x.status>=2&&x.status<6,progtrckrTodo :x.status <2 ,progtrckrCancel :x.status==6 }">Order
+					Dispatched</li>
+				<li
+					ng-class="{progtrckrDone : x.status>=3&&x.status<6,progtrckrTodo :x.status <3 ,progtrckrCancel :x.status==6 }">On
+					The Way</li>
+				<li
+					ng-class="{progtrckrDone : x.status>=4&&x.status<6,progtrckrTodo :x.status <4 ,progtrckrCancel :x.status==6 }">Out
+					for Delivery</li>
+				<li
+					ng-class="{progtrckrDone : x.status>=5&&x.status<6,progtrckrTodo :x.status <5 ,progtrckrCancel :x.status==6 }">Delivered</li>
+			</ol>
+
+
+			<div>{{x.date|date: "mediumDate" }}</div>
+		</div>
+
+		<div class="modal fade" id="myModal2" role="dialog" ng-init="init()">
+			<div class="modal-dialog addressPopUp">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Change of Address</h4>
+				</div>
+				<div class="modal-body addressList">
+					<h2>Address Change</h2>
+					<div>
+						<ul>
+							<li>{{address.customerName}}</li>
+							<li>{{address.city}}</li>
+							<li>{{address.state}}</li>
+							<li>{{address.pincode}}</li>
+							<li>{{address.mobileNo}}</li>
+						</ul>
+						<br>
+					</div>
+					<button type="button" class="btn btn-success btn-lg"
+						data-toggle="modal" data-target="#myModal">Change</button>
+					<button type="button" class="btn btn-warning btn-lg"
+						ng-click="updateAddress()">Update Address</button>
+					<button type="button" class="btn btn-info btn-lg"
+						data-dismiss="modal">Close</button>
+					<!--div ng-include="'./HTML/addressSuggestion.html'">
 
                     </div-->
-                </div>                
-            </div>
-        </div>
-        <div ng-include="'./HTML/addressSuggestion.html'">
+				</div>
+			</div>
+		</div>
+		<div ng-include="'./HTML/addressSuggestion.html'"></div>
 
-        </div>
-
-    </div>
+	</div>
 </div>
