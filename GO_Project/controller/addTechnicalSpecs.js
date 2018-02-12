@@ -1,177 +1,4 @@
-<!DOCTYPE HTML>
-<html>
 
-<head>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-</head>
-<style>
-.marginT70 {
-	background-color: sand;
-	margin-top: 70px;
-}
-
-body {
-	background-color: seagreen
-	/*background-image : url("003+background+pattern+designs.jpg");*/
-}
-
-.td-input-box {
-	text-align: center;
-	margin: 100px;
-}
-
-.data-table {
-	text-align: center;
-	margin: 10px;
-}
-
-.intro {
-	background-color: #C9FFE5;
-}
-
-.padding {
-	padding: 50px;
-}
-
-.searchList {
-	cursor: pointer;
-	margin: 2px;
-	padding: 2px;
-	background-color: #00CEFF;
-}
-
-#demo {
-	color: blue;
-	text-align: center;
-}
-
- img{
-        border-radius: 5px;
-       /* margin-left: 10%;*/
-    }
-    
-    .tooltip {
-        position: relative;
-        display: inline-block;
-        opacity: 1 !important;
-    }
-    
-    .tooltip .tooltiptext {
-        visibility: hidden;
-        width: 80px;
-        background-color: #555;
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px 0;
-        position: absolute;
-        z-index: 1;
-        bottom: 0;
-        left: 20px;        
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-    
-    .tooltip .tooltiptext::after {
-        
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: #555 transparent transparent transparent;
-    }
-    
-    .tooltip:hover .tooltiptext {
-        visibility: visible;
-        opacity: 1;
-    }
-    
-    .logo{
-	  	background-color:white;
-	  	text-align: right;
-	  	
-  	}
-	.logo>img{
-	 	max-width:250px;
-	}
-
-</style>
-
-<body >
-	<div class="logo">
-		<img  src="god.jpg" >
-	</div>
-	<div class="container" ng-app="myapp" ng-controller="myCtrl">
-		<div class="marginT70 col-md-4 form-group">
-			<h3>Enter Product I.D.</h3>
-			<input class="form-control" type="text" ng-model="pid"
-				ng-change="searchBox()" placeholder="Enter pid" required>
-
-		</div>
-		<div class="marginT70 col-md-8" style="overflow-y: true">
-			<div ng-show="searchList">
-			Search results:
-				<div class="searchList" ng-repeat="x in techSpecs1| filter : pid">
-					<span ng-click="fetchData(x)">{{x.pid}}</span>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-12 ">
-			<table class="table data-table " class="form-group">
-				<thead>
-					<th>Specification</th>
-					<th>Description</th>
-				</thead>
-                 <tr>
-                    <td><b>Name : </b></td>
-                    <td>
-                        <input type="text" ng-model="newItemName">
-                    </td>
-                </tr>
-                <tr>
-                    <td><b>Price : </b></td>
-                    <td>
-                        <input type="text" ng-model="newItemPrice">
-                    </td>
-                </tr>
-				<tr ng-repeat="data in techSpecs">
-					<td><input class="form-control" type=text
-						ng-model="data.techAttr" placeholder="Enter Description Title..."></td>
-					<td><input class="form-control" type=text
-						ng-model="data.techValue" placeholder="Enter Description"></td>
-					<td> <div class="tooltip">
-                        <span class="glyphicon glyphicon-minus" ng-click="remove($index)"></span>
-                        <span class="tooltiptext">Remove</span>
-                    </div>					
-				</tr>
-			</table>
-			 <div class="tooltip">
-                    <span style="cursor: pointer" class="glyphicon glyphicon-plus" ng-click="addTextBox()"></span>
-                    <span class="tooltiptext">Add New Row</span>
-             </div> <br>
-			<input type="file" file-input="files" accept=".jpg,.jpeg,.png" multiple>
-			
-			
-			<button class="btn btn-primary" ng-click="save()">Save</button>
-			<button class="btn btn-danger" ng-click="delete()">Delete</button>
-			<div id="demo"></div>
-		</div>
-
-
-	</div>
-
-
-</body>
-<script>
- 	var app = angular.module("myapp",[]);
  	app.controller("myCtrl",function($scope,$http){
  		$scope.product = {};
  		$scope.pid = null;
@@ -187,7 +14,7 @@ body {
  		//
  		//Initialising data from DB
  		//
- 		$http.post("http://localhost:3000/initializeData").then(function(response){
+ 		$http.post("http://localhost:3000/addTechSpecs/initializeData").then(function(response){
 		        $scope.techSpecs1 = response.data;
 		        console.log(response.data);
 			});
@@ -283,7 +110,7 @@ body {
                    			return ;
               			 }
                			document.getElementById("demo").innerHTML = txt;
-                        $http.post("http://localhost:3000/updateData", fd).then(function(response) {
+                        $http.post("http://localhost:3000/addTechSpecs/updateData", fd).then(function(response) {
                             alert("received");
                         });
                     }
@@ -297,7 +124,7 @@ body {
                    			return ;
               			 }
                			document.getElementById("demo").innerHTML = txt;
-                        $http.post("http://localhost:3000/insertData", fd,{
+                        $http.post("http://localhost:3000/addTechSpecs/insertData", fd,{
 							transformRequest: angular.identity,
 							headers: { 'Content-Type': undefined }
 						}).then(function(response) {
@@ -333,7 +160,7 @@ body {
                     		pid: $scope.pid.toString()
                     };
                    
-                    $http.post("http://localhost:3000/DeleteData", del).then(function(response) {
+                    $http.post("http://localhost:3000/addTechSpecs/DeleteData", del).then(function(response) {
                         alert("received");
                     });
                     $scope.techSpecs = [{techAttr:"",techValue:""}];
@@ -356,7 +183,3 @@ body {
                 }
             }
         }]);
-
-</script>
-
-</html>

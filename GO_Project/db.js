@@ -1,7 +1,7 @@
 //lalitha
 var express = require("express");
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://192.168.10.41:27017/";
+var url = "mongodb://localhost:27017/";
 
 var app = express();
 var bodyParser = require('body-parser');

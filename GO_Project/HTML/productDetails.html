@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="col-md-4" ng-if="product.img">
+        <img ng-src="{{image}}" alt="{{image}}" class="productImage">
+    </div>
+    <div class="col-md-8">
+        <table class="table ">
+            <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td>{{product.itemName}}</td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td>{{product.itemPrice}}</td>
+                </tr>
+                <tr ng-repeat="x in product.techSpecs track by $index">
+                    <td>{{x.techAttr}}</td>
+                    <td>{{x.techValue}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-info btn-lg" ng-click="addToCart()">Add to Cart</button>
+    </div>
+</div>

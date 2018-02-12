@@ -3,7 +3,7 @@ app.controller("logisticsMain", function($scope, $http,$rootScope) {
 
 	var ob = {logisticsId : "L101"};
 	
-	$http.post("http://192.168.10.41:3000/order/fetch", ob).then(function(response) {
+	$http.post("http://localhost:3000/order/fetch", ob).then(function(response) {
 		$scope.Order = response.data;
 		
 	},function(error){
@@ -12,7 +12,7 @@ app.controller("logisticsMain", function($scope, $http,$rootScope) {
 	$scope.store = function(x,status){
 		////////
 		x.status = status;
-		$http.post("http://192.168.10.41:3000/order/updatestatus",x).then(function(response){
+		$http.post("http://localhost:3000/order/updatestatus",x).then(function(response){
 			alert("Status changed of "+x.pname);
 		},function(error){
 			alert("Something went wrong.Please try after some time.");
