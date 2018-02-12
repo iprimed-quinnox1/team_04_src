@@ -16,7 +16,7 @@
 			<br> newStatus: {{status[newStatus]}}
 			<span class="floatRight">
 			<select ng-model="newStatus">
-				<option ng-repeat="x in status" ng-hide="{{y.status>$index}}" value="{{$index}}">
+				<option ng-repeat="x in status" value="{{$index}}">
 					<span>{{x}}</span>
 				</option>
 			</select>

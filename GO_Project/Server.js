@@ -23,7 +23,7 @@ app.use("/master", express.static(__dirname));
 
 
 var cartServer = require("./Server/cartServer.js");
-app.use("/cartData",cartServer);
+app.use("/cart",cartServer);
 
 var addressServer = require("./Server/addressServer.js");
 app.use("/address",addressServer);

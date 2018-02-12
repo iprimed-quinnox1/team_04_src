@@ -16,6 +16,7 @@
 .addressList{
     overflow-y: scroll;    
     height : 75vh;
+    background-color:white; 
 }
 .addressBox{
     margin: 2px;
@@ -47,7 +48,10 @@
     background-color:lightblue;
     
 }
+.productImage{
+    max-width: 285px;
 
+}
 
 .modal-header{
     margin: 0;
@@ -65,6 +69,9 @@
 
 .floatRight{
     float : right;
+}
+.addressPopUp{
+    width : 80vw;
 }
 
 
@@ -159,7 +166,7 @@ ol.progtrckr li.progtrckrDone:before {
     width: 1.2em;
     line-height: 1.2em;
     border: none;
-    border-radilistImageus: 1.2em;
+    border-radius: 1.2em;
 }
 ol.progtrckr li.progtrckrCancel:before {
     content: "\2715";
