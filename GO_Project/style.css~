@@ -224,7 +224,7 @@ ol.progtrckr li.progtrckrTodo:before {
 
  
 /*----------------------Registeration-------------------*/
-/*
+
     body {
         background-color: #996633;
     }
@@ -256,4 +256,4 @@ ol.progtrckr li.progtrckrTodo:before {
         background-color: #ffffff;
         padding: 5px;
     }
-*/
+

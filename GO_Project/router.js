@@ -26,6 +26,9 @@ app.config(function($routeProvider) {
 	}).when("/productDetails", {
 		templateUrl : "./HTML/productDetails.html",
 		controller : "productDetails"
+	})	.when("/register", {
+		templateUrl : "./HTML/registerForm.html",
+		controller : "register"
 	})
 
 });
