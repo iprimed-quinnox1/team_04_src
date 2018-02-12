@@ -12,6 +12,8 @@ app.controller("addressSuggestion", function($scope, $rootScope, $location,
 			function(response) {
 				$scope.addressList = response.data;
 				console.log(response.data);
+				$scope.address = $scope.addressList.filter(e=>e.type==='D');
+				//console.log(($scope.defaultAddress));
 				if ($scope.addressList.length == 0) {
 					alert("No saved addresses found, please add");
 					$location.path("/newAddress");
@@ -24,7 +26,9 @@ app.controller("addressSuggestion", function($scope, $rootScope, $location,
 
 			});
 
-	$rootScope.object[$scope.index].address = $scope.address;
+	if($rootScope.object){
+		//$rootScope.object[$scope.index].address = $scope.address;
+	}
 	$scope.Data = function(index) {
 		$scope.address = $scope.addressList[index];
 		$rootScope.object[$scope.index].address = $scope.address;

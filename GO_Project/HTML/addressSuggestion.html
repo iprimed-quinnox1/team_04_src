@@ -1,13 +1,14 @@
 
-<div class="container well" >
+<div class="well" ng-controller="addressSuggestion">
   <h2>Address Change</h2>
-    <div class="modal-body">
-        <ul></ul>
+    <div>
+        <ul style="list-style:none">
             <li>{{address.customerName}}</li>
             <li>{{address.city}}</li>
             <li>{{address.state}}</li>
             <li>{{address.pincode}}</li>
-            <li>{{address.mobileNo}}</li><br>
+            <li>{{address.mobileNo}}</li>
+          </ul><br>
     </div>
     
   <!-- Trigger the modal with a button -->
@@ -24,6 +25,43 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Change of Address</h4>
         </div>
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+          
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Change of Address</h4>
+              </div>
+                <div class="modal-body addressList">
+                  <div class="addressBox" ng-repeat="x in addressList" >
+                    <ul class="listStyleNone">
+                      <li>{{x.customerName}}</li>
+                      <li>{{x.city}}</li>
+                      <li>{{x.state}}</li>
+                      <li>{{x.pincode}}</li>
+                      <li>{{x.type}}</li>
+                      <li>{{x.mobileNo}}</li><br>
+                    </ul>
+                      <div class="paddingT10">
+                        <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="Data($index)">
+                          Deliver to this Address
+                        </button>
+                      </div>
+                  </div>
+                      
+                  <div class="newAddressBox">
+                    <a  href="#!newAddress"> 
+                      <div onclick="$('.modal').modal('hide')" class="btn btn-success btn-lg">Add New Address
+                        <span class="glyphicon glyphicon-plus"></span>  
+                      </div>
+                    </a> 
+                    </div>
+                </div>
+              </div>
+          </div>
+        </div>
           <div class="modal-body addressList">
             <div class="addressBox" ng-repeat="x in addressList" >
               <ul class="listStyleNone">
@@ -31,6 +69,7 @@
                 <li>{{x.city}}</li>
                 <li>{{x.state}}</li>
                 <li>{{x.pincode}}</li>
+                <li>{{x.type}}</li>
                 <li>{{x.mobileNo}}</li><br>
               </ul>
                 <div class="paddingT10">

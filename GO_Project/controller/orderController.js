@@ -38,7 +38,7 @@ app.controller("order", function ($scope,$rootScope,$http,$location) {
 		});
 	}
 	$scope.addressChange = function(index){
-		$location.path("/suggest").search("index",index);
+		//$location.path("/suggest").search("index",index);
 	}
 	//console.log($rootScope.object);
 });

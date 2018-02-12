@@ -16,6 +16,7 @@
 .addressList{
     overflow-y: scroll;    
     height : 75vh;
+    background-color:white; 
 }
 .addressBox{
     margin: 2px;
@@ -159,7 +160,7 @@ ol.progtrckr li.progtrckrDone:before {
     width: 1.2em;
     line-height: 1.2em;
     border: none;
-    border-radilistImageus: 1.2em;
+    border-radius: 1.2em;
 }
 ol.progtrckr li.progtrckrCancel:before {
     content: "\2715";

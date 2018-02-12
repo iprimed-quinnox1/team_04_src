@@ -1,7 +1,10 @@
 var app = angular.module('myApp', [ "ngRoute" ]);
 
 app.config(function($routeProvider) {
-	$routeProvider.when("/cart", {
+	$routeProvider.when("/", {
+		templateUrl : "./HTML/home.html",
+		
+	}).when("/cart", {
 		templateUrl : "./HTML/cart.html",
 		controller : "cart"
 	}).when("/suggest", {

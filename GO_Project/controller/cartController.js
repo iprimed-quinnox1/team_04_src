@@ -57,7 +57,7 @@ app.controller("cart", function($scope, $rootScope, $http, $location) {
 			obj.ob[i].logisticsId = "L101";
 			obj.ob[i].date = new Date();
 			obj.ob[i].status = "0";
-			obj.ob[i].orderId = obj.ob[i].date + obj.ob[i].pid + obj.ob[i].pname;
+			obj.ob[i].orderId = Math.floor(Math.random() * 100000000000)+"_" +obj.ob[i].pid;
 		}
 		console.log(obj);
 		$http.post("http://192.168.10.41:3000/order/insert",obj).then(function(response) {
