@@ -14,7 +14,7 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="x in Cart">
-				<td><img src="{{x.img}}"></td>
+				<td><img src="{{'./resources/images/'+x.img}}"></td>
 				<td>{{x.pname}}</td>
 				<td><span class="glyphicon glyphicon-plus"
 					ng-click="x.quantity=x.quantity+1"></span>{{x.quantity}}<span
