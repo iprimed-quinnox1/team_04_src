@@ -9,7 +9,7 @@ exports.insert = function (myobj,callback){
 	        var res1 = dbase.collection("Items");
 	        res1.insertOne(myobj, function (err, res) {
 	            if (err) throw err;
-	            console.log( " Cart item address Inserted");
+	            console.log( " Cart Items sent");
 	            callback(res);
 	        });
 	        database.close();
