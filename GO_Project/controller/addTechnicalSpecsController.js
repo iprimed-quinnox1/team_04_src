@@ -1,5 +1,5 @@
 
- 	app.controller("myCtrl",function($scope,$http){
+ 	app.controller("addTechSpecs",function($scope,$http){
  		$scope.product = {};
  		$scope.pid = null;
  		var update=false;

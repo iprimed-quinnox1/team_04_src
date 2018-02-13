@@ -1,11 +1,18 @@
 
-app.module("app",[]);
-app.controller("myCtrl",function($scope)
-{
-    var selectedItem=function()
-    {
-    $scope.pId:123;
-    $scope.pName:"OnePlus";
-    $scope.Price:38000,pDesc:"Mast Saasta phone",pImg:"Resources/OnePlus.png"},
-                         
+app.controller("home",function($scope){
+    $scope.CustomerDetails = {
+		"_id" : "1",
+		"customerId" : "C101",
+		"customerName" : "Vaish",
+		"customerEmail" : "vaish@gmail.com",
+		"Address" : {
+			"street" : "Colony",
+			"city" : "Banglore",
+			"state" : "Karnataka",
+			"country" : "India",
+			"ZIP" : "560027"
+		}
+	}
+	$rootScope.CustomerDetails = $scope.CustomerDetails;
+});                  
     

@@ -34,6 +34,9 @@ app.use("/order",orderServer);
 var productServer = require("./Server/productServer.js");
 app.use("/product",productServer);
 
+var customerServer = require("./Server/customerServer.js");
+app.use("/customer",customerServer);
+
 
 app.listen(3000, function () {
     console.log("Server started 3000")

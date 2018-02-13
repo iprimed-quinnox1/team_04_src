@@ -1,19 +1,9 @@
 app.controller("cart", function($scope, $rootScope, $http, $location) {
 
-	$scope.CustomerDetails = {
-		"_id" : "1",
-		"customerId" : "C101",
-		"customerName" : "Vaish",
-		"customerEmail" : "vaish@gmail.com",
-		"Address" : {
-			"street" : "Colony",
-			"city" : "Banglore",
-			"state" : "Karnataka",
-			"country" : "India",
-			"ZIP" : "560027"
-		}
-	}
-	$rootScope.CustomerDetails = $scope.CustomerDetails;
+	$scope.CustomerDetails = $rootScope.CustomerDetails;
+	$http.post("http://localhost:3000/cart/fetch",$scope.CustomerDetails).then(function(response){
+		$scope.Cart = response.data
+	});
 
 	//console.log("This is cart controller");
 	var selectedItem = {};
@@ -51,7 +41,7 @@ app.controller("cart", function($scope, $rootScope, $http, $location) {
 	}
 
 
-	$scope.Cart = [ {
+	/*$scope.Cart = [ {
 		"customerId" : "C101",
 		"pid" : "121",
 		"pname" : "Shoe",
@@ -69,7 +59,7 @@ app.controller("cart", function($scope, $rootScope, $http, $location) {
 		"pname" : "Gloves",
 		"gift_Wrapper" : true,
 		"quantity" : 1,
-	} ];
+	} ];*/
 	if ($rootScope.object) {
 		for (var i = 0; i < $scope.Cart.length; i++) {
 			$scope.Cart[i].address = $rootScope.object[i].address;
