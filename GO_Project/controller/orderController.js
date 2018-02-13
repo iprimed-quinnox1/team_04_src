@@ -18,6 +18,7 @@ app.controller("order", function ($scope, $rootScope, $http, $location) {
 		var ob = { customerId: $rootScope.CustomerDetails.customerId };
 		$http.post("http://localhost:3000/order/fetch", ob).then(function (response) {
 			$scope.product = response.data;
+			console.log($scope.product);
 			if (!$rootScope.object) {
 				$rootScope.object = $scope.product;
 			}

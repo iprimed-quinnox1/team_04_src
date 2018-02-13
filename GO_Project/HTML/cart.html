@@ -14,7 +14,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="x in Cart">
-                <td><img src="{{'./resouces/images/'+x.img}}">{{x.img}}</td>
+                <td><img src="{{'./resources/images/'+x.img}}">{{x.img}}</td>
                 <td>{{x.pname}}</td>
                 <td><span class="glyphicon glyphicon-plus" ng-click="x.quantity=x.quantity+1"></span>{{x.quantity}}<span class="glyphicon glyphicon-minus" ng-click="x.quantity=x.quantity-1"></span>       </td>
                 <td>
@@ -56,12 +56,10 @@
                 <!--div ng-include="'./HTML/addressSuggestion.html'">
 
                 </div-->
-            </div>                
-        </div>
-    </div>
-    <div ng-include="'./HTML/addressSuggestion.html'">
-
-    </div>
-    <button class="btn btn-lg btn-success" ng-click="checkout()">Checkout</button>
-    <a class="btn btn-lg btn-info" href="#!order">Your Orders</a>
-</div>    
+			</div>
+		</div>
+	</div>
+	<div ng-include="'./HTML/addressSuggestion.html'"></div>
+	<button class="btn btn-lg btn-success" ng-click="checkout()">Checkout</button>
+	<a class="btn btn-lg btn-info" href="#!order">Your Orders</a>
+</div>

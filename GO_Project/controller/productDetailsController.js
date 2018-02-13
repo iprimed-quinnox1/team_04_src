@@ -10,6 +10,7 @@ app.controller("productDetails",function($rootScope , $scope ,$http , $location)
 		 $scope.addToCart = function(){
 			if ($rootScope.CustomerDetails) {
 				var cartOb = {
+						
 					_id : "cart"+Math.floor(Math.random() * 100000000000)+"_" +$scope.pid,
 					customerId : $rootScope.CustomerDetails.customerId,
 					pid : $scope.pid,
