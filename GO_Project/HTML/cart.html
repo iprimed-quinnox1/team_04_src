@@ -12,7 +12,8 @@
 				<th></th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody> 
+		<div class= img>
 			<tr ng-repeat="x in Cart">
 				<td><img src="{{'./resources/images/'+x.img}}"></td>
 				<td>{{x.pname}}</td>
@@ -35,6 +36,7 @@
 				<td><span class="text-danger glyphicon glyphicon-trash font24"
 					ng-click="deleteCartItem($index)"></span></td>
 			</tr>
+			</div>
 		</tbody>
 	</table>
 	<div class="modal fade" id="myModal2" role="dialog" ng-init="init()">
