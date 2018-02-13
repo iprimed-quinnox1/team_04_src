@@ -10,13 +10,15 @@ app.controller("productDetails",function($rootScope , $scope ,$http , $location)
 		 $scope.addToCart = function(){
 			if ($rootScope.CustomerDetails) {
 				var cartOb = {
+						
 					_id : "cart"+Math.floor(Math.random() * 100000000000)+"_" +$scope.pid,
 					customerId : $rootScope.CustomerDetails.customerId,
 					pid : $scope.pid,
 					pname : $scope.product.itemName,
 					price : $scope.product.itemPrice,
 					gift_Wrapper : false,
-					quantity : 1,
+					img:$scope.product.img,
+					quantity : 1
 				}
 				$http.post("http://localhost:3000/cart/insert",cartOb).then(function(response){
 					alert("received");
