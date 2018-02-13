@@ -25,7 +25,7 @@
     margin: 2px;
     background-color:#ffffff;
     list-style: none;
-    padding-left:     height: inherit;10%;
+    padding-left:10%;
     width: 100%;
     display: flex;
 }
@@ -46,13 +46,14 @@
     width: 100%;
 }
 
-.well1{img {
+.well1{ background-color:lightblue;
+}
+img {
     vertical-align: middle;
     height: 12%;
     float: left;
 }
-	 background-color:lightblue;
-}
+	
 .head{
     background-color:lightblue;
     
@@ -64,11 +65,7 @@
 
 .modal-header{
     margin: 0;
-    line-height: 1.42857143;img {
-    vertical-align: middle;
-    height: 12%;
-    float: left;
-}
+    line-height: 1.42857143;
     background-color:#87cefa;
     border:0;
 }
@@ -87,12 +84,6 @@
 .addressPopUp{
     width : 80vw;
 }
-img {
-    vertical-align: middle;
-    height: 12%;
-    float: left;
-}
-
 
 /*----------------------progress bar-------------------*/
 .orderDetailsImg{
@@ -131,10 +122,6 @@ padding: 0px 20px 0px 20px;
     margin-left: 30px;
     padding-top:30px;
 
-}img {
-    vertical-align: middle;
-    height: 12%;
-    float: left;
 }
 .orderViewer button{
     float: right;
@@ -153,11 +140,7 @@ ol.progtrckr li {
     line-height: 3em;
 }
 
-ol.progtrckr[data-progtrckr-steps="2img {
-    vertical-align: middle;
-    height: 12%;
-    float: left;
-}"] li { width: 49%; }
+ol.progtrckr[data-progtrckr-steps="2"]li { width: 49%; }
 ol.progtrckr[data-progtrckr-steps="3"] li { width: 33%; }
 ol.progtrckr[data-progtrckr-steps="4"] li { width: 24%; }
 ol.progtrckr[data-progtrckr-steps="5"] li { width: 19%; }
@@ -252,11 +235,6 @@ ol.progtrckr li.progtrckrTodo:before {
 .proImage {
     max-height: 200px;
     transition: transform .2s;
-   img {
-    vertical-align: middle;
-    height: 12%;
-    float: left;
-}
 }
 .proImage :hover{
    
@@ -267,11 +245,7 @@ ol.progtrckr li.progtrckrTodo:before {
 	background-color: #c3e6cb;
 }
 
-	img {
-    vertical-align: middle;
-    height: 12%;
-    float: left;
-}
+	
 	
 
  
@@ -313,4 +287,4 @@ ol.progtrckr li.progtrckrTodo:before {
         padding: 5px;
     }
 */
->>>>>>> branch 'master' of https://github.com/iprimed-quinnox1/team_04_src.git
+
