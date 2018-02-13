@@ -71,6 +71,13 @@ form.example::after {
             text-align: center;
         }
 
+        .carousel{
+            .carousel-inner .carousel-item {
+  transition: -webkit-transform 2s ease;
+  transition: transform 2s ease;
+  transition: transform 2s ease, -webkit-transform 2s ease;
+}
+        }
     </style>
 </head>
 

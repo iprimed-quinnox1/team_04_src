@@ -11,6 +11,7 @@
 }
 .logo>img{
    max-width:250px;
+   height: inherit;
 }
 
 .addressList{
@@ -24,7 +25,7 @@
     margin: 2px;
     background-color:#ffffff;
     list-style: none;
-    padding-left: 10%;
+    padding-left:     height: inherit;10%;
     width: 100%;
     display: flex;
 }
@@ -45,7 +46,11 @@
     width: 100%;
 }
 
-.well1{
+.well1{img {
+    vertical-align: middle;
+    height: 12%;
+    float: left;
+}
 	 background-color:lightblue;
 }
 .head{
@@ -59,7 +64,11 @@
 
 .modal-header{
     margin: 0;
-    line-height: 1.42857143;
+    line-height: 1.42857143;img {
+    vertical-align: middle;
+    height: 12%;
+    float: left;
+}
     background-color:#87cefa;
     border:0;
 }
@@ -78,7 +87,11 @@
 .addressPopUp{
     width : 80vw;
 }
-
+img {
+    vertical-align: middle;
+    height: 12%;
+    float: left;
+}
 
 
 /*----------------------progress bar-------------------*/
@@ -97,7 +110,11 @@ margin-left:35px;
 padding: 0px 20px 0px 20px;
 
 }
-.orderId {
+.orderId {img {
+    vertical-align: middle;
+    height: 12%;
+    float: left;
+}
     float:right;
 }
 .orderViewer img {
@@ -114,6 +131,10 @@ padding: 0px 20px 0px 20px;
     margin-left: 30px;
     padding-top:30px;
 
+}img {
+    vertical-align: middle;
+    height: 12%;
+    float: left;
 }
 .orderViewer button{
     float: right;
@@ -132,14 +153,18 @@ ol.progtrckr li {
     line-height: 3em;
 }
 
-ol.progtrckr[data-progtrckr-steps="2"] li { width: 49%; }
+ol.progtrckr[data-progtrckr-steps="2img {
+    vertical-align: middle;
+    height: 12%;
+    float: left;
+}"] li { width: 49%; }
 ol.progtrckr[data-progtrckr-steps="3"] li { width: 33%; }
 ol.progtrckr[data-progtrckr-steps="4"] li { width: 24%; }
 ol.progtrckr[data-progtrckr-steps="5"] li { width: 19%; }
 ol.progtrckr[data-progtrckr-steps="6"] li { width: 16%; }
 ol.progtrckr[data-progtrckr-steps="7"] li { width: 14%; }
 ol.progtrckr[data-progtrckr-steps="8"] li { width: 12%; }
-ol.progtrckr[data-progtrckr-steps="9"] li { width: 11%; }
+ol.progtrckr[data-progtrckr-steps="9"] li { width: 12%11%; }
 
 ol.progtrckr li.progtrckrDone {
     color: black;
@@ -188,7 +213,11 @@ ol.progtrckr li.progtrckrTodo:before {
     color: silver;
     background-color: white;
     font-size: 1.5em;
-    bottom: -1.6em;
+    bottom: -1.6em;img {
+    vertical-align: middle;
+    height: 12%;
+    float: left;
+}
 }
 .listImage{
     max-width: 100%;
@@ -202,7 +231,11 @@ ol.progtrckr li.progtrckrTodo:before {
 .marginT10{
     margin-top: 10%;
 }
-.listItemCell{
+.listItemCell{img {
+    vertical-align: middle;
+    height: 12%;    height: inherit;
+    float: left;
+}
     background-color:#D3D3D3;
     margin :15px;
     height: 250px;
@@ -219,19 +252,26 @@ ol.progtrckr li.progtrckrTodo:before {
 .proImage {
     max-height: 200px;
     transition: transform .2s;
-   
+   img {
+    vertical-align: middle;
+    height: 12%;
+    float: left;
+}
 }
 .proImage :hover{
    
     transform: scale(1.25);
 }
-<<<<<<< HEAD
+ HEAD
 .table-success{
 	background-color: #c3e6cb;
 }
 
-	
-=======
+	img {
+    vertical-align: middle;
+    height: 12%;
+    float: left;
+}
 	
 
  
@@ -254,7 +294,11 @@ ol.progtrckr li.progtrckrTodo:before {
 
     .table {
         border: 1px solid grey;
-        width: 100%;
+        width: 100%;img {
+    vertical-align: middle;
+    height: 12%;
+    float: left;
+}
         margin-left: 25%;
         margin-right: 25%;
     }

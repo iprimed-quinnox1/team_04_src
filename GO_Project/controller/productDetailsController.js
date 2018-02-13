@@ -17,8 +17,8 @@ app.controller("productDetails",function($rootScope , $scope ,$http , $location)
 					pname : $scope.product.itemName,
 					price : $scope.product.itemPrice,
 					gift_Wrapper : false,
-					img:$scope.product.img,
-					quantity : 1
+					img: $scope.product.img,
+					quantity : 1,
 				}
 				$http.post("http://localhost:3000/cart/insert",cartOb).then(function(response){
 				
