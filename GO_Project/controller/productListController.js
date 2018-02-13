@@ -7,7 +7,7 @@ app.controller("productList", function($scope, $http,$rootScope) {
 		$scope.products = response.data;
 		
 	},function(error){
-		console.log(error);
+		console.log($scope.products);
 	});
 	
 });
