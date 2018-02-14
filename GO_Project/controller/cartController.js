@@ -3,7 +3,7 @@ app.controller("cart", function($scope, $rootScope, $http, $location) {
 	$scope.CustomerDetails = $rootScope.CustomerDetails;
 	$http.post("http://localhost:3000/cart/fetch",$scope.CustomerDetails).then(function(response){
 		$scope.Cart = response.data
-		alert(JSON.stringify($scope.Cart));
+//		alert(JSON.stringify($scope.Cart));
 	});
 
 	//console.log("This is cart controller");

@@ -29,6 +29,9 @@ app.config(function($routeProvider) {
 	})	.when("/register", {
 		templateUrl : "./HTML/registerForm.html",
 		controller : "register"
+	}).when("/login", {
+		templateUrl : "./HTML/login.html",
+		controller : "loginCtrl"
 	})
 
 });
