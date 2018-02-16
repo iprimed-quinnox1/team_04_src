@@ -78,7 +78,43 @@
 .addressPopUp{
     width : 80vw;
 }
-
+.tooltip {
+        position: relative;
+        display: inline-block;
+        opacity: 1 !important;
+    }
+    
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 80px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        left: 20px;        
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    
+    .tooltip .tooltiptext::after {
+        
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+    }
+    
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
 
 
 /*----------------------progress bar-------------------*/
@@ -239,10 +275,6 @@ ol.progtrckr li.progtrckrTodo:before {
 
  
 /*----------------------Registeration-------------------*/
-/*
-    body {
-        background-color: #996633;
-    }
 
     .col-md-12,
     td,
@@ -271,4 +303,41 @@ ol.progtrckr li.progtrckrTodo:before {
         background-color: #ffffff;
         padding: 5px;
     }
+
+
+/*
+<style>
+		div {
+		    text-align: center;
+		}
+		td, th {
+		  
+		    border: LightGrey ;
+		    text-align: center;
+		    padding: 8px;
+		}
+		table {
+		   border: LightGrey;
+		    font-family: arial, sans-serif;
+		    border-collapse: collapse;
+		    width: 10%;
+		}
+		img{
+			max-width: 100%;
+			border-radius: 5px;
+		}  
+		tr:nth-child(even) {
+		    background-color: LightGrey;
+		}    
+		  	.logo{
+	  	background-color:white;
+	  	text-align: right;
+	  	
+  	}
+	.logo>img{
+	 	max-width:250px;
+	}
+</style>     
+
 */
+

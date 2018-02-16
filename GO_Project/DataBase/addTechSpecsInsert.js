@@ -1,7 +1,7 @@
 var MongoClient = require("mongodb").MongoClient;
 var url = "mongodb://localhost:27017/";
 
-exports.insertTechSpecs = function (myobj,callback){
+exports.insertTechSpecs = function (obj,callback){
 
 
 MongoClient.connect(url, function (err, dbase) {

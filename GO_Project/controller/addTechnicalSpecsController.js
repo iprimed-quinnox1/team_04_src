@@ -1,5 +1,5 @@
 
- 	app.controller("addTechSpecs",function($scope,$http){
+ 	app.controller("myCtrl",function($scope,$http){
  		$scope.product = {};
  		$scope.pid = null;
  		var update=false;
@@ -14,7 +14,7 @@
  		//
  		//Initialising data from DB
  		//
- 		$http.post("http://localhost:3000/addTechSpecs/initializeData").then(function(response){
+ 		$http.post("http://localhost:3000/product/fetch").then(function(response){
 		        $scope.techSpecs1 = response.data;
 		        console.log(response.data);
 			});

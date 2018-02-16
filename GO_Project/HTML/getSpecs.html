@@ -1,0 +1,37 @@
+	<div class="logo">
+		<img  src="god.jpg" >
+	</div>
+	<div class="container" ng-app="MyApp" ng-controller="getTechSpecsController" ng-init="prod=true">
+	<br><br>
+		<div class="col-md-4" ng-if="techSpecs[0].img">
+			<img src="{{imag}}">
+		</div>
+		<div class="col-md-8">
+			<table class="table " ng-hide="prod">
+				<thead>
+					<th>Specification</th>
+					<th>Description</th>
+				
+				</thead>
+				<tbody>
+                    <tr>
+                        <td>pname</td>
+                    <td>{{techSpecs[0].itemName}}</td>
+                    </tr>
+                    <tr>
+                        <td>price</td>
+                    <td>{{techSpecs[0].itemPrice}}</td>
+                    </tr>
+					<tr ng-repeat="x in techSpecs[0].techSpecs track by $index">
+						<td>{{x.techAttr}}</td>
+						<td>{{x.techValue}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<div>Enter Product I.D.
+				<input text-align ="center" type= "text" ng-model= "pid" placeholder="pid">
+			</div>
+			<br><br>
+			<button class="btn btn-primary" ng-click="getData()" >Submit</button>
+		</div>
+	</div>

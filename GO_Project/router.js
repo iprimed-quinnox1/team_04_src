@@ -33,5 +33,14 @@ app.config(function($routeProvider) {
 		templateUrl : "./HTML/login.html",
 		controller : "loginCtrl"
 	})
+	.when("/addSpecs", {
+		templateUrl : "./HTML/addTechSpecs.html",
+		controller : "myCtrl"
+	})
+	.when("/getSpecs", {
+		templateUrl : "./HTML/getSpecs.html",
+		controller : "getTechSpecsController"
+	})
+	
 
 });

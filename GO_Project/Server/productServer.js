@@ -1,4 +1,6 @@
 var express = require("express");
+var formidable = require("formidable");
+var fs = require("fs");
 var router = express.Router();
 var productFetch = require("../DataBase/productFetch.js");
 var productSearch = require("../DataBase/productSearch.js");
