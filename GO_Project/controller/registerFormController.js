@@ -1,4 +1,4 @@
-var ctrl = app.controller("register", function($scope, $http) {
+app.controller("register", function($scope, $http) {
 	// initial data;
 
 	$scope.saveAddress = function() {
