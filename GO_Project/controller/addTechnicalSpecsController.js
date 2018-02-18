@@ -124,7 +124,7 @@
                    			return ;
               			 }
                			document.getElementById("demo").innerHTML = txt;
-                        $http.post("http://localhost:3000/addTechSpecs/insertData", fd,{
+                        $http.post("http://localhost:3000/product/insert", fd,{
 							transformRequest: angular.identity,
 							headers: { 'Content-Type': undefined }
 						}).then(function(response) {

@@ -15,7 +15,7 @@
 
             <div class="col-md-3 listItemCell" ng-repeat=" x in products" ng-click="selectedItem(x.pid)">
 
-                <img src="{{'./resources/images/'+x.img}}" class="imageList img img-thumbnail" onerror="this.src='./resources/logo/no_image_available.jpeg';"> Name:{{x.itemName}}
+                <img ng-src="{{'./resources/images/'+x.img}}" class="imageList img img-thumbnail" onerror="this.src='./resources/logo/no_image_available.jpeg';"> Name:{{x.itemName}}
                 
                 <br> Rs.{{x.itemPrice}}
 

@@ -16,7 +16,7 @@
 			<tbody>
 				<tr ng-repeat="x in Cart">
 					<td>
-						<img class="imageList" src="{{'./resources/images/'+x.img}}" onerror="this.src='./resources/logo/no_image_available.jpeg';">
+						<img class="imageList" ng-src="{{'./resources/images/'+x.img}}" onerror="this.src='./resources/logo/no_image_available.jpeg';">
 					</td>
 					<td>{{x.pname}}</td>
 					<td>

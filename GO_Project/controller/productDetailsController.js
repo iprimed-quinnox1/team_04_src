@@ -3,7 +3,8 @@ app.controller("productDetails",function($rootScope , $scope ,$http , $location)
     var itemPid = {pid : $scope.pid.toString()};
 		$http.post("http://localhost:3000/product/search",itemPid).then(function(response){
 			$scope.product = response.data[0];
-            //console.log($scope.techSpecs);
+			//console.log($scope.techSpecs);
+			$scope.loaded = true;
 			$scope.image = "./resources/images/"+ $scope.product.img;
 		 });
 	
