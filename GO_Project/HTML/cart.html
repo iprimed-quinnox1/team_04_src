@@ -1,134 +1,72 @@
-<<<<<<< HEAD
-<div class="container">
-<h2><b>Shopping Cart</b></h2>
-	<table class="table alignCenter">
-		<thead >
-			<tr class="table-success" >
-				<th>Product Image</th>
-				<th>Product Name</th>
-				<th>Quantity</th>
-				<th>Gift Wrapper</th>
-				<th>Selected Address</th>
-				<th></th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody> 
-		<div class= img>
-			<tr ng-repeat="x in Cart">
-				<td><img src="{{'./resources/images/'+x.img}}"></td>
-				<td>{{x.pname}}</td>
-				<td><span class="glyphicon glyphicon-plus"
-					ng-click="x.quantity=x.quantity+1"></span>{{x.quantity}}<span
-					class="glyphicon glyphicon-minus"
-					ng-click="x.quantity=x.quantity-1"></span></td>
-				<td><span class="glyphicon glyphicon-gift font24"
-					ng-class="{ 'text-success': x.gift_Wrapper, 'opacity3': !x.gift_Wrapper, 'text-mute': !x.gift_Wrapper }"
-					ng-click="x.gift_Wrapper=!x.gift_Wrapper"> </span></td>
-				<td>{{x.address.customerName}}<br> {{x.address.city}}<br>
-					{{x.address.state}}<br> {{x.address.pincode}}<br>
-					{{x.address.mobileNo}}
-				</td>
-				<td>
-					<button data-toggle="modal" data-target="#myModal2"
-						class="btn btn-info" ng-click="addressChange(x)">Change
-						Address</button>
-				</td>
-				<td><span class="text-danger glyphicon glyphicon-trash font24"
-					ng-click="deleteCartItem($index)"></span></td>
-			</tr>
-			</div>
-		</tbody>
-	</table>
-	<div class="modal fade" id="myModal2" role="dialog" ng-init="init()">
-		<div class="modal-dialog addressPopUp">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Change of Address</h4>
-			</div>
-			<div class="modal-body addressList">
-				<h2>Address Change</h2>
-				<div>
-					<ul>
-						<li>{{address.customerName}}</li>
-						<li>{{address.city}}</li>
-						<li>{{address.state}}</li>
-						<li>{{address.pincode}}</li>
-						<li>{{address.mobileNo}}</li>
-					</ul>
-					<br>
-				</div>
-				<button type="button" class="btn btn-success btn-lg"
-					data-toggle="modal" data-target="#myModal">Change</button>
-				<button type="button" class="btn btn-warning btn-lg"
-					ng-click="updateAddress()">Update Address</button>
-				<button type="button" class="btn btn-danger btn-lg"
-					data-dismiss="modal">Close</button>
-				<!--div ng-include="'./HTML/addressSuggestion.html'">
-=======
-<div class="container"> 
- 
-    <table class="table alignCenter">
-        <thead>
-            <tr>
-                <th>Product Image</th>
-                <th>Product Name</th>
-                <th>Quantity</th>
-                <th>Gift Wrapper</th>
-                <th>Selected Address</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="x in Cart">
-                <td><img src="{{'./resources/images/'+x.img}}">{{x.img}}</td>
-                <td>{{x.pname}}</td>
-                <td><span class="glyphicon glyphicon-plus" ng-click="x.quantity=x.quantity+1"></span>{{x.quantity}}<span class="glyphicon glyphicon-minus" ng-click="x.quantity=x.quantity-1"></span>       </td>
-                <td>
-                    <span class="glyphicon glyphicon-gift font24" ng-class="{ 'text-success': x.gift_Wrapper, 'opacity3': !x.gift_Wrapper, 'text-mute': !x.gift_Wrapper }" ng-click="x.gift_Wrapper=!x.gift_Wrapper">
+<div class="container" ng-init="loaded=false">
+	<div class="loader" ng-hide="loaded"></div>
+	<div ng-show="loaded">
+		<table class="table alignCenter">
+			<thead>
+				<tr>
+					<th>Product Image</th>
+					<th>Product Name</th>
+					<th>Quantity</th>
+					<th>Gift Wrapper</th>
+					<th>Selected Address</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="x in Cart">
+					<td>
+						<img src="{{'./resources/images/'+x.img}}">{{x.img}}</td>
+					<td>{{x.pname}}</td>
+					<td>
+						<span class="glyphicon glyphicon-plus" ng-click="x.quantity=x.quantity+1"></span>{{x.quantity}}
+						<span class="glyphicon glyphicon-minus" ng-click="x.quantity=x.quantity-1"></span>
+					</td>
+					<td>
+						<span class="glyphicon glyphicon-gift font24" ng-class="{ 'text-success': x.gift_Wrapper, 'opacity3': !x.gift_Wrapper, 'text-mute': !x.gift_Wrapper }"
+						 ng-click="x.gift_Wrapper=!x.gift_Wrapper">
 
-                    </span>
-                </td>
-                <td>{{x.address.city}}</td>       
-                <td>
-                    <button data-toggle="modal" data-target="#myModal2" class="btn btn-success" ng-click="addressChange(x)">Change Address</button>
-                </td>
-                <td>
-                    <span class="text-danger glyphicon glyphicon-trash font24" ng-click="deleteCartItem($index)"></span>
-                </td>        
-            </tr>
-        </tbody>
-    </table>
-    <div class="modal fade" id="myModal2" role="dialog" ng-init="init()">
-        <div class="modal-dialog addressPopUp" >
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Change of Address</h4>
-            </div>
-            <div class="modal-body addressList" >
-                    <h2>Address Change</h2>
-                    <div>
-                        <ul>
-                            <li>{{address.customerName}}</li>
-                            <li>{{address.city}}</li>
-                            <li>{{address.state}}</li>
-                            <li>{{address.pincode}}</li>
-                            <li>{{address.mobileNo}}</li>
-                        </ul>
-                        <br>
-                    </div>
-                    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Change</button>
-                    <button type="button" class="btn btn-warning btn-lg" ng-click="updateAddress()">Update Address</button>
-                    <button type="button" class="btn btn-info btn-lg" data-dismiss="modal">Close</button>
-                <!--div ng-include="'./HTML/addressSuggestion.html'">
->>>>>>> branch 'master' of https://github.com/iprimed-quinnox1/team_04_src.git
+						</span>
+					</td>
+					<td>{{x.address.city}}</td>
+					<td>
+						<button data-toggle="modal" data-target="#myModal2" class="btn btn-success" ng-click="addressChange(x)">Change Address</button>
+					</td>
+					<td>
+						<span class="text-danger glyphicon glyphicon-trash font24" ng-click="deleteCartItem($index)"></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="modal fade" id="myModal2" role="dialog" ng-init="init()">
+			<div class="modal-dialog addressPopUp">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Change of Address</h4>
+				</div>
+				<div class="modal-body addressList">
+					<h2>Address Change</h2>
+					<div>
+						<ul>
+							<li>{{address.customerName}}</li>
+							<li>{{address.city}}</li>
+							<li>{{address.state}}</li>
+							<li>{{address.pincode}}</li>
+							<li>{{address.mobileNo}}</li>
+						</ul>
+						<br>
+					</div>
+					<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Change</button>
+					<button type="button" class="btn btn-warning btn-lg" ng-click="updateAddress()">Update Address</button>
+					<button type="button" class="btn btn-info btn-lg" data-dismiss="modal">Close</button>
+					<!--div ng-include="'./HTML/addressSuggestion.html'">
 
                 </div-->
+				</div>
 			</div>
 		</div>
+		<div ng-include="'./HTML/addressSuggestion.html'"></div>
+		<button class="btn btn-lg btn-success" ng-click="checkout()">Checkout</button>
+		<a class="btn btn-lg btn-info" href="#!order">Your Orders</a>
 	</div>
-	<div ng-include="'./HTML/addressSuggestion.html'"></div>
-	<button class="btn btn-lg btn-success" ng-click="checkout()">Checkout</button>
-	<a class="btn btn-lg btn-info" href="#!order">Your Orders</a>
 </div>

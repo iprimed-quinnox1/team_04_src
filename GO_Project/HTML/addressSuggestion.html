@@ -19,6 +19,7 @@
 						<br>
 					</ul>
 					<div class="paddingT10">
+						<button id="defaultAddressButton" class="glyphicon glyphicon-home btn btn-success" ng-class="{'text-success': {{x.type == 'T'}}, 'opacity3': {{x.type == 'D'}}, 'text-mute': {{x.type == 'D'}}}" ng-click="changeDefaultAddress(x,$index)"></button>
 						<button type="button" class="btn btn-success" data-dismiss="modal" ng-click="changeAddress(x)">
 							Deliver to this Address
 						</button>

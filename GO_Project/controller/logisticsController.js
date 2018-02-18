@@ -5,6 +5,7 @@ app.controller("logisticsMain", function($scope, $http,$rootScope) {
 	
 	$http.post("http://localhost:3000/order/fetch", ob).then(function(response) {
 		$scope.Order = response.data;
+		$scope.loaded = true;
 		
 	},function(error){
 		$location.path("/logistics");

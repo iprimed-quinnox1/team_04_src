@@ -1,5 +1,7 @@
 var express = require("express");
 var router = express.Router();
+var MongoClient = require("mongodb").MongoClient;
+var url = "mongodb://localhost:27017/";
 var addSearch = require("../DataBase/addressSearch.js");
 
 var addInsert = require("../DataBase/addressInsert.js");
@@ -48,6 +50,32 @@ router.post("/delete", function (req, res) {
 		 console.log("Address is deleted");
 		 res.end();
     });
+       
+});
+
+router.post("/default", function (req, res) {
+    res.set({
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true
+    }); // to set the header .
+    MongoClient.connect(url, function (err, database) { 	       
+		if (err) throw err;
+		var dbase = database.db("Addresses");
+        var res1 = dbase.collection("Address");
+        var myobj =req.body;
+		res1.update({"customerId": myobj.customerId},{$set:{"type":'T'}},{multi:true}, function (err, result) {
+			if (err) throw err;
+			console.log(JSON.stringify( myobj) + "-------updated");
+			
+        });
+        res1.updateOne({"_id":myobj._id},{$set:{"type":'D'}},function(err,result1){
+            if (err) throw err;
+            console.log("helloooooooooooooooooooo");
+            res.send(true);
+        });
+		database.close();
+	});
        
 });
 

@@ -5,9 +5,10 @@ app.controller("productList", function($scope, $http,$rootScope) {
 	
 	$http.post("http://localhost:3000/product/fetch").then(function(response) {
 		$scope.products = response.data;
+		$scope.loaded = true;
 		
 	},function(error){
-		console.log($scope.products);
+		console.log(error);
 	});
 	
 });

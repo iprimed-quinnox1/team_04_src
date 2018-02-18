@@ -319,20 +319,11 @@ ol.progtrckr li.progtrckrTodo:before {
     max-height:10%;
     transition: transform .2s;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> 95d8924f44f872748d16ffabcad0f628b8c7e420
 .table-success{
 	background-color: #c3e6cb;
 }
 
-<<<<<<< HEAD
-	
-=======
-	
-=======
+
 .dropstyle {
     float: right;
 }
@@ -351,7 +342,7 @@ ol.progtrckr li.progtrckrTodo:before {
     margin: 2%;
     width: 70%;
 }
->>>>>>> 95d8924f44f872748d16ffabcad0f628b8c7e420
+
 
  
 /*----------------------Registeration-------------------*/
@@ -392,8 +383,25 @@ ol.progtrckr li.progtrckrTodo:before {
         padding: 5px;
     }
 */
-<<<<<<< HEAD
->>>>>>> branch 'master' of https://github.com/iprimed-quinnox1/team_04_src.git
-=======
-
->>>>>>> 95d8924f44f872748d16ffabcad0f628b8c7e420
+/*-------------Loading screen-----------------------------------------------*/
+.loader {
+    margin-left: 45%;
+    border: 6px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 6px solid #c0ff00;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 1s linear infinite; /* Safari */
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
