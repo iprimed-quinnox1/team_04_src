@@ -32,6 +32,9 @@ app.config(function($routeProvider) {
 	}).when("/addSpecs", {
 		templateUrl : "./HTML/addTechSpecs.html",
 		controller : "addTechSpecs"
+	}).when("/address", {
+		templateUrl : "./HTML/addressManagement.html",
+		controller : "addressManagementController"
 	})
 
 });
