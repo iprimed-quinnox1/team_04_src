@@ -21,7 +21,7 @@ app.controller("productDetails",function($rootScope , $scope ,$http , $location)
 					quantity : 1,
 				}
 				$http.post("http://localhost:3000/cart/insert",cartOb).then(function(response){
-					alert("received");
+				
 				},function(error){
 					console.log(error);
 				}
