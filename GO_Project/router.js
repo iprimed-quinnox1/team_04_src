@@ -26,7 +26,7 @@ app.config(function($routeProvider) {
 	}).when("/productDetails", {
 		templateUrl : "./HTML/productDetails.html",
 		controller : "productDetails"
-	})	.when("/register", {
+	}).when("/register", {
 		templateUrl : "./HTML/registerForm.html",
 		controller : "register"
 	}).when("/login", {
@@ -36,10 +36,9 @@ app.config(function($routeProvider) {
 	.when("/addSpecs", {
 		templateUrl : "./HTML/addTechSpecs.html",
 		controller : "myCtrl"
-	})
-	.when("/getSpecs", {
-		templateUrl : "./HTML/getSpecs.html",
-		controller : "getTechSpecsController"
+	}).when("/address", {
+		templateUrl : "./HTML/addressManagement.html",
+		controller : "addressManagementController"
 	})
 	
 

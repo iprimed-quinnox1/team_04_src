@@ -1,5 +1,5 @@
 <div>
-	<div class="container" ng-app="myapp" ng-controller="myCtrl">
+	<div class="container">
 		<div class="marginT70 col-md-4 form-group">
 			<h3>Enter Product I.D.</h3>
 			<input class="form-control" type="text" ng-model="pid"
@@ -32,12 +32,12 @@
                         <input type="text" ng-model="newItemPrice">
                     </td>
                 </tr>
-				<tr ng-repeat="data in techSpecs">
-					<td><input class="form-control" type=text
+				<tr ng-animate="'animate'"  ng-repeat="data in techSpecs">
+					<td  ng-animate="'animate'" ><input class="form-control" type=text
 						ng-model="data.techAttr" placeholder="Enter Description Title..."></td>
-					<td><input class="form-control" type=text
+					<td  ng-animate="'animate'" ><input class="form-control" type=text
 						ng-model="data.techValue" placeholder="Enter Description"></td>
-					<td> <div class="tooltip">
+					<td  ng-animate="'animate'" > <div class="tooltip">
                         <span class="glyphicon glyphicon-minus" ng-click="remove($index)"></span>
                         <span class="tooltiptext">Remove</span>
                     </div>					

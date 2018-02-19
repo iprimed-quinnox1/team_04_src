@@ -1,65 +1,28 @@
-<div class="col-md-12">
-
-    <div class>
-
-
-        <div class="search containerCss ">
-
-            <div class="dropdown  dropstyle">
-                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Your Orders
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">DOCTYPE
-                    <li>
-                        <a href="#">MyAccount</a>
-                    </li>
-                    <li>
-                        <a href="#">MyOrders</a>
-                    </li>
-                    <li>
-                        <a href="#">SignOut</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">About Us</a>
-                    </li>
-            </div>
-
-            <div class="dropdown  dropstyle">
-                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">GO Functions
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="#">Product Master</a>
-                    </li>
-                    <li>
-                        <a href="#">Customer Address</a>
-                    </li>
-                    <li>
-                        <a href="#">Shipping Address</a>
-                    </li>
-
-                </ul>
-
-
-            </div>
-
-            <div class="glyphicon glyphicon-shopping-cart  gla" ng-click=""> </div>
-            <div class="searchsize search">
-                <input type="text" placeholder="Search Items....." name="search">
-                <button type="submit">
-                    <i class="fa fa-search"></i>
+<div class="container " ng-init="loaded=false">
+    <div class="loader" ng-hide="loaded"></div>
+    <div ng-show="loaded">
+        <div class="input-group gla search-box">
+            <input type="text" class="form-control " placeholder="Search" id="txtSearch" align="right" width="48" height="48" />
+            <div class="input-group-btn">
+                <button class="btn btn-primary" type="submit">
+                    <span class="glyphicon glyphicon-search"></span>
                 </button>
             </div>
         </div>
 
-        <div class="col-md-3 listItemCell well" ng-repeat="y in products" ng-click="selectedItem(y)">
-            <img src="{{'./resources/images/'+y.img}}" class="img-thumbnail proImage thumb" alt="{{x.pName}}">
-            <br>
 
-            <a href="{{'#!/productDetails?pid='+y.pid}}">{{y.pid}}</a>
+        <div class="col-md-12">
 
+            <div class="col-md-3 listItemCell" ng-repeat=" x in products" ng-click="selectedItem(x.pid)">
+
+                <img ng-src="{{'./resources/images/'+x.img}}" class="imageList img img-thumbnail" onerror="this.src='./resources/logo/no_image_available.jpeg';"> Name:{{x.itemName}}
+                
+                <br> Rs.{{x.itemPrice}}
+
+
+            </div>
         </div>
 
     </div>
+
+</div>
