@@ -1,5 +1,5 @@
 
-app.controller("productList", function($scope, $http,$rootScope) {
+app.controller("productList", function($scope, $http,$rootScope,$location) {
 
 	//var ob = {logisticsId : "L101"};
 	
@@ -9,5 +9,9 @@ app.controller("productList", function($scope, $http,$rootScope) {
 	},function(error){
 		console.log($scope.products);
 	});
+	
+	$scope.selectedItem = function(pid){
+		$location.path("/productDetails").search('pid',pid);
+	}
 	
 });

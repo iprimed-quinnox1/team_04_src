@@ -8,7 +8,7 @@ exports.deleteAddress = function (myobj,callback)
         var db = dbase.db("Addresses");
         var myobj = req.body;
        var dbas = db.collection("address");
-        dbas.deleteOne({"customer_id":myobj.cid}, function (err, res) {
+        dbas.update({"customer_id":myobj.cid}, function (err, res) {
             if (err) throw err;
             //console.log(res);
             console.log(myobj.cid + " Deleted");

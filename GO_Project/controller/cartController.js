@@ -41,26 +41,6 @@ app.controller("cart", function($scope, $rootScope, $http, $location) {
 		selectedItem = x;
 	}
 
-
-	/*$scope.Cart = [ {
-		"customerId" : "C101",
-		"pid" : "121",
-		"pname" : "Shoe",
-		"gift_Wrapper" : true,
-		"quantity" : 1,
-	}, {
-		"customerId" : "C101",
-		"pid" : "101",
-		"pname" : "Tent",
-		"gift_Wrapper" : false,
-		"quantity" : 1
-	}, {
-		"customerId" : "C101",
-		"pid" : "111",
-		"pname" : "Gloves",
-		"gift_Wrapper" : true,
-		"quantity" : 1,
-	} ];*/
 	if ($rootScope.object) {
 		for (var i = 0; i < $scope.Cart.length; i++) {
 			$scope.Cart[i].address = $rootScope.object[i].address;
@@ -74,6 +54,12 @@ app.controller("cart", function($scope, $rootScope, $http, $location) {
 	$scope.deleteCartItem = function(index) {
 		$scope.Cart.splice(index, 1);
 		$rootScope.object = $scope.Cart;
+	}
+	
+	$scope.changeDefault = function(x){
+		$http.post("http://localhost:3000/address/default",x).then(function(response){
+			alert("done");
+		});
 	}
 
 	$scope.checkout = function() {
