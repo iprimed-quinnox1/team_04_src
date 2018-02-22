@@ -1,0 +1,58 @@
+<div>
+    <h2>Address Change</h2>
+    <div>
+        <ul class="listStyleNone">
+            <li>{{address.customerName}}</li>
+            <li>{{address.city}}</li>
+            <li>{{address.state}}</li>
+            <li>{{address.pincode}}</li>
+            <li>{{address.mobileNo}}</li>
+        </ul>
+        <br>
+    </div>
+    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Change</button>
+   
+
+</div>
+
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Change of Address</h4>
+            </div>
+            <div class="container"></div>
+            <div class="modal-body addressList">
+                <div class="addressBox" ng-repeat="x in addressList">
+                    <ul class="listStyleNone">
+                        <li>{{x.customerName}}</li>
+                        <li>{{x.city}}</li>
+                        <li>{{x.state}}</li>
+                        <li>{{x.pincode}}</li>
+                        <li>{{x.type}}</li>
+                        <li>{{x.mobileNo}}</li>
+                        <br>
+                    </ul>
+                    <div class="paddingT10">
+                        <button id="defaultAddressButton" class="glyphicon glyphicon-home btn btn-success" ng-class="{'text-success': {{x.type == 'T'}}, 'opacity3': {{x.type == 'D'}}, 'text-mute': {{x.type == 'D'}}}"
+                            ng-click="changeDefaultAddress(x,$index)"></button>
+                       
+                        <button class="glyphicon glyphicon-pencil btn btn-info" ng-click="editAddress(x)"></button>
+                    </div>
+                </div>
+
+                <div class="newAddressBox">
+                    <a href="#!newAddress">
+                        <div onclick="$('.modal').modal('hide')" class="btn btn-success btn-lg">Add New Address
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

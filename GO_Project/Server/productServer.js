@@ -1,7 +1,10 @@
 var express = require("express");
 var router = express.Router();
+
+
 var productFetch = require("../DataBase/productFetch.js");
 var productSearch = require("../DataBase/productSearch.js");
+var productInsert = require("../DataBase/productInsert.js");
 
 
 
@@ -40,9 +43,9 @@ router.post("/insert", function (req, res){
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true
     });
-	addInsert.insertNewAddress(req.body,function callback(result){
+	productInsert.insert(req,function callback(result){
 		
-		console.log("New address inserted");
+		console.log("New product inserted");
 		res.send(true);
 		//res.end();
 	});
@@ -55,7 +58,7 @@ router.post("/delete", function (req, res) {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true
     }); // to set the header .
-    addSearch.deleteAddress(req.body,function callback(result){
+    addSearch.deleteAddress(req,function callback(result){
 		 res.send(result);
 		 console.log("Address is deleted");
 		 res.end();

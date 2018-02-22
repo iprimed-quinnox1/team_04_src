@@ -1,3 +1,4 @@
+var url = "http://192.168.10.41:3000/";
 app.controller("home",function($scope, $rootScope){
     $rootScope.CustomerDetails = {
         "_id": "1",

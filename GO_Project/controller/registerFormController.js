@@ -1,4 +1,4 @@
-var ctrl = app.controller("register", function($scope, $http) {
+app.controller("register", function($scope, $http) {
 	// initial data;
 
 	$scope.saveAddress = function() {
@@ -11,7 +11,7 @@ var ctrl = app.controller("register", function($scope, $http) {
 		console.log($scope.address);
 		var address = new Address();
 		console.log(address);
-		$http.post("http://localhost:3000/registerationForm", address).then(
+		$http.post(url+"registerationForm", address).then(
 				function(response) {
 					// $scope.addressList = response.data;
 					console.log(response.data);
@@ -32,7 +32,7 @@ var ctrl = app.controller("register", function($scope, $http) {
 			address : {}
 		}
 		console.log(customerOb);
-		$http.post("http://localhost:3000/customer/register", customerOb).then(
+		$http.post(url+"customer/register", customerOb).then(
 				function(response) {
 					alert("received");
 				}, function(error) {

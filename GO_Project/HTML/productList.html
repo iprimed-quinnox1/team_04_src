@@ -1,28 +1,28 @@
-
-<div class="container ">
-    <div class="input-group gla search-box">
-        <input type="text" class="form-control " placeholder="Search" id="txtSearch" align="right" width="48" height="48" />
-        <div class="input-group-btn">
-            <button class="btn btn-primary" type="submit">
-                <span class="glyphicon glyphicon-search"></span>
-            </button>
+<div class="container " ng-init="loaded=false">
+    <div class="loader" ng-hide="loaded"></div>
+    <div ng-show="loaded">
+        <div class="input-group gla search-box">
+            <input type="text" class="form-control " placeholder="Search" id="txtSearch" align="right" width="48" height="48" />
+            <div class="input-group-btn">
+                <button class="btn btn-primary" type="submit">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </div>
         </div>
-    </div>
 
 
-    <div class="col-md-12">
+        <div class="col-md-12">
 
-        <div class="col-md-3 listItemCell" ng-repeat=" x in products" ng-click="selectedItem(x.pid)">
-            
-                <img src="{{'./resources/images/'+x.img}}"  style="max-height: 200px" class="img img-thumbnail">
-            
-                Name:{{x.itemName}}<br>            
-                Rs.{{x.itemPrice}}
-            
+            <div class="col-md-3 listItemCell" ng-repeat=" x in products" ng-click="selectedItem(x.pid)">
 
+                <img ng-src="{{'./resources/images/'+x.img}}" class="imageList img img-thumbnail" onerror="this.src='./resources/logo/no_image_available.jpeg';"> Name:{{x.itemName}}
+                
+                <br> Rs.{{x.itemPrice}}
+
+
+            </div>
         </div>
+
     </div>
-
-
 
 </div>

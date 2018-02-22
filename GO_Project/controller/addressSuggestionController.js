@@ -11,7 +11,7 @@ app.controller("addressSuggestion", function($scope, $rootScope, $location,
 		var ob = {
 			cid : "C101"
 		};
-		$http.post("http://localhost:3000/address/search", ob).then(
+		$http.post(url+"address/search", ob).then(
 				function(response) {
 					$scope.addressList = response.data;
 					//console.log(response.data);

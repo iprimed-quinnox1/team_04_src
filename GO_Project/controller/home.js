@@ -1,4 +1,4 @@
-
+var url = "http://192.168.10.41:3000/";
 app.controller("home",function($scope){
     $scope.CustomerDetails = {
 		"_id" : "1",

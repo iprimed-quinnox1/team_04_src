@@ -1,9 +1,9 @@
 var express = require("express");
+var router = express.Router();
 var MongoClient = require("mongodb").MongoClient;
 var url = "mongodb://localhost:27017/";
-var router = express.Router();
 var addSearch = require("../DataBase/addressSearch.js");
-
+var addUpdate = require("../DataBase/addressUpdate.js");
 var addInsert = require("../DataBase/addressInsert.js");
 
 
@@ -38,6 +38,20 @@ router.post("/insert", function (req, res){
 	});
 });
 
+router.post("/update", function (req, res){
+	res.set({
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true
+    });
+	addUpdate.updateAddress(req.body,function callback(result){
+		
+		console.log(" address updated");
+		res.send(true);
+		//res.end();
+	});
+});
+
 //delete
 router.post("/delete", function (req, res) {
     res.set({
@@ -53,35 +67,31 @@ router.post("/delete", function (req, res) {
        
 });
 
-router.post("/default", function(req,res){
-	res.set({
+router.post("/default", function (req, res) {
+    res.set({
         'Content-Type': 'application/json',
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true
-    });
-	MongoClient.connect(url, function (err, dbase) {
-        if (err) throw err;
-        var db = dbase.db("Addresses");
-        var myobj = req.body;
-        console.log("reaching update");
-        console.log(myobj);
-       var dbas = db.collection("Address");
-        dbas.update({"customerId":myobj.customerId},{$set:{"type":'T'}},{multi:true}, function (err, result) {
+    }); // to set the header .
+    MongoClient.connect(url, function (err, database) { 	       
+		if (err) throw err;
+		var dbase = database.db("Addresses");
+        var res1 = dbase.collection("Address");
+        var myobj =req.body;
+		res1.update({"customerId": myobj.customerId},{$set:{"type":'T'}},{multi:true}, function (err, result) {
+			if (err) throw err;
+			console.log(JSON.stringify( myobj) + "-------updated");
+			
+        });
+        res1.updateOne({"_id":myobj._id},{$set:{"type":'D'}},function(err,result1){
             if (err) throw err;
-            console.log("sab T hua");
-            //
-            //console.log(res);
-            
-        });
-        
-        dbas.updateOne({_id:myobj._id},{$set:{type:'D'}},function(err,result){
+            console.log("helloooooooooooooooooooo");
             res.send(true);
-            console.log("sab D hua");
         });
+		database.close();
+	});
        
-        dbase.close();
-    });
-})
+});
 
 module.exports = router;
 

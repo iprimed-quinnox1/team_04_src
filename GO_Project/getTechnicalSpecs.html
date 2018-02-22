@@ -85,7 +85,7 @@ app.controller("MyController",function($scope,$http){
 	$scope.getData = function (){
 		$scope.prod=false;
 		var itemPid = {pid : $scope.pid.toString()};
-		$http.post("http://localhost:3000/readData",itemPid).then(function(response){
+		$http.post(url+"readData",itemPid).then(function(response){
 			$scope.techSpecs = response.data;
             console.log($scope.techSpecs);
 			$scope.imag = "resources/images/"+ $scope.techSpecs[0].img;

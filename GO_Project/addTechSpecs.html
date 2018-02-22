@@ -187,7 +187,7 @@ body {
  		//
  		//Initialising data from DB
  		//
- 		$http.post("http://localhost:3000/initializeData").then(function(response){
+ 		$http.post(url+"initializeData").then(function(response){
 		        $scope.techSpecs1 = response.data;
 		        console.log(response.data);
 			});
@@ -283,7 +283,7 @@ body {
                    			return ;
               			 }
                			document.getElementById("demo").innerHTML = txt;
-                        $http.post("http://localhost:3000/updateData", fd).then(function(response) {
+                        $http.post(url+"updateData", fd).then(function(response) {
                             alert("received");
                         });
                     }
@@ -297,7 +297,7 @@ body {
                    			return ;
               			 }
                			document.getElementById("demo").innerHTML = txt;
-                        $http.post("http://localhost:3000/insertData", fd,{
+                        $http.post(url+"insertData", fd,{
 							transformRequest: angular.identity,
 							headers: { 'Content-Type': undefined }
 						}).then(function(response) {
@@ -333,7 +333,7 @@ body {
                     		pid: $scope.pid.toString()
                     };
                    
-                    $http.post("http://localhost:3000/DeleteData", del).then(function(response) {
+                    $http.post(url+"DeleteData", del).then(function(response) {
                         alert("received");
                     });
                     $scope.techSpecs = [{techAttr:"",techValue:""}];
