@@ -1,33 +1,68 @@
 
-    <div class="container">
-    
+<div class="col-md-12">
 
-    </div>
-    <div class="col-md-12">
-        <form class=form-horizontal name="addressForm">
-            <table class="table data-table " class="form-group">
-                <thead>
-                    <th>Registration</th>
-                </thead>
-               <tr width="20%">
-                    <td width="20%"><label>Enter customerName</label><input type="text" size="20" class="form-control" class="padding" text-align="center" ng-model="customer.customerName" placeholder="Enter customerName...">
-                    </td>"style.css~"
-                </tr>
+	<form name="addressForm" class=form-horizontal
+		ng-click="registeration()" novalidate>
 
-                <tr width="20%">
-                    <td width="20%"><label>Enter password</label><input type="text" size="20" class="form-control" class="padding" text-align="center" ng-model="customer.customerPassword" placeholder="Enter password...">
-                    </td>
-                </tr>
-                
-                <tr width="20%">
-                    <td width="20%"><label>Enter customerEmail</label><input type="text" size="20" class="form-control" class="padding" text-align="center" ng-model="customer.customerEmail" placeholder="Enter customer email...">
-                    </td>
-                </tr>
-                
-            </table>
-        </form>
+		<table class="table data-table " class="form-group">
+			<thead>
+				<th>Registration</th>
+			</thead>
+			<tr>
+				<td><label>Enter customerName</label> <input type="text"
+					name="uname" class="form-control" ng-model="customer.customerName"
+					placeholder="Enter customerName..." required> <span
+					style="color: red"
+					ng-show="addressForm.uname.$dirty && addressForm.uname.$invalid">
+						<span ng-show="addressForm.uname.$error.required">Username
+							is required.</span>
+				</span></td>
+			</tr>
 
-        <button class="btn btn-primary" ng-click="saveAddress()">Save</button>
-        <button class="btn btn-primary" ng-click="registeration()">Register</button>
-    </div>
+			<tr>
+				<td><label>Enter password</label> <input type="password"
+					name="password" class="form-control"
+					ng-model="addressForm.customerPassword"
+					placeholder="Enter password..." required> <span
+					style="color: red"
+					ng-show="addressForm.password.$dirty && addressForm.password.$invalid">
+						<span ng-show="addressForm.password.$error.required">password
+							is required.</span>
+				</span></td>
+			</tr>
 
+			<tr>
+				<td><label>Confirm password</label> <input type="password"
+					name="confirmpassword" class="form-control"
+					ng-model="addressForm.customerPassword"
+					placeholder="Enter password..." required> <span
+					style="color: red"
+					ng-show="addressForm.confirmpassword.$dirty && addressForm.confirmpassword.$invalid">
+						<span ng-show="addressForm.confirmpassword.$error.required">password
+							is required.</span>
+				</span></td>
+			</tr>
+
+			<tr>
+				<td><label>Enter customerEmail</label> <input type="email"
+					name="email" class="form-control" ng-model="customer.customerEmail"
+					placeholder="Enter customer email" required> <span
+					style="color: red"
+					ng-show="addressForm.email.$dirty && addressForm.email.$invalid">
+						<span ng-show="addressForm.email.$error.required">Email is
+							required.</span> <span ng-show="addressForm.email.$error.email">Invalid
+							email address.</span>
+				</span></td>
+			</tr>
+
+		</table>
+
+	</form>
+
+	<!-- button class="btn btn-primary" ng-click="saveAddress()">Save</button-->
+	<button class="btn btn-primary" ng-click="registeration()">Register</button>
+</div>
+
+<script>
+	
+</script>

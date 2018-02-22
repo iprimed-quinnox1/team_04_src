@@ -28,6 +28,7 @@ router.post("/insert", function (req, res) {
          //console.log("Server initial result");
          res.end();
     });
+
 });
 
 module.exports = router;

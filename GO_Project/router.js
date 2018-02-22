@@ -29,12 +29,17 @@ app.config(function($routeProvider) {
 	}).when("/register", {
 		templateUrl : "./HTML/registerForm.html",
 		controller : "register"
-	}).when("/addSpecs", {
+	}).when("/login", {
+		templateUrl : "./HTML/login.html",
+		controller : "loginCtrl"
+	})
+	.when("/addSpecs", {
 		templateUrl : "./HTML/addTechSpecs.html",
-		controller : "addTechSpecs"
+		controller : "myCtrl"
 	}).when("/address", {
 		templateUrl : "./HTML/addressManagement.html",
 		controller : "addressManagementController"
 	})
+	
 
 });

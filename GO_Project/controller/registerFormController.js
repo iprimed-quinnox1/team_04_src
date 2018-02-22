@@ -1,5 +1,9 @@
 app.controller("register", function($scope, $http) {
 	// initial data;
+	$scope.uname = ' ';
+    $scope.password = ' ';
+    $scope.confirmpassword = ' ';
+   $scope.email = ' ';
 
 	$scope.saveAddress = function() {
 		var r = confirm("Do you want to save it!");
