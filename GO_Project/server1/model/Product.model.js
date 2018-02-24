@@ -8,4 +8,4 @@ var productSchema = mongoose.Schema({
 	img : String
 
 },{collection:'Product'});
-mongoose.model('Product',addressSchema);
+mongoose.model('Product',productSchema);

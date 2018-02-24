@@ -11,5 +11,5 @@ var cartSchema = mongoose.Schema({
 	quantity : Number
 
 },{collection:'CartCollection'});
-mongoose.model('Cart',productSchema);
+mongoose.model('Cart',cartSchema);
 
