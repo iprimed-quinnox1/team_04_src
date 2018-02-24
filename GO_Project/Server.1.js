@@ -20,6 +20,17 @@ app.use("/", express.static(__dirname + "./resources/images"));
 
 require("./server1/model/Address.model.js");
 require("./server1/routes.server")(app);
+
+require("./server1/model/productModel.js");
+require("./server1/routes.server")(app);
+
+require("./server1/model/cartModel.js");
+require("./server1/routes.server")(app);
+
+require("./server1/model/orderModel.js");
+require("./server1/routes.server")(app);
+
+
 app.use("/master", express.static(__dirname));
 
 /*
