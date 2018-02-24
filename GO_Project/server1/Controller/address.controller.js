@@ -4,8 +4,9 @@ var mongoose = require('mongoose');
 var address = mongoose.model("Address");
 exports.search = function(req,res){
     console.log("yahan to aa gya");
+    //res.write("hello");
    
-    test.find(function(err,result){
+   address.find(function(err,result){
         if(err) throw err;
         console.log(result);
     });
