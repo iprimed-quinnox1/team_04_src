@@ -12,3 +12,9 @@ var addressSchema = mongoose.Schema({
 	customerId : String
 },{collection:'Address'});
 mongoose.model('Address',addressSchema);
+
+
+
+
+
+
