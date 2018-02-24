@@ -20,6 +20,9 @@ app.use("/", express.static(__dirname + "./resources/images"));
 
 require("./server1/model/Address.model");
 require("./server1/routes.server")(app);
+
+require("./server1/model/productModel");
+require("./server1/routes.server")(app);
 app.use("/master", express.static(__dirname));
 
 /*
