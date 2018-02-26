@@ -18,12 +18,12 @@ app.route('/address/search').post(address.search);
     app.route('/product/insert').post(product.insert);
         
     app.route('/cart/fetch').post(cart.fetch);
-    app.route('/cart/data').post(cart.data);
+    //app.route('/cart/data').post(cart.data);
     app.route('/cart/insert').post(cart.insert);
     app.route('/cart/delete').post(cart.delete);
     
     app.route('/order/insert').post(order.insert);
     app.route('/order/fetch').post(order.fetch);
-    app.route('/order/statusUpdate').post(order.statusUpdate);
+    app.route('/order/updatestatus').post(order.statusUpdate);
     app.route('/order/addressUpdate').post(order.addressUpdate);
 }
