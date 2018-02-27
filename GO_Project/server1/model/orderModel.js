@@ -21,4 +21,4 @@ var mongoose = require('mongoose');
 			customerId : String
 		}
   },{collection:'OrderCollection'});
-  mongoose.model('Order',productSchema);
+  mongoose.model('Order',orderSchema);

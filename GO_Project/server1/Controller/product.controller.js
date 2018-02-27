@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-var product = mongoose.model("Product");
+
+var product = mongoose.model('Product');
 
 exports.insert = function (req, res) {
 
@@ -37,6 +38,7 @@ exports.fetch = function(req,res){
         if (err) throw err;
         //console.log(result);
         res.send(result);
+        console.log(result);
         console.log("Products list sent");
         //console.log(result);
        

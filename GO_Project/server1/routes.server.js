@@ -1,30 +1,29 @@
 var address = require("./Controller/address.controller.js");
 var product = require("./Controller/product.controller.js");
+var order = require("./Controller/orderController.js");
+var cart = require("./Controller/cartController.js");
 
 module.exports = function(app){
 console.log(JSON.stringify(app));
-app.route('/address/search').get(address.search);
+app.route('/address/search').post(address.search);
 
 	
-    app.route('/address/search').get(address.search);
-    app.route('/address/insert').get(address.insert);
-    app.route('/address/delete').get(address.delete);
-    app.route('/address/update').get(address.update);
+    app.route('/address/search').post(address.search);
+    app.route('/address/insert').post(address.insert);
+    app.route('/address/delete').post(address.delete);
+    app.route('/address/update').post(address.update);
 
-    app.route('/product/fetch').get(product.fetch);
-    app.route('/product/search').get(product.search);
-    app.route('/product/insert').get(product.insert);
+    app.route('/product/fetch').post(product.fetch);
+    app.route('/product/search').post(product.search);
+    app.route('/product/insert').post(product.insert);
+        
+    app.route('/cart/fetch').post(cart.fetch);
+    //app.route('/cart/data').post(cart.data);
+    app.route('/cart/insert').post(cart.insert);
+    app.route('/cart/delete').post(cart.delete);
     
-    app.route('/product/search').get(product.search);
-    app.route('/product/fetch').get(product.fetch);
-    
-    app.route('/cart/fetch').get(cart.fetch);
-    app.route('/cart/data').get(cart.data);
-    app.route('/cart/insert').get(cart.insert);
-    app.route('/cart/delete').get(cart.delete);
-    
-    app.route('/order/insert').get(order.insert);
-    app.route('/order/fetch').get(order.fetch);
-    app.route('/order/statusUpdate').get(order.statusUpdate);
-    app.route('/order/addressUpdate').get(order.addressUpdate);
+   app.route('/order/insert').post(order.insert);
+    app.route('/order/fetch').post(order.fetch);
+    app.route('/order/updatestatus').post(order.statusUpdate);
+    app.route('/order/addressUpdate').post(order.addressUpdate);
 }

@@ -77,6 +77,7 @@ app.controller("cart", function($scope, $rootScope, $http, $location) {
 			obj.ob[i].logisticsId = "L101";
 			obj.ob[i].date = new Date();
 			obj.ob[i].status = "0";
+			obj.ob[i]._id = Math.floor(Math.random() * 100000000000)+"_" +obj.ob[i].pid;
 			obj.ob[i].orderId = Math.floor(Math.random() * 100000000000)+"_" +obj.ob[i].pid;
 		}
 		console.log(obj);
