@@ -16,16 +16,16 @@ exports.fetch = function(req,res){
     console.log("Hey i reached here");
 }
 
-/*exports.data = function(req,res){
+exports.removeAll = function(req,res){
     console.log("yahan to aa gya");
     //res.write("hello");
-   
-   address.find(function(err,result){
+     var myobj = req.body;
+    cart.remove({customerId:myobj.customerId},function(err,result){
         if(err) throw err;
         console.log(result);
     });
     console.log("Hey i reached here");
-}*/
+}
 
 exports.insert = function(req,res){
     console.log("yahan to aa gya");
@@ -43,10 +43,12 @@ exports.insert = function(req,res){
 exports.delete = function(req,res){
     console.log("yahan to aa gya");
     //res.write("hello");
-   
-   address.find(function(err,result){
+   var ob = req.body;
+    cart.findByIdAndRemove(ob._id,function(err,result){
         if(err) throw err;
         console.log(result);
+        console.log("cart item deleted");
+        res.send(true);
     });
     console.log("Hey i reached here");
 }

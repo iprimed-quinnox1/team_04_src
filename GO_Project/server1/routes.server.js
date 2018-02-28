@@ -18,7 +18,7 @@ app.route('/address/search').post(address.search);
     app.route('/product/insert').post(product.insert);
         
     app.route('/cart/fetch').post(cart.fetch);
-    //app.route('/cart/data').post(cart.data);
+    app.route('/cart/removeAll').post(cart.removeAll);
     app.route('/cart/insert').post(cart.insert);
     app.route('/cart/delete').post(cart.delete);
     

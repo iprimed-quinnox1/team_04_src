@@ -66,9 +66,13 @@ app.controller("cart", function($scope, $rootScope, $http, $location) {
 
 	
 
-	$scope.deleteCartItem = function(index) {
+	$scope.deleteCartItem = function(ob,index) {
+		
 		$scope.Cart.splice(index, 1);
 		$rootScope.object = $scope.Cart;
+		$http.post(url+"cart/delete",ob).then(function(response){
+			alert("Item removed successfully");
+		});
 	}
 
 	$scope.checkout = function() {
@@ -84,6 +88,9 @@ app.controller("cart", function($scope, $rootScope, $http, $location) {
 		$http.post(url+"order/insert",obj).then(function(response) {
 			alert("Order placed successfully");
 			$scope.Cart = null;
+			$http.post(url+"cart/removeAll",$scope.CustomerDetails).then(function(response){
+				alert("hello");
+			});
 			$location.path("/order");
         });
 	}
