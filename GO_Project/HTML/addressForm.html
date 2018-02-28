@@ -1,41 +1,52 @@
+<div ng-include="./HTML/navbar.html"></div>
+	<div>
 
-    <div>
-   
-    <div class="col-md-12">
-        <form class=form-horizontal name="addressForm">
-            <div class="col-md-6">
-                <table class="table data-table " class="form-group">
-                    <thead>
-                        <th>Address</th>
-                    </thead>
+		<div class="col-md-12">
+			<form class=form-horizontal name="addressForm">
+				<div class="col-md-6">
+					<table class="table data-table " class="form-group">
+						<thead>
+							<th>Address</th>
+						</thead>
 
-                    <tr width="20%">
-                        <td width="20%"><label>Enter Customer name</label><input type="text" size="20" class="form-control" class="padding" text-align="center" ng-model="address.customerName" placeholder="Enter customer name...">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label>Mobile NO</label><input class="form-control" type=number ng-model="address.mobileNo" placeholder="Enter Mobile number"></td>
+						<tr width="20%">
+							<td width="20%"><label>Enter Customer name</label><input
+								type="text" size="20" class="form-control" class="padding"
+								text-align="center" ng-model="address.customerName"
+								placeholder="Enter customer name..."></td>
+						</tr>
+						<tr>
+							<td><label>Mobile NO</label><input class="form-control"
+								type=number ng-model="address.mobileNo"
+								placeholder="Enter Mobile number"></td>
 
-                    </tr>
-                    <tr>
-                        <td><label>City</label><input class="form-control" type=text ng-model="address.city" placeholder="Enter city"></td>
+						</tr>
+						<tr>
+							<td><label>City</label><input class="form-control" type=text
+								ng-model="address.city" placeholder="Enter city"></td>
 
-                    </tr>
-                    <tr>
-                        <td><label>State</label><input class="form-control" type=text ng-model="address.state" placeholder="Enter state"></td>
-                    </tr>
-                    <tr>
-                        <td><label>Pincode</label><input class="form-control" type=number ng-model="address.pincode" placeholder="Enter Pincode"></td>
+						</tr>
+						<tr>
+							<td><label>State</label><input class="form-control"
+								type=text ng-model="address.state" placeholder="Enter state"></td>
+						</tr>
+						<tr>
+							<td><label>Pincode</label><input class="form-control"
+								type=number ng-model="address.pincode"
+								placeholder="Enter Pincode"></td>
 
-                    </tr>
-                    <tr>
-                        <td><label>ADDRESS</label><input class="form-control" type=text ng-model="address.Address" placeholder="Enter Address"></td>
+						</tr>
+						<tr>
+							<td><label>ADDRESS</label><input class="form-control"
+								type=text ng-model="address.Address" placeholder="Enter Address"></td>
 
-                    </tr>
-                </table>
-                <button class="btn btn-primary" ng-href="#!/" ng-click="saveAddress()">Save</button>
-                <button class="btn btn-danger" href="#/!" ng-click="cancel()">Cancel</button>
-            </div>
-        </form>       
-    </div>
-</div>
+						</tr>
+					</table>
+					<button class="btn btn-primary" ng-href="#!/"
+						ng-click="saveAddress()">Save</button>
+					<button class="btn btn-danger" href="#/!" ng-click="cancel()">Cancel</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
