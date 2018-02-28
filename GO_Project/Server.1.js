@@ -65,5 +65,3 @@ app.use("/addTechSpecs",addTechSpecsServer);
 app.listen(3000, function () {
     console.log("Server started 3000")
 });
-
-//
