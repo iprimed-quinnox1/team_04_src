@@ -14,7 +14,7 @@ exports.search = function (req, res) {
     });
     //console.log("Hey i reached here");
 }
-exports.deletefunc = function (req, res) {
+exports.delete = function (req, res) {
     //console.log("yahan to aa gya");
     //res.write("hello"); '' 
     var myobj = req.body;

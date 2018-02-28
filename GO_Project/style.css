@@ -412,7 +412,7 @@ ol.progtrckr li.progtrckrTodo:before {
 /*navbar*/
 .topnav {
   overflow: hidden;
-  background-color: #e9e9e9;
+  background-color: #ACDC19;
 }
 
 .topnav a {
@@ -426,7 +426,7 @@ ol.progtrckr li.progtrckrTodo:before {
 }
 
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: #008A59;
   color: black;
 }
 
