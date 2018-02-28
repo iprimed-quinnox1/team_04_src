@@ -34,27 +34,57 @@ exports.insert = function (req, res) {
     });
 }
 
-exports.fetch = function(req,res){
-    product.find({},function (err, result) {
+exports.fetch = function (req, res) {
+    product.find({}, function (err, result) {
         if (err) throw err;
         //console.log(result);
         res.send(result);
         console.log(result);
         console.log("Products list sent");
         //console.log(result);
-       
+
     });
 }
 
-exports.search = function(req,res){
+exports.search = function (req, res) {
     var ob = req.body;
-    product.find({pid:ob.pid},function (err, result) {
+    product.find({ pid: ob.pid }, function (err, result) {
         if (err) throw err;
         //console.log(result);
         res.send(result);
         console.log("Products details sent");
         //console.log(result);
-       
+
+    });
+}
+
+exports.update = function (req, res) {
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+        console.log("Ye Rha Fields");
+        console.log(fields);
+        //console.log(files);
+        if (files)
+            var oldPath = files.file.path;
+        var newPath = __dirname + "/../../resources/images/" + files.file.name;
+        fs.rename(oldPath, newPath, function (err) {
+            if (err) throw err;
+        });
+        var obj = {
+            pid: fields.pid,
+            itemName: fields.itemName,
+            itemPrice: fields.itemPrice,
+            techSpecs: JSON.parse(fields.techSpecs),
+            img: files.file.name
+        };
+        product.findOneAndUpdate({ pid: obj.pid }, { $set: obj }, function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            res.send(true);
+            console.log("updated");
+            //console.log(result);
+
+        });
     });
 }
 

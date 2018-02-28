@@ -9,7 +9,7 @@
 		<div class="marginT70 col-md-8" style="overflow-y: true">
 			<div ng-show="searchList">
 			Search results:
-				<div class="searchList" ng-repeat="x in techSpecs1| filter : pid">
+				<div class="searchList" ng-repeat="x in techSpecs1 | filter : pid track by $index">
 					<span ng-click="fetchData(x)">{{x.pid}}</span>
 				</div>
 			</div>
@@ -32,7 +32,7 @@
                         <input type="text" ng-model="newItemPrice">
                     </td>
                 </tr>
-				<tr ng-animate="'animate'"  ng-repeat="data in techSpecs">
+				<tr ng-animate="'animate'"  ng-repeat="data in techSpecs track by $index">
 					<td  ng-animate="'animate'" ><input class="form-control" type=text
 						ng-model="data.techAttr" placeholder="Enter Description Title..."></td>
 					<td  ng-animate="'animate'" ><input class="form-control" type=text

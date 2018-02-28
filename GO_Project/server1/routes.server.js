@@ -16,6 +16,7 @@ app.route('/address/search').post(address.search);
     app.route('/product/fetch').post(product.fetch);
     app.route('/product/search').post(product.search);
     app.route('/product/insert').post(product.insert);
+    app.route('/product/updateData').post(product.update);
         
     app.route('/cart/fetch').post(cart.fetch);
     app.route('/cart/removeAll').post(cart.removeAll);
