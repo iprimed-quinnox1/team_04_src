@@ -38,7 +38,7 @@
                         <br>
                     </ul>
                     <div class="paddingT10">
-                        <button id="defaultAddressButton" class="glyphicon glyphicon-home btn btn-success" ng-class="{'text-success': {{x.type == 'T'}}, 'opacity3': {{x.type == 'D'}}, 'text-mute': {{x.type == 'D'}}}"
+                        <button id="defaultAddressButton" class="glyphicon glyphicon-home btn btn-success" ng-disabled="x.type==='D'"ng-class="{'text-success': x.type == 'T', 'opacity3': x.type == 'D', 'text-mute': x.type == 'D'}"
                             ng-click="changeDefaultAddress(x,$index)"></button>
                        
                         <button class="glyphicon glyphicon-pencil btn btn-info" ng-click="editAddress(x)"></button>

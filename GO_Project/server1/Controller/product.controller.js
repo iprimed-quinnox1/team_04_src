@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-
+var formidable = require('formidable');
+var fs = require('fs');
 var product = mongoose.model('Product');
 
 exports.insert = function (req, res) {
@@ -25,7 +26,7 @@ exports.insert = function (req, res) {
 
         //var myobj = req.body;
         var temp = new product(obj);
-        temp.save(obj, function (err, res) {
+        temp.save(obj, function (err, result) {
             if (err) throw err;
             console.log(obj.pid + " Inserted");
             res.send(true);
